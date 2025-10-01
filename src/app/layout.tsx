@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { SessionContextProvider } from "@/components/SessionContextProvider"; // Import the new context provider
+import { SessionContextProvider } from "@/components/SessionContextProvider";
 
 const inter = Inter({
   variable: "--font-display",
@@ -62,11 +62,10 @@ export default function RootLayout({
         </Script>
         {/* Organization JSON-LD Schema */}
         <script
-          key="json-ld-organization" // Added a unique key
+          key="json-ld-organization" // Keep the key for reconciliation
           type="application/ld+json"
-        >
-          {JSON.stringify(organizationSchema)}
-        </script>
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-ink text-paper`}
