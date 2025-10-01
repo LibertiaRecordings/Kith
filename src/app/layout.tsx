@@ -20,32 +20,33 @@ export const metadata: Metadata = {
   description: "Precision cuts, exact times. Reserve in seconds.",
 };
 
+// Define organizationSchema outside the component to ensure it's a static constant
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Barbershop",
+  "name": "Kith & Kin Barbershop",
+  "image": "https://kithandkin.com/og.jpg", // TODO: Replace with actual OG image URL
+  "url": "https://kithandkin.com", // TODO: Replace with actual site URL
+  "telephone": "+1-XXX-XXX-XXXX", // TODO: Replace with actual phone number
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1118 12 Ave SW",
+    "addressLocality": "Calgary",
+    "addressRegion": "AB",
+    "postalCode": "T2R ...", // TODO: Replace with actual postal code
+    "addressCountry": "CA"
+  },
+  "sameAs": [
+    "https://www.instagram.com/...", // TODO: Replace with actual Instagram URL
+    "https://www.tiktok.com/@..." // TODO: Replace with actual TikTok URL
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Barbershop",
-    "name": "Kith & Kin Barbershop",
-    "image": "https://kithandkin.com/og.jpg", // TODO: Replace with actual OG image URL
-    "url": "https://kithandkin.com", // TODO: Replace with actual site URL
-    "telephone": "+1-XXX-XXX-XXXX", // TODO: Replace with actual phone number
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "1118 12 Ave SW",
-      "addressLocality": "Calgary",
-      "addressRegion": "AB",
-      "postalCode": "T2R ...", // TODO: Replace with actual postal code
-      "addressCountry": "CA"
-    },
-    "sameAs": [
-      "https://www.instagram.com/...", // TODO: Replace with actual Instagram URL
-      "https://www.tiktok.com/@..." // TODO: Replace with actual TikTok URL
-    ]
-  };
-
   return (
     <html lang="en">
       <head>
@@ -61,9 +62,11 @@ export default function RootLayout({
         </Script>
         {/* Organization JSON-LD Schema */}
         <script
+          key="json-ld-organization" // Added a unique key
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+        >
+          {JSON.stringify(organizationSchema)}
+        </script>
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-ink text-paper`}
