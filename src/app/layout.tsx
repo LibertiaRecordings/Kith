@@ -61,9 +61,10 @@ export default function RootLayout({
           `}
         </Script>
         {/* Organization JSON-LD Schema */}
-        <script
-          key="json-ld-organization" // Keep the key for reconciliation
+        <Script
+          id="json-ld-organization" // Unique ID for the script
           type="application/ld+json"
+          strategy="beforeInteractive" // Ensures it's part of the initial HTML
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
