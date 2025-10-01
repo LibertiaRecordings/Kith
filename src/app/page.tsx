@@ -1,4 +1,3 @@
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -14,7 +13,7 @@ export default function Home() {
             Experience Tokyo-level precision barbering in Calgary. Book your perfect cut.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
-            <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 border border-neon text-neon rounded-full text-xl font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+            <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-neon text-ink rounded-full text-xl font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
               Book Now <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link href="/services" className="inline-flex items-center justify-center px-8 py-4 border border-graphite text-chrome rounded-full text-xl font-medium can-animate hover:border-neon hover:text-neon transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
@@ -45,7 +44,6 @@ export default function Home() {
           {/* Add more content here as needed */}
         </section>
       </main>
-      <MadeWithDyad />
     </div>
   );
 }

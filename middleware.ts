@@ -13,17 +13,20 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Allow access to login page and static assets without authentication
-  if (pathname.startsWith('/login') || pathname.startsWith('/_next/') || pathname.startsWith('/api/') || pathname.startsWith('/static/') || pathname.includes('.')) {
+  // All other pages are now publicly accessible by default.
+  // If specific admin routes need protection, they should be added here.
+  if (pathname.startsWith('/_next/') || pathname.startsWith('/api/') || pathname.startsWith('/static/') || pathname.includes('.')) {
     return res;
   }
 
-  if (!session) {
-    // Redirect unauthenticated users to the login page
-    const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = '/login';
-    redirectUrl.searchParams.set(`redirectedFrom`, req.nextUrl.pathname);
-    return NextResponse.redirect(redirectUrl);
+  // If a user is on the login page and already authenticated, redirect to home.
+  if (session && pathname.startsWith('/login')) {
+    return NextResponse.redirect(new URL('/', req.url));
   }
+
+  // If a user is not authenticated and tries to access a protected route (none defined yet, but for future use),
+  // they would be redirected to login. For now, all routes are public.
+  // Example: if (!session && pathname.startsWith('/admin')) { ... }
 
   return res;
 }
@@ -35,10 +38,9 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - login (authentication page)
      * - api (API routes)
      * - Any file with an extension (e.g., .png, .jpg, .css)
      */
-    '/((?!_next/static|_next/image|favicon.ico|login|api/|.*\\..*).*)',
+    '/((?!_next/static|_next/image|favicon.ico|api/|.*\\..*).*)',
   ],
 };

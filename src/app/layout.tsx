@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
+import { Footer } from "@/components/Footer"; // Import the new Footer
 
 const inter = Inter({
   variable: "--font-display",
@@ -86,6 +87,7 @@ export default function RootLayout({
         />
         <SessionContextProvider>
           {children}
+          <Footer /> {/* Render the Footer component */}
         </SessionContextProvider>
       </body>
     </html>

@@ -90,7 +90,7 @@ export default async function ArtistDetailPage({ params }: ArtistDetailPageProps
           <h1 className="text-4xl font-display font-semibold tracking-tight text-paper mt-6">{artist.name}</h1>
           <p className="text-chrome font-mono text-lg mt-1">{artist.role}</p>
 
-          <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 border border-neon text-neon rounded-full text-lg font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+          <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
             Book with {artist.name}
           </Link>
 

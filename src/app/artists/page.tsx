@@ -34,7 +34,7 @@ export default function ArtistsPage() {
                 ))}
               </ul>
               <div className="mt-4 text-center">
-                <span className="inline-flex items-center justify-center px-4 py-2 border border-neon text-neon rounded-full text-sm font-medium group-hover:bg-neon group-hover:text-ink transition-colors">
+                <span className="inline-flex items-center justify-center px-4 py-2 border border-chrome text-chrome rounded-full text-sm font-medium group-hover:border-neon group-hover:text-neon transition-colors">
                   View Profile
                 </span>
               </div>

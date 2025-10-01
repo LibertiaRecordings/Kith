@@ -77,7 +77,7 @@ export default function ServicesPage() {
               </div>
             )}
 
-            <Link href="/book" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 border border-neon text-neon rounded-full text-lg font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+            <Link href="/book" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
               Book {service.name}
             </Link>
           </div>

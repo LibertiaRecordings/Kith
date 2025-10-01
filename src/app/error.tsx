@@ -29,7 +29,7 @@ export default function Error({
         We're sorry, but an unexpected error occurred. Our team has been notified.
       </p>
       <button
-        className="inline-flex items-center justify-center px-8 py-4 border border-neon text-neon rounded-full text-xl font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon"
+        className="inline-flex items-center justify-center px-8 py-4 bg-neon text-ink rounded-full text-xl font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon"
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()

@@ -16,7 +16,7 @@ export default function NotFound() {
       <p className="text-lg text-chrome mb-10 text-center max-w-md">
         Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
       </p>
-      <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 border border-neon text-neon rounded-full text-xl font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+      <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-neon text-ink rounded-full text-xl font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
         Book an Appointment
       </Link>
       <Link href="/" className="mt-4 inline-flex items-center justify-center px-8 py-4 border border-graphite text-chrome rounded-full text-lg font-medium can-animate hover:border-neon hover:text-neon transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">

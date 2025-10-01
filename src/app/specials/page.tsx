@@ -58,7 +58,7 @@ export default function SpecialsPage() {
               <p className="text-chrome/70 font-mono text-xs mt-4">
                 Valid until {new Date(special.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
-              <Link href={special.ctaLink} className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 border border-neon text-neon rounded-full text-lg font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+              <Link href={special.ctaLink} className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
                 Claim Offer
               </Link>
             </div>
@@ -67,7 +67,7 @@ export default function SpecialsPage() {
       ) : (
         <div className="mt-8 text-center bg-graphite rounded-2xl p-8 shadow-ultra-soft">
           <p className="text-paper text-xl font-display">No active specials at the moment. Check back soon!</p>
-          <Link href="/book" className="mt-6 inline-flex items-center justify-center px-6 py-3 border border-neon text-neon rounded-full text-lg font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+          <Link href="/book" className="mt-6 inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
             Book an Appointment
           </Link>
         </div>

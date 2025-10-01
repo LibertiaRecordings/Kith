@@ -67,7 +67,7 @@ export default function GiftCardsPage() {
               <span>Receive special birthday offers and member-only promotions.</span>
             </li>
           </ul>
-          <Link href="/book" className="mt-8 w-full inline-flex items-center justify-center px-6 py-3 border border-neon text-neon rounded-full text-lg font-medium can-animate hover:bg-neon hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+          <Link href="/book" className="mt-8 w-full inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
             Join Loyalty (Book Now)
           </Link>
           <p className="text-chrome/70 font-mono text-xs mt-4">

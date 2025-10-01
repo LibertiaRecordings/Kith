@@ -25,17 +25,19 @@ export const SessionContextProvider = ({ children }: { children: ReactNode }) =>
       if (event === 'SIGNED_OUT') {
         setSession(null);
         toast.success("You have been signed out.");
-        router.push('/login');
+        // Only redirect to login if not already on the login page
+        if (pathname !== '/login') {
+          router.push('/login');
+        }
       } else if (currentSession) {
         setSession(currentSession);
+        // If signed in and on the login page, redirect to home
         if (pathname === '/login') {
-          router.push('/'); // Redirect to home if already logged in and on login page
+          router.push('/');
         }
       } else {
         setSession(null);
-        if (pathname !== '/login') {
-          router.push('/login'); // Redirect to login if not authenticated and not on login page
-        }
+        // No automatic redirect for unauthenticated users on public pages
       }
       setIsLoading(false);
     });
@@ -46,9 +48,8 @@ export const SessionContextProvider = ({ children }: { children: ReactNode }) =>
       setIsLoading(false);
       if (initialSession && pathname === '/login') {
         router.push('/');
-      } else if (!initialSession && pathname !== '/login') {
-        router.push('/login');
       }
+      // No automatic redirect for unauthenticated users on public pages
     });
 
     return () => subscription.unsubscribe();
