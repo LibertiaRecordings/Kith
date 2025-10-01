@@ -18,7 +18,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Kith & Kin Barbershop",
-  description: "Precision cuts, exact times. Reserve in seconds.",
+  description: "Where precision meets kinship. Your family barbershop experience.",
 };
 
 // Define organizationSchema outside the component to ensure it's a static constant
@@ -57,9 +57,8 @@ export default function RootLayout({
           id="json-ld-organization" // Unique ID for the script
           type="application/ld+json"
           strategy="beforeInteractive" // Ensures it's part of the initial HTML
-        >
-          {JSON.stringify(organizationSchema)}
-        </Script>
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-ink text-paper`}

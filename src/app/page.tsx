@@ -10,7 +10,7 @@ export default function Home() {
             Precision Cuts. <span className="text-neon">Exact Times.</span>
           </h1>
           <p className="mt-6 text-xl text-chrome max-w-2xl mx-auto sm:mx-0 font-mono">
-            Experience Tokyo-level precision barbering in Calgary. Book your perfect cut.
+            Where precision meets kinship. Your family barbershop experience.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
             <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-neon text-ink rounded-full text-xl font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
