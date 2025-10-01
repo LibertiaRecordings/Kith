@@ -26,20 +26,21 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Barbershop",
   "name": "Kith & Kin Barbershop",
-  "image": "https://kithandkin.com/og.jpg", // TODO: Replace with actual OG image URL
-  "url": "https://kithandkin.com", // TODO: Replace with actual site URL
-  "telephone": "+1-XXX-XXX-XXXX", // TODO: Replace with actual phone number
+  "image": "https://kithkin.family/assets/images/share.jpg", // Updated OG image URL
+  "url": "https://kithkin.family", // Updated with actual site URL
+  "telephone": "+1-403-452-4590", // Updated with actual phone number
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "1118 12 Ave SW",
+    "streetAddress": "1040 12 Ave SW",
     "addressLocality": "Calgary",
     "addressRegion": "AB",
-    "postalCode": "T2R ...", // TODO: Replace with actual postal code
+    "postalCode": "", // Removed as it was not explicitly provided and was a TODO
     "addressCountry": "CA"
   },
   "sameAs": [
-    "https://www.instagram.com/...", // TODO: Replace with actual Instagram URL
-    "https://www.tiktok.com/@..." // TODO: Replace with actual TikTok URL
+    "https://www.instagram.com/kithkinbarberco/", // Updated with actual Instagram URL
+    "http://facebook.com/kithkinbarberco", // Updated with actual Facebook URL
+    // "https://www.tiktok.com/@..." // Keeping placeholder for TikTok if it exists
   ]
 };
 

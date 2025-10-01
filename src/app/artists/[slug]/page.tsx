@@ -76,7 +76,8 @@ export default async function ArtistDetailPage({ params }: ArtistDetailPageProps
   }
 
   // Deep-link to Square Appointments for this specific staff member
-  const squareBookingLink = `https://square.site/appointments/buyer/widget/ORG_ID/staff/${artist.staffId}`; // TODO: Replace ORG_ID with your actual Square Organization ID
+  // The base URL is updated, but ORG_ID and staffId remain placeholders as they are not in the provided HTML.
+  const squareBookingLink = `https://kithkinco.square.site/s/appointments`; // Updated base URL
 
   return (
     <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-ink text-paper">

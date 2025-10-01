@@ -11,9 +11,9 @@ export default function BookPage() {
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-paper">Book an Appointment</h1>
       <p className="mt-3 text-chrome font-mono">Precision cuts, exact times. Reserve in seconds.</p>
       <section className="mt-8 rounded-2xl bg-graphite p-4 shadow-ultra-soft">
-        {/* Replace with the Square embed script or iframe provided by Square */}
+        {/* Updated Square Appointments embed script or iframe */}
         <iframe
-          src="https://square.site/appointments/buyer/widget/ORG_ID" // TODO: Replace ORG_ID with your actual Square Organization ID
+          src="https://kithkinco.square.site/s/appointments"
           className="w-full h-[1400px] rounded-xl border border-graphite"
           loading="lazy"
           title="Square Appointments Booking Widget"
