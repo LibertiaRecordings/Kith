@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google"; // Using Inter and IBM Plex Mono as specified fallbacks
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { SessionContextProvider } from "@/components/SessionContextProvider"; // Import the new context provider
 
 const inter = Inter({
   variable: "--font-display",
@@ -11,7 +12,7 @@ const inter = Inter({
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "700"], // Include weights as needed
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -76,7 +77,9 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        {children}
+        <SessionContextProvider>
+          {children}
+        </SessionContextProvider>
       </body>
     </html>
   );
