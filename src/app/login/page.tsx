@@ -3,7 +3,6 @@
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { supabase } from '@/integrations/supabase/client';
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import { Metadata } from 'next';
 
 // Note: Metadata cannot be exported from client components.
@@ -47,7 +46,6 @@ export default function LoginPage() {
           />
         </div>
       </main>
-      <MadeWithDyad />
     </div>
   );
 }
