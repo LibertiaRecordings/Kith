@@ -10,12 +10,12 @@ import { Metadata } from 'next';
 
 export default function LoginPage() {
   return (
-    <div className="grid grid-rows-[1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-display bg-ink text-paper">
+    <div className="grid grid-rows-[1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-display bg-background text-foreground">
       <main className="flex flex-col gap-8 row-start-1 items-center text-center max-w-md w-full">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight text-paper mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter leading-tight text-foreground mb-8">
           Welcome Back
         </h1>
-        <div className="bg-graphite rounded-2xl p-8 shadow-ultra-soft w-full">
+        <div className="bg-card rounded-2xl p-8 shadow-ultra-soft w-full">
           <Auth
             supabaseClient={supabase}
             providers={[]} // No third-party providers by default
@@ -24,19 +24,19 @@ export default function LoginPage() {
               variables: {
                 default: {
                   colors: {
-                    brand: 'hsl(var(--neon))',
-                    brandAccent: 'hsl(var(--neon))',
-                    inputBackground: 'hsl(var(--ink))',
-                    inputBorder: 'hsl(var(--chrome))',
-                    inputBorderHover: 'hsl(var(--neon))',
-                    inputBorderFocus: 'hsl(var(--neon))',
-                    inputText: 'hsl(var(--paper))',
-                    defaultButtonBackground: 'hsl(var(--neon))',
-                    defaultButtonBackgroundHover: 'hsl(var(--neon))',
-                    defaultButtonBorder: 'hsl(var(--neon))',
-                    defaultButtonText: 'hsl(var(--ink))',
-                    anchorTextColor: 'hsl(var(--neon))',
-                    anchorTextHoverColor: 'hsl(var(--neon))',
+                    brand: 'hsl(var(--primary))',
+                    brandAccent: 'hsl(var(--primary))',
+                    inputBackground: 'hsl(var(--background))',
+                    inputBorder: 'hsl(var(--muted-foreground))',
+                    inputBorderHover: 'hsl(var(--primary))',
+                    inputBorderFocus: 'hsl(var(--primary))',
+                    inputText: 'hsl(var(--foreground))',
+                    defaultButtonBackground: 'hsl(var(--primary))',
+                    defaultButtonBackgroundHover: 'hsl(var(--primary))',
+                    defaultButtonBorder: 'hsl(var(--primary))',
+                    defaultButtonText: 'hsl(var(--primary-foreground))',
+                    anchorTextColor: 'hsl(var(--primary))',
+                    anchorTextHoverColor: 'hsl(var(--primary))',
                   },
                 },
               },

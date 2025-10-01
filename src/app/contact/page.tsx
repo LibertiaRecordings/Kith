@@ -9,40 +9,40 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-ink text-paper">
-      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-paper">Contact & Visit</h1>
-      <p className="mt-3 text-chrome font-mono">We're here to help you look your best.</p>
+    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Contact & Visit</h1>
+      <p className="mt-3 text-muted-foreground font-mono">We're here to help you look your best.</p>
 
       <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-graphite rounded-2xl p-8 shadow-ultra-soft">
-          <h2 className="text-3xl font-display font-semibold text-paper mb-4">Get in Touch</h2>
-          <div className="space-y-6 text-chrome">
+        <div className="bg-card rounded-2xl p-8 shadow-ultra-soft">
+          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Get in Touch</h2>
+          <div className="space-y-6 text-muted-foreground">
             <div className="flex items-start">
-              <MapPin className="h-6 w-6 text-neon mr-4 flex-shrink-0" />
+              <MapPin className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
               <div>
-                <p className="font-medium text-paper">Address</p>
+                <p className="font-medium text-foreground">Address</p>
                 <p>1040 12 Ave SW, Calgary, AB</p>
-                <Link href="https://maps.app.goo.gl/YOUR_MAP_LINK" target="_blank" rel="noopener noreferrer" className="text-neon hover:underline text-sm">
+                <Link href="https://maps.app.goo.gl/YOUR_MAP_LINK" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
                   Get Directions
                 </Link>
               </div>
             </div>
             <div className="flex items-start">
-              <Phone className="h-6 w-6 text-neon mr-4 flex-shrink-0" />
+              <Phone className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
               <div>
-                <p className="font-medium text-paper">Phone</p>
+                <p className="font-medium text-foreground">Phone</p>
                 <p>+1-403-452-4590</p>
-                <Link href="tel:+1-403-452-4590" className="text-neon hover:underline text-sm">
+                <Link href="tel:+1-403-452-4590" className="text-primary hover:underline text-sm">
                   Call Us
                 </Link>
               </div>
             </div>
             <div className="flex items-start">
-              <Mail className="h-6 w-6 text-neon mr-4 flex-shrink-0" />
+              <Mail className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
               <div>
-                <p className="font-medium text-paper">Email</p>
+                <p className="font-medium text-foreground">Email</p>
                 <p>info@kithandkin.com</p>
-                <Link href="mailto:info@kithandkin.com" className="text-neon hover:underline text-sm">
+                <Link href="mailto:info@kithandkin.com" className="text-primary hover:underline text-sm">
                   Send an Email
                 </Link>
               </div>
@@ -50,13 +50,13 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="bg-graphite rounded-2xl p-8 shadow-ultra-soft">
-          <h2 className="text-3xl font-display font-semibold text-paper mb-4">Hours & Information</h2>
-          <div className="space-y-6 text-chrome">
+        <div className="bg-card rounded-2xl p-8 shadow-ultra-soft">
+          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Hours & Information</h2>
+          <div className="space-y-6 text-muted-foreground">
             <div className="flex items-start">
-              <Clock className="h-6 w-6 text-neon mr-4 flex-shrink-0" />
+              <Clock className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
               <div>
-                <p className="font-medium text-paper">Opening Hours</p>
+                <p className="font-medium text-foreground">Opening Hours</p>
                 <ul className="list-disc list-inside ml-4">
                   <li>Tuesday - Friday: 10 AM - 8 PM</li>
                   <li>Monday & Saturday: 10 AM - 6 PM</li>
@@ -65,18 +65,18 @@ export default function ContactPage() {
               </div>
             </div>
             <div>
-              <p className="font-medium text-paper">Parking</p>
+              <p className="font-medium text-foreground">Parking</p>
               <p>Street parking available directly in front of our shop. Please do not park in the private lot behind our building.</p>
             </div>
             <div>
-              <p className="font-medium text-paper">Accessibility</p>
+              <p className="font-medium text-foreground">Accessibility</p>
               <p>Our barbershop is wheelchair accessible. Please contact us if you have specific accessibility needs.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mt-8 bg-graphite rounded-2xl p-4 shadow-ultra-soft">
+      <section className="mt-8 bg-card rounded-2xl p-4 shadow-ultra-soft">
         <h2 className="sr-only">Location Map</h2>
         {/* Placeholder for a dark-style map embed */}
         <iframe

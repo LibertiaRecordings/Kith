@@ -16,7 +16,7 @@ export default function SpecialsPage() {
       startDate: "2024-07-01",
       endDate: "2024-07-31",
       ctaLink: "/book",
-      imageUrl: "https://via.placeholder.com/400x250/1C1C1C/FAFAFA?text=Lunchtime+Special",
+      imageUrl: "https://via.placeholder.com/400x250/305%2530/FFFCF7?text=Lunchtime+Special", // Updated placeholder color
       active: true,
     },
     {
@@ -26,7 +26,7 @@ export default function SpecialsPage() {
       startDate: "2024-07-01",
       endDate: "2024-08-31",
       ctaLink: "/book",
-      imageUrl: "https://via.placeholder.com/400x250/1C1C1C/FAFAFA?text=Friend+Offer",
+      imageUrl: "https://via.placeholder.com/400x250/305%2530/FFFCF7?text=Friend+Offer", // Updated placeholder color
       active: true,
     },
     {
@@ -36,7 +36,7 @@ export default function SpecialsPage() {
       startDate: "2024-01-01", // Ongoing
       endDate: "2099-12-31",
       ctaLink: "/book",
-      imageUrl: "https://via.placeholder.com/400x250/1C1C1C/FAFAFA?text=New+Client",
+      imageUrl: "https://via.placeholder.com/400x250/305%2530/FFFCF7?text=New+Client", // Updated placeholder color
       active: true,
     },
   ];
@@ -44,30 +44,30 @@ export default function SpecialsPage() {
   const activeSpecials = specials.filter(s => s.active && new Date(s.endDate) >= new Date());
 
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-ink text-paper">
-      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-paper">Specials & Offers</h1>
-      <p className="mt-3 text-chrome font-mono">Limited-time precision, unlimited style.</p>
+    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Specials & Offers</h1>
+      <p className="mt-3 text-muted-foreground font-mono">Limited-time precision, unlimited style.</p>
 
       {activeSpecials.length > 0 ? (
         <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {activeSpecials.map((special) => (
-            <div key={special.slug} className="bg-graphite rounded-2xl p-6 shadow-ultra-soft">
-              <img src={special.imageUrl} alt={special.title} className="w-full h-48 object-cover rounded-lg mb-4 border border-chrome" />
-              <h2 className="text-2xl font-display font-medium text-paper">{special.title}</h2>
-              <p className="text-chrome mt-2 leading-relaxed text-sm">{special.description}</p>
-              <p className="text-chrome/70 font-mono text-xs mt-4">
+            <div key={special.slug} className="bg-card rounded-2xl p-6 shadow-ultra-soft">
+              <img src={special.imageUrl} alt={special.title} className="w-full h-48 object-cover rounded-lg mb-4 border border-muted-foreground/30" />
+              <h2 className="text-2xl font-display font-medium text-foreground">{special.title}</h2>
+              <p className="text-muted-foreground mt-2 leading-relaxed text-sm">{special.description}</p>
+              <p className="text-muted-foreground/70 font-mono text-xs mt-4">
                 Valid until {new Date(special.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
-              <Link href={special.ctaLink} className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+              <Link href={special.ctaLink} className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                 Claim Offer
               </Link>
             </div>
           ))}
         </section>
       ) : (
-        <div className="mt-8 text-center bg-graphite rounded-2xl p-8 shadow-ultra-soft">
-          <p className="text-paper text-xl font-display">No active specials at the moment. Check back soon!</p>
-          <Link href="/book" className="mt-6 inline-flex items-center justify-center px-6 py-3 bg-neon text-ink rounded-full text-lg font-medium can-animate hover:bg-neon/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon">
+        <div className="mt-8 text-center bg-card rounded-2xl p-8 shadow-ultra-soft">
+          <p className="text-foreground text-xl font-display">No active specials at the moment. Check back soon!</p>
+          <Link href="/book" className="mt-6 inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             Book an Appointment
           </Link>
         </div>

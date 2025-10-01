@@ -72,12 +72,12 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // Kith & Kin Palette
+        // Kith & Kin Palette - Updated to earth tones
         ink: 'hsl(var(--ink))',
         paper: 'hsl(var(--paper))',
         graphite: 'hsl(var(--graphite))',
         chrome: 'hsl(var(--chrome))',
-        neon: 'hsl(var(--neon))',
+        neon: 'hsl(var(--neon))', // Now an earthy green
         danger: 'hsl(var(--danger))',
       },
       borderRadius: {

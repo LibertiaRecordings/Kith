@@ -3,7 +3,8 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
-import { Footer } from "@/components/Footer"; // Import the new Footer
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar"; // Import the new Navbar
 
 const inter = Inter({
   variable: "--font-display",
@@ -62,7 +63,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-ink text-paper`}
+        className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -88,6 +89,7 @@ export default function RootLayout({
           }}
         />
         <SessionContextProvider>
+          <Navbar /> {/* Render the Navbar component */}
           {children}
           <Footer /> {/* Render the Footer component */}
         </SessionContextProvider>
