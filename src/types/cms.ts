@@ -41,6 +41,7 @@ export interface Service {
     price: number;
     duration: number; // in minutes
   }[];
+  ctaLink: string; // Added for direct booking links
 }
 
 export interface JournalPost {

@@ -16,7 +16,7 @@ export const Navbar = () => {
     { href: "/book", label: "Book" },
     { href: "/services", label: "Services" },
     { href: "/barbers", label: "Barbers" },
-    { href: "/posts", label: "Posts" },
+    // { href: "/posts", label: "Posts" }, // Removed as per user request
     { href: "/gift-cards", label: "Gift Cards" },
     { href: "/contact", label: "Contact" },
   ];
