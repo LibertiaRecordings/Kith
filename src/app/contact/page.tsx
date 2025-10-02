@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  // Common image classes for the black and white, analog feel
+  const imageClasses = "object-cover grayscale contrast-125 transition-transform duration-300 ease-in-out hover:scale-105";
+
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Contact & Visit</h1>
@@ -82,29 +85,51 @@ export default function ContactPage() {
         {/* Right Column: Exterior Shop Photo (Collage) */}
         <div className="rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 h-[400px] lg:h-auto relative aspect-square lg:aspect-auto">
           <Image
-            src="/images/kith-kin-barbershop-collage-exterior-interior.jpg" // Existing collage image
-            alt="Kith & Kin Barbershop exterior and interior collage, showcasing our welcoming space in Calgary"
+            src="/images/kith-kin-barbershop-collage-exterior-interior.jpg"
+            alt="Black and white collage of Kith & Kin Barbershop's inviting exterior and stylish interior, showcasing our Calgary location."
             fill
             style={{ objectFit: "cover" }}
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="transition-transform duration-300 ease-in-out hover:scale-105"
+            className={`${imageClasses}`}
             priority
           />
         </div>
       </section>
 
-      {/* Interior Shop Photo */}
+      {/* Our Inviting Space - New Dynamic Gallery Layout */}
       <section className="mt-16 bg-card rounded-2xl p-4 shadow-ultra-soft border border-muted-foreground/30">
         <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Our Inviting Space</h2>
-        <div className="relative w-full h-96 rounded-xl overflow-hidden border border-muted-foreground/30 aspect-video">
-          <Image
-            src="/images/kith-kin-interior-wide-shot.jpg" // New wide interior shot
-            alt="Spacious and modern interior of Kith & Kin Barbershop in Calgary, featuring multiple barber chairs, green wall accents, and a comfortable waiting area, reflecting a premium grooming experience."
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="100vw"
-            className="transition-transform duration-300 ease-in-out hover:scale-105"
-          />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative col-span-1 md:col-span-2 h-64 md:h-96 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+            <Image
+              src="/images/kith-kin-interior-wide-shot.jpg"
+              alt="Wide shot of Kith & Kin Barbershop's modern interior in Calgary, featuring multiple barber chairs and a welcoming atmosphere, in a black and white analog style."
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 66vw"
+              className={`${imageClasses}`}
+            />
+          </div>
+          <div className="relative col-span-1 h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+            <Image
+              src="/images/kith-kin-interior-barber-chair.jpg"
+              alt="Close-up of a classic barber chair in the Kith & Kin Barbershop interior, highlighting the attention to detail and comfort, in a black and white analog style."
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className={`${imageClasses}`}
+            />
+          </div>
+          <div className="relative col-span-1 h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+            <Image
+              src="/images/kith-kin-interior.jpg"
+              alt="A view of the Kith & Kin Barbershop interior, showcasing the stylish decor and comfortable waiting area, in a black and white analog style."
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              className={`${imageClasses}`}
+            />
+          </div>
         </div>
       </section>
 
