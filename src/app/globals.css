@@ -117,7 +117,7 @@
     @apply font-display tracking-tight; /* Use Montserrat for all headings by default */
   }
   h1 {
-    @apply text-5xl md:text-7xl font-normal; /* Default H1 is normal weight, can be overridden */
+    @apply font-hero text-5xl md:text-7xl font-normal; /* Apply font-hero to h1 */
   }
   h2 {
     @apply text-3xl md:text-4xl font-semibold; /* Slightly larger and semi-bold */
