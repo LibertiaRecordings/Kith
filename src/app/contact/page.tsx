@@ -83,7 +83,7 @@ export default function ContactPage() {
         </div>
 
         {/* Right Column: Exterior Shop Photo (Collage) */}
-        <div className="rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 h-[400px] lg:h-auto relative aspect-square lg:aspect-auto">
+        <div className="rounded-2xl overflow-hidden shadow-ultra-soft h-[400px] lg:h-auto relative aspect-square lg:aspect-auto">
           <Image
             src="/images/kith-kin-barbershop-collage-exterior-interior.jpg"
             alt="Black and white collage of Kith & Kin Barbershop's inviting exterior and stylish interior, showcasing our Calgary location."
