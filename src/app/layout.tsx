@@ -45,6 +45,9 @@ const organizationSchema = {
   ]
 };
 
+// Pre-stringify the schema to ensure consistent output
+const organizationSchemaString = JSON.stringify(organizationSchema);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,7 +60,7 @@ export default function RootLayout({
         <script
           id="json-ld-organization" // Unique ID for the script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
         />
       </head>
       <body
