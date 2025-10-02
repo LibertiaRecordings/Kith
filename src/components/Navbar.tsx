@@ -9,15 +9,15 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Navbar = () => {
-  const { session } = useSession();
+  const { session, setShowSpecialDialog } = useSession(); // Get setShowSpecialDialog
   const isMobile = useIsMobile();
 
   const navLinks = [
     { href: "/book", label: "Book" },
     { href: "/services", label: "Services" },
     { href: "/barbers", label: "Barbers" },
-    { href: "/posts", label: "Posts" }, // Changed from /journal to /posts
-    { href: "/specials", label: "Specials" },
+    { href: "/posts", label: "Posts" },
+    // Removed /specials as a direct page link
     { href: "/gift-cards", label: "Gift Cards" },
     { href: "/contact", label: "Contact" },
   ];
@@ -51,6 +51,10 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
+                {/* Add a button for the special dialog in mobile nav */}
+                <Button variant="ghost" onClick={() => setShowSpecialDialog(true)} className="text-lg font-medium text-ink hover:text-primary transition-colors justify-start p-0 h-auto">
+                  Specials
+                </Button>
                 {!session && (
                   <Link href="/login" className="text-lg font-medium text-ink hover:text-primary transition-colors">
                     Login
@@ -66,6 +70,10 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
+            {/* Add a button for the special dialog in desktop nav */}
+            <Button variant="ghost" onClick={() => setShowSpecialDialog(true)} className="text-ink hover:text-primary transition-colors font-medium p-0 h-auto">
+              Specials
+            </Button>
             {!session && (
               <Link href="/login" className="text-ink hover:text-primary transition-colors font-medium">
                 Login
