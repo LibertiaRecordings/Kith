@@ -9,16 +9,15 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Navbar = () => {
-  const { session } = useSession(); // Removed setShowSpecialDialog as it's no longer triggered by a button
+  const { session } = useSession();
   const isMobile = useIsMobile();
 
   const navLinks = [
     { href: "/book", label: "Book" },
     { href: "/services", label: "Services" },
+    { href: "/contact", label: "Location" }, // Changed label from Contact to Location
     { href: "/barbers", label: "Barbers" },
-    // { href: "/posts", label: "Posts" }, // Removed as per user request
     { href: "/gift-cards", label: "Gift Cards" },
-    { href: "/contact", label: "Contact" },
   ];
 
   return (
