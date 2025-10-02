@@ -7,8 +7,8 @@ import ReviewCard from "@/components/ReviewCard"; // Import the new ReviewCard c
 export default function Home() {
   const reviews = [
     {
-      review: "Great atmosphere and an even better haircut! Aaron is a meticulous barber who understands hair. Easy to book an appointment and fair priced.",
-      author: "Tommy Ton",
+      review: "Always a great experience at Kith & Kin. The barbers are skilled and the atmosphere is top-notch. Highly recommend!",
+      author: "John D.",
       rating: 5,
     },
     {
@@ -19,6 +19,11 @@ export default function Home() {
     {
       review: "I LOVE KITH & KIN! As a woman, I appreciate the skill and comfort here. It's an awesome quick cut without the discomfort of traditional men's shops.",
       author: "Jen",
+      rating: 5,
+    },
+    {
+      review: "Fantastic service and a perfect cut every time. The attention to detail is unmatched.",
+      author: "Sarah L.",
       rating: 5,
     },
   ];

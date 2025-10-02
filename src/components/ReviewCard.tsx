@@ -11,7 +11,7 @@ interface ReviewCardProps {
 
 const ReviewCard: React.FC<ReviewCardProps> = ({ review, author, rating }) => {
   return (
-    <div className="bg-card rounded-2xl p-6 shadow-ultra-soft flex flex-col h-full border border-muted-foreground/20">
+    <div className="bg-card rounded-2xl p-6 shadow-ultra-soft flex flex-col h-full border border-muted-foreground/20 can-animate group">
       <div className="flex items-center mb-3">
         {[...Array(5)].map((_, i) => (
           <Star
