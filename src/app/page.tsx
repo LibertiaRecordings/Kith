@@ -7,7 +7,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-1 items-center sm:items-start text-center sm:text-left">
         <section className="hero-section max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight text-foreground">
-            Precision Cuts. <span className="text-primary">Exact Times.</span>
+            Crafted Cuts. <span className="text-primary">Community Roots.</span>
           </h1>
           <p className="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto sm:mx-0 font-mono">
             Where precision meets kinship. Your family barbershop experience.
