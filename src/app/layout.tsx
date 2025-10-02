@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono, Playfair_Display } from "next/font/google"; // Import Playfair_Display
+import { Inter, IBM_Plex_Mono, Bodoni_Moda } from "next/font/google"; // Import Bodoni_Moda
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
@@ -11,7 +11,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const playfairDisplay = Playfair_Display({ // Define Playfair Display
+const bodoniModa = Bodoni_Moda({ // Define Bodoni Moda
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
@@ -68,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
+        className={`${bodoniModa.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

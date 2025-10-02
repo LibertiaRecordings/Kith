@@ -109,7 +109,7 @@ export default {
       },
       fontFamily: {
         display: ['var(--font-display)', ...defaultTheme.fontFamily.sans],
-        body: ['var(--font-body)', ...defaultTheme.fontFamily.sans], // Added font-body here
+        body: ['var(--font-body)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
       },
       boxShadow: {

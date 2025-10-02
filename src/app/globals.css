@@ -50,7 +50,7 @@
     --sidebar-ring: var(--neon);
 
     /* Kith & Kin Fonts */
-    --font-display: "Playfair Display", serif; /* Serif font for headings */
+    --font-display: "Bodoni Moda", serif; /* Serif font for headings */
     --font-body: "Inter", sans-serif; /* Sans-serif for body text */
     --font-mono: "IBM Plex Mono", monospace;
   }
@@ -113,7 +113,7 @@
   }
   /* General heading styles for a sleeker look */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight; /* Use Playfair Display for all headings */
+    @apply font-display tracking-tight; /* Use Bodoni Moda for all headings */
   }
   h1 {
     @apply text-5xl md:text-7xl font-normal; /* Larger and lighter for main titles */
