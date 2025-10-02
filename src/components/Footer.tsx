@@ -6,7 +6,6 @@ import { Instagram, Facebook, Phone, Mail, Music } from "lucide-react"; // Impor
 
 export const Footer = () => {
   const { session } = useSession();
-  const spotifyPlaylistUrl = "https://open.spotify.com/embed/playlist/4sNPJf4uGhE7FE0G7pqdAp?utm_source=generator&theme=0";
 
   return (
     <footer className="w-full p-8 text-center bg-card text-muted-foreground border-t border-muted-foreground/20 mt-16">
@@ -43,23 +42,6 @@ export const Footer = () => {
             </Link>
           )}
         </nav>
-      </div>
-
-      {/* Spotify Playlist Embed */}
-      <div className="mt-8 w-full max-w-md mx-auto">
-        <h3 className="text-xl font-display font-semibold text-foreground mb-4">Kith & Kin Staff Picks</h3>
-        <iframe
-          style={{ borderRadius: '12px' }}
-          src={spotifyPlaylistUrl}
-          width="100%"
-          height="352"
-          frameBorder="0"
-          allowFullScreen={false}
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="Kith & Kin Staff Picks Spotify Playlist"
-          className="border border-muted-foreground/30"
-        ></iframe>
       </div>
     </footer>
   );

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 export default function PlaylistsPage() {
-  const spotifyPlaylistUrl = "https://open.spotify.com/embed/playlist/4sNPJf4uGhE7FE0G7pqdAp?utm_source=generator&theme=0"; // Added theme=0 for dark theme
+  const spotifyPlaylistUrl = "https://open.spotify.com/embed/playlist/4sNPJf4uGhE7FE0G7pqdAp?utm_source=generator&theme=0";
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
@@ -19,12 +19,13 @@ export default function PlaylistsPage() {
           Get a taste of the vibes at Kith & Kin with this selection made by our talented team of barbers and music enthusiasts.
         </p>
         <iframe
+          data-testid="embed-iframe"
           style={{ borderRadius: '12px' }}
           src={spotifyPlaylistUrl}
           width="100%"
           height="352"
           frameBorder="0"
-          allowFullScreen={false}
+          allowFullScreen={true} // Changed to true as 'allowfullscreen=""' implies true
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           title="Kith & Kin Staff Picks Spotify Playlist"
