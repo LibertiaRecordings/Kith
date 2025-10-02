@@ -72,7 +72,7 @@ export default function RootLayout({
           id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        />
+        ></script> {/* Changed to explicit closing tag */}
       </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} ${archivoBlack.variable} antialiased font-body bg-background text-foreground`}
