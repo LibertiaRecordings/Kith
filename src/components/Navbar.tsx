@@ -15,7 +15,7 @@ export const Navbar = () => {
   const navLinks = [
     { href: "/book", label: "Book" },
     { href: "/services", label: "Services" },
-    { href: "/contact", label: "Location" }, // Changed label from Contact to Location
+    { href: "/contact", label: "Location" },
     { href: "/barbers", label: "Barbers" },
     { href: "/gift-cards", label: "Gift Cards" },
   ];
@@ -49,11 +49,7 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
-                {!session && (
-                  <Link href="/login" className="text-lg font-medium text-ink hover:text-primary transition-colors">
-                    Login
-                  </Link>
-                )}
+                {/* Login link removed from mobile navigation */}
               </nav>
             </SheetContent>
           </Sheet>
@@ -64,11 +60,7 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            {!session && (
-              <Link href="/login" className="text-ink hover:text-primary transition-colors font-medium">
-                Login
-              </Link>
-            )}
+            {/* Login link removed from desktop navigation */}
           </nav>
         )}
       </div>
