@@ -15,7 +15,7 @@ export default function Home() {
               Crafted Cuts. <br className="block" /><span className="text-primary">Community Roots.</span>
             </h1>
             <p className="mt-6 text-xl text-paper/90 max-w-2xl mx-auto font-mono">
-              Where precision meets kinship. Your family barbershop experience.
+              Where precision meets kinship. Calgary's premium barbershop experience.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full text-xl font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
