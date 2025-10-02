@@ -82,7 +82,7 @@ export default function ContactPage() {
         {/* Right Column: Exterior Shop Photo (Collage) */}
         <div className="rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 h-[400px] lg:h-auto relative aspect-square lg:aspect-auto">
           <Image
-            src="/images/kith-kin-barbershop-collage-exterior-interior.jpg" // New collage image
+            src="/images/kith-kin-barbershop-collage-exterior-interior.jpg" // Existing collage image
             alt="Kith & Kin Barbershop exterior and interior collage, showcasing our welcoming space in Calgary"
             fill
             style={{ objectFit: "cover" }}
@@ -98,8 +98,8 @@ export default function ContactPage() {
         <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Our Inviting Space</h2>
         <div className="relative w-full h-96 rounded-xl overflow-hidden border border-muted-foreground/30 aspect-video">
           <Image
-            src="/images/kith-kin-interior.jpg" // Changed to a wider interior shot
-            alt="Interior of Kith & Kin Barbershop, showcasing a clean and inviting space with barber chairs and decor in Calgary."
+            src="/images/kith-kin-interior-wide-shot.jpg" // New wide interior shot
+            alt="Spacious and modern interior of Kith & Kin Barbershop in Calgary, featuring multiple barber chairs, green wall accents, and a comfortable waiting area, reflecting a premium grooming experience."
             fill
             style={{ objectFit: "cover" }}
             sizes="100vw"
