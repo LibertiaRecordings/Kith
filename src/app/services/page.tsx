@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { Service } from "@/types/cms"; // Import the Service interface
 
 export const metadata: Metadata = {
   title: "Our Services | Kith & Kin Barbershop",
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  const services = [
+  const services: Service[] = [ // Explicitly type the services array
     {
       slug: "subscription-check-in",
       name: "Subscription Check-in",
@@ -17,6 +18,8 @@ export default function ServicesPage() {
       displayDuration: "5 mins",
       description: "Only book this option if you are a subscriber.",
       addOns: [],
+      category: "Subscription", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "skin-zero-fade",
@@ -27,6 +30,8 @@ export default function ServicesPage() {
       displayDuration: "40 mins",
       description: "A precise fade with a smooth skin finish. Service includes a zero fade. Suggested upkeep: every 1 to 2 weeks or more.",
       addOns: [],
+      category: "Haircut", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "ladies-dry-cut",
@@ -37,6 +42,8 @@ export default function ServicesPage() {
       displayDuration: "45 mins+",
       description: "A simple trim for the ladies without any styling or finishing.",
       addOns: [],
+      category: "Haircut", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "jr-kin-cut",
@@ -47,6 +54,8 @@ export default function ServicesPage() {
       displayDuration: "45 mins",
       description: "A haircut tailored just for the little fellas. Only available for ages 12 & under. Ages 12 & up counts as adult pricing. Suggested upkeep: every 3-4 weeks.",
       addOns: [],
+      category: "Haircut", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "head-wash-massage",
@@ -57,6 +66,8 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "A relaxing head wash & massage to pair perfectly with your service.",
       addOns: [],
+      category: "Add-on", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "classic-cut",
@@ -67,6 +78,8 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "A classic haircut with a straight edged finish for a clean & timeless look. Service does not include a zero or skin fade. Suggested upkeep: every 2 to 4 weeks.",
       addOns: [],
+      category: "Haircut", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "buzz-cut",
@@ -77,6 +90,8 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "All around head buzz. Service does not include skin/zero fade. Suggested upkeep: every 1-3 weeks.",
       addOns: [],
+      category: "Haircut", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "beard-service",
@@ -87,6 +102,8 @@ export default function ServicesPage() {
       displayDuration: "15 mins+",
       description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. Suggested upkeep: weekly.",
       addOns: [],
+      category: "Beard", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
     {
       slug: "beard-service-add-on",
@@ -97,6 +114,8 @@ export default function ServicesPage() {
       displayDuration: "20 mins",
       description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. This add-on item must be combined with another service.",
       addOns: [],
+      category: "Add-on", // Added missing property
+      finishLookExamples: [], // Added missing property
     },
   ];
 
@@ -110,7 +129,7 @@ export default function ServicesPage() {
           <div key={service.slug} className="bg-card rounded-2xl p-6 shadow-ultra-soft flex flex-col h-full">
             <h2 className="text-2xl font-display font-medium text-foreground">{service.name}</h2>
             <p className="text-primary font-mono text-lg mt-2">{service.displayPrice} <span className="text-muted-foreground text-sm">({service.displayDuration})</span></p>
-            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow mb-8">{service.description}</p> {/* Added mb-8 here */}
+            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow mb-8">{service.description}</p>
 
             {service.addOns.length > 0 && (
               <div className="mt-4 pt-4 border-t border-muted-foreground/20">
@@ -126,7 +145,7 @@ export default function ServicesPage() {
               </div>
             )}
 
-            <Link href="/book" className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto">
+            <Link href="/book" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto">
               Book {service.name}
             </Link>
           </div>
