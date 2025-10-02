@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
-import Script from "next/script";
+import Script from "next/script"; // Keep next/script for GTM
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar"; // Import the new Navbar
+import { Navbar } from "@/components/Navbar";
 
 const inter = Inter({
   variable: "--font-display",
@@ -27,21 +27,20 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Barbershop",
   "name": "Kith & Kin Barbershop",
-  "image": "https://kithkin.family/assets/images/share.jpg", // Updated OG image URL
-  "url": "https://kithkin.family", // Updated with actual site URL
-  "telephone": "+1-403-452-4590", // Updated with actual phone number
+  "image": "https://kithkin.family/assets/images/share.jpg",
+  "url": "https://kithkin.family",
+  "telephone": "+1-403-452-4590",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "1040 12 Ave SW",
     "addressLocality": "Calgary",
     "addressRegion": "AB",
-    "postalCode": "", // Removed as it was not explicitly provided and was a TODO
+    "postalCode": "",
     "addressCountry": "CA"
   },
   "sameAs": [
-    "https://www.instagram.com/kithkinbarberco/", // Updated with actual Instagram URL
-    "http://facebook.com/kithkinbarberco", // Updated with actual Facebook URL
-    // "https://www.tiktok.com/@..." // Keeping placeholder for TikTok if it exists
+    "https://www.instagram.com/kithkinbarberco/",
+    "http://facebook.com/kithkinbarberco",
   ]
 };
 
@@ -57,11 +56,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Organization JSON-LD Schema */}
-        <Script
-          id="json-ld-organization" // Unique ID for the script
+        <script
+          id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-          strategy="beforeInteractive"
         />
       </head>
       <body
@@ -78,7 +76,7 @@ export default function RootLayout({
         </noscript>
         {/* Google Tag Manager */}
         <Script
-          id="google-tag-manager-body" // Changed ID to reflect new placement
+          id="google-tag-manager-body"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
@@ -91,9 +89,9 @@ export default function RootLayout({
           }}
         />
         <SessionContextProvider>
-          <Navbar /> {/* Render the Navbar component */}
+          <Navbar />
           {children}
-          <Footer /> {/* Render the Footer component */}
+          <Footer />
         </SessionContextProvider>
       </body>
     </html>
