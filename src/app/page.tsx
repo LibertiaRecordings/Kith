@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image"; // Import Image component
 import { ArrowRight } from "lucide-react";
 import HeroVideoBackground from "@/components/HeroVideoBackground";
 
@@ -49,7 +50,30 @@ export default function Home() {
         <section className="mt-16 w-full max-w-5xl mx-auto text-center">
           <h2 className="text-4xl font-display font-semibold text-foreground">The Kith & Kin Experience</h2>
           <p className="mt-4 text-muted-foreground text-lg font-mono">More than a haircut, it's a ritual.</p>
-          {/* Add more content here as needed */}
+          
+          {/* New "Our Space" section with shop photos */}
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+              <Image
+                src="/images/kith-kin-interior.jpg"
+                alt="Interior of Kith & Kin Barbershop with barber chairs"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="transition-transform duration-300 ease-in-out hover:scale-105"
+              />
+            </div>
+            <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+              <Image
+                src="/images/kith-kin-exterior.jpg"
+                alt="Exterior of Kith & Kin Barbershop at night with neon sign"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="transition-transform duration-300 ease-in-out hover:scale-105"
+              />
+            </div>
+          </div>
         </section>
       </div>
     </div>

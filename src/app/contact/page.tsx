@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image"; // Import Image component
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -12,6 +13,18 @@ export default function ContactPage() {
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Contact & Visit</h1>
       <p className="mt-3 text-muted-foreground font-mono">We're here to help you look your best.</p>
+
+      {/* Exterior Shop Photo */}
+      <section className="mt-8 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+        <Image
+          src="/images/kith-kin-exterior.jpg"
+          alt="Exterior of Kith & Kin Barbershop at night with neon sign"
+          width={1200} // Adjust width/height as needed for optimal display
+          height={600}
+          className="w-full h-auto object-cover"
+          priority
+        />
+      </section>
 
       <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-card rounded-2xl p-8 shadow-ultra-soft">
@@ -73,6 +86,21 @@ export default function ContactPage() {
               <p>Our barbershop is wheelchair accessible. Please contact us if you have specific accessibility needs.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Interior Shop Photo */}
+      <section className="mt-8 bg-card rounded-2xl p-4 shadow-ultra-soft">
+        <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Our Space</h2>
+        <div className="relative w-full h-96 rounded-xl overflow-hidden border border-muted-foreground/30">
+          <Image
+            src="/images/kith-kin-interior.jpg"
+            alt="Interior of Kith & Kin Barbershop with barber chairs and green wall"
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="100vw"
+            className="transition-transform duration-300 ease-in-out hover:scale-105"
+          />
         </div>
       </section>
 
