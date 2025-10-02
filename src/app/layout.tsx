@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
-import Script from "next/script"; // Keep next/script for GTM
+import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
@@ -55,12 +55,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Organization JSON-LD Schema */}
-        <script
+        {/* Organization JSON-LD Schema using next/script */}
+        <Script
           id="json-ld-organization"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        ></script>
+        />
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
