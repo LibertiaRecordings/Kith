@@ -26,7 +26,9 @@ export interface Service {
   slug: string;
   category: string;
   price: number;
+  displayPrice?: string; // Added for display purposes
   duration: number; // in minutes
+  displayDuration?: string; // Added for display purposes
   description: string;
   finishLookExamples: {
     _key: string;
