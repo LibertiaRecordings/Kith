@@ -18,6 +18,7 @@ export const Navbar = () => {
     { href: "/contact", label: "Location" },
     { href: "/barbers", label: "Barbers" },
     { href: "/gift-cards", label: "Gift Cards" },
+    { href: "/playlists", label: "Playlists" }, // Added Playlists link
   ];
 
   return (
@@ -49,7 +50,6 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 ))}
-                {/* Login link removed from mobile navigation */}
               </nav>
             </SheetContent>
           </Sheet>
@@ -60,7 +60,6 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            {/* Login link removed from desktop navigation */}
           </nav>
         )}
       </div>

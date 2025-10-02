@@ -33,6 +33,7 @@ export const Footer = () => {
         <nav className="flex gap-6 text-sm">
           <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+          <Link href="/playlists" className="hover:text-primary transition-colors">Playlists</Link> {/* Added Playlists link */}
           {!session && (
             <Link href="/login" className="hover:text-primary transition-colors font-medium">
               Login
