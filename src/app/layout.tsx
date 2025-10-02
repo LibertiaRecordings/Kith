@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono, Bodoni_Moda } from "next/font/google"; // Import Bodoni_Moda
+import { Inter, IBM_Plex_Mono, Montserrat } from "next/font/google"; // Import Montserrat
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
@@ -11,7 +11,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const bodoniModa = Bodoni_Moda({ // Define Bodoni Moda
+const montserrat = Montserrat({ // Define Montserrat
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
@@ -68,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bodoniModa.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
+        className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
