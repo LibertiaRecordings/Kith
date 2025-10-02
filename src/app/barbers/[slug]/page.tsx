@@ -68,7 +68,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
     return (
       <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
         <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Barber Not Found</h1>
-        <p className="mt-3 text-muted-foreground font-display text-lg">The barber you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
+        <p className="mt-3 text-muted-foreground font-body text-lg">The barber you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
         <Link href="/barbers" className="mt-8 inline-flex items-center text-primary hover:underline">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Barbers
         </Link>
@@ -91,14 +91,14 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
             <Image src={barber.imageUrl} alt={`${barber.name}, ${barber.role} at Kith & Kin Barbershop Calgary`} fill style={{ objectFit: "cover" }} sizes="(max-width: 1024px) 100vw, 33vw" className="transition-transform duration-300 ease-in-out hover:scale-105" />
           </div>
           <h1 className="text-3xl font-display font-medium tracking-tight text-foreground mt-6">{barber.name}</h1>
-          <p className="text-muted-foreground font-display text-lg mt-1">{barber.role} in Calgary</p>
+          <p className="text-muted-foreground font-body text-lg mt-1">{barber.role} in Calgary</p>
 
           <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
             Book with {barber.name}
           </Link>
 
           {barber.socials.instagram && (
-            <Link href={barber.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <Link href={barber.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary font-body">
               Instagram
             </Link>
           )}
@@ -106,12 +106,12 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
 
         <div className="lg:col-span-2 bg-card rounded-2xl p-8 shadow-ultra-soft">
           <h2 className="text-2xl font-display font-medium text-foreground mb-4">About {barber.name}</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6 text-lg">{barber.bio}</p>
+          <p className="text-muted-foreground leading-relaxed mb-6 text-lg font-body">{barber.bio}</p>
 
           <h3 className="text-xl font-display font-normal text-foreground mb-3">Specialties</h3>
           <ul className="flex flex-wrap gap-3 mb-6">
             {barber.specialties.map((spec, index) => (
-              <li key={index} className="bg-background text-primary text-base px-4 py-2 rounded-full border border-primary">
+              <li key={index} className="bg-background text-primary text-base px-4 py-2 rounded-full border border-primary font-body">
                 {spec}
               </li>
             ))}

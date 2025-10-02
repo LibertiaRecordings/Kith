@@ -50,7 +50,7 @@ export const Navbar = () => {
             <SheetContent side="right" className="bg-paper text-ink border-l border-muted-foreground/20 w-[250px] sm:w-[300px]">
               <nav className="flex flex-col gap-4 pt-8">
                 {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="text-lg font-display font-medium text-ink hover:text-primary transition-colors">
+                  <Link key={link.href} href={link.href} className="text-lg font-body font-medium text-ink hover:text-primary transition-colors">
                     {link.label}
                   </Link>
                 ))}
@@ -60,7 +60,7 @@ export const Navbar = () => {
         ) : (
           <nav className="hidden sm:flex gap-8 items-center">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-display font-medium text-lg">
+              <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-body font-medium text-lg">
                 {link.label}
               </Link>
             ))}

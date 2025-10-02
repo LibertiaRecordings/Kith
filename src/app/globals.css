@@ -50,7 +50,8 @@
     --sidebar-ring: var(--neon);
 
     /* Kith & Kin Fonts */
-    --font-display: "Inter", sans-serif;
+    --font-display: "Playfair Display", serif; /* Serif font for headings */
+    --font-body: "Inter", sans-serif; /* Sans-serif for body text */
     --font-mono: "IBM Plex Mono", monospace;
   }
 
@@ -112,10 +113,10 @@
   }
   /* General heading styles for a sleeker look */
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tight; /* Tighter letter spacing for headings */
+    @apply font-display tracking-tight; /* Use Playfair Display for all headings */
   }
   h1 {
-    @apply text-5xl md:text-6xl font-normal; /* Larger and lighter for main titles */
+    @apply text-5xl md:text-7xl font-normal; /* Larger and lighter for main titles */
   }
   h2 {
     @apply text-3xl md:text-4xl font-medium; /* Slightly larger and medium weight */
@@ -124,7 +125,7 @@
     @apply text-2xl md:text-3xl font-normal; /* Slightly larger and normal weight */
   }
   p {
-    @apply text-lg leading-relaxed; /* Consistent, slightly larger body text */
+    @apply font-body text-base leading-relaxed; /* Use Inter for body text, smaller size, relaxed line height */
   }
 }
 

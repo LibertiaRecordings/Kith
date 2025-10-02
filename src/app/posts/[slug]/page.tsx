@@ -18,10 +18,10 @@ async function getJournalPostBySlug(slug: string) {
       body: `
         <p>The fade haircut is a timeless classic, a symbol of precision and style. At Kith & Kin, we believe a perfect fade is more than just a haircut; it's an art form, especially for our discerning clients in Calgary.</p>
         <h2 class="text-2xl font-display font-medium text-foreground mt-8 mb-4">Understanding the Fade</h2>
-        <p class="text-lg">A fade is characterized by its gradual transition from short hair on the sides and back to longer hair on top. The key is a seamless blend, with no harsh lines or visible steps. This requires a steady hand, keen eye, and a deep understanding of hair texture and growth patterns, a hallmark of our Calgary barbers.</p>
+        <p class="text-lg font-body">A fade is characterized by its gradual transition from short hair on the sides and back to longer hair on top. The key is a seamless blend, with no harsh lines or visible steps. This requires a steady hand, keen eye, and a deep understanding of hair texture and growth patterns, a hallmark of our Calgary barbers.</p>
         <h3 class="text-xl font-display font-normal text-foreground mt-6 mb-3">Our Approach to Precision</h3>
-        <p class="text-lg">Our barbers are trained in the most advanced fading techniques, using a combination of clippers, trimmers, and shears to achieve a flawless finish. We consult with each client to determine the ideal fade height and style, ensuring it complements their head shape and personal aesthetic. We cater to diverse styles and preferences, making us a versatile barbershop in Calgary.</p>
-        <p class="text-lg">From skin fades to low, mid, and high fades, we execute each with surgical precision, leaving you with a sharp, clean, and confident look, perfect for any occasion in Calgary.</p>
+        <p class="text-lg font-body">Our barbers are trained in the most advanced fading techniques, using a combination of clippers, trimmers, and shears to achieve a flawless finish. We consult with each client to determine the ideal fade height and style, ensuring it complements their head shape and personal aesthetic. We cater to diverse styles and preferences, making us a versatile barbershop in Calgary.</p>
+        <p class="text-lg font-body">From skin fades to low, mid, and high fades, we execute each with surgical precision, leaving you with a sharp, clean, and confident look, perfect for any occasion in Calgary.</p>
       `,
       tags: ["Haircut", "Fade", "Grooming Tips", "Calgary Barbershop"],
       seo: {
@@ -38,10 +38,10 @@ async function getJournalPostBySlug(slug: string) {
       body: `
         <p>Winter can be harsh on your beard, leading to dryness, itchiness, and breakage. But with the right care routine and products from our Calgary barbershop, your beard can thrive even in the coldest months.</p>
         <h2 class="text-2xl font-display font-medium text-foreground mt-8 mb-4">Hydration is Key</h2>
-        <p class="text-lg">The cold, dry air strips moisture from your beard and skin. Combat this by using a high-quality beard oil daily. Apply it after showering when your pores are open, ensuring it reaches the skin beneath your beard. We recommend products available at Kith & Kin, your trusted Calgary barbers.</p>
+        <p class="text-lg font-body">The cold, dry air strips moisture from your beard and skin. Combat this by using a high-quality beard oil daily. Apply it after showering when your pores are open, ensuring it reaches the skin beneath your beard. We recommend products available at Kith & Kin, your trusted Calgary barbers.</p>
         <h3 class="text-xl font-display font-normal text-foreground mt-6 mb-3">Washing and Conditioning</h3>
-        <p class="text-lg">Don't over-wash your beard, as this can strip natural oils. Aim for 2-3 times a week with a dedicated beard shampoo and conditioner. Follow up with a beard balm to lock in moisture and provide light styling. Our Calgary barbers can recommend the best products for your beard type.</p>
-        <p class="text-lg">Remember, a healthy beard starts with healthy skin. Keep both nourished, and your winter beard will thank you. Visit Kith & Kin Barbershop in Calgary for expert advice and premium products.</p>
+        <p class="text-lg font-body">Don't over-wash your beard, as this can strip natural oils. Aim for 2-3 times a week with a dedicated beard shampoo and conditioner. Follow up with a beard balm to lock in moisture and provide light styling. Our Calgary barbers can recommend the best products for your beard type.</p>
+        <p class="text-lg font-body">Remember, a healthy beard starts with healthy skin. Keep both nourished, and your winter beard will thank you. Visit Kith & Kin Barbershop in Calgary for expert advice and premium products.</p>
       `,
       tags: ["Beard", "Winter", "Grooming Tips", "Products", "Calgary Barbershop"],
       seo: {
@@ -77,7 +77,7 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
     return (
       <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
         <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Post Not Found</h1>
-        <p className="mt-3 text-muted-foreground font-display text-lg">The post you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
+        <p className="mt-3 text-muted-foreground font-body text-lg">The post you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
         <Link href="/posts" className="mt-8 inline-flex items-center text-primary hover:underline">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Posts
         </Link>
@@ -96,7 +96,7 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
           <Image src={post.heroImage.url} alt={post.heroImage.alt} fill style={{ objectFit: "cover" }} sizes="100vw" className="transition-transform duration-300 ease-in-out hover:scale-105" />
         </div>
         <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground mb-4">{post.title}</h1>
-        <p className="text-muted-foreground/70 font-display text-base mb-6">Published on {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p className="text-muted-foreground/70 font-body text-base mb-6">Published on {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
         <div
           className="prose prose-invert max-w-none text-muted-foreground leading-relaxed text-lg"
@@ -108,7 +108,7 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
             <h3 className="text-xl font-display font-normal text-foreground mb-3">Tags:</h3>
             <ul className="flex flex-wrap gap-3">
               {post.tags.map((tag, index) => (
-                <li key={index} className="bg-background text-primary text-base px-4 py-2 rounded-full border border-primary">
+                <li key={index} className="bg-background text-primary text-base px-4 py-2 rounded-full border border-primary font-body">
                   {tag}
                 </li>
               ))}

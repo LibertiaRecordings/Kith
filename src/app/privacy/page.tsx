@@ -9,9 +9,9 @@ export default function PrivacyPolicyPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Privacy Policy</h1>
-      <p className="mt-3 text-muted-foreground font-display text-lg">Your privacy is important to us.</p>
+      <p className="mt-3 text-muted-foreground font-body text-lg">Your privacy is important to us.</p>
 
-      <section className="mt-8 bg-card rounded-2xl p-8 shadow-ultra-soft prose prose-invert max-w-none text-muted-foreground leading-relaxed text-lg">
+      <section className="mt-8 bg-card rounded-2xl p-8 shadow-ultra-soft prose prose-invert max-w-none text-muted-foreground leading-relaxed text-base">
         <p>
           This Privacy Policy describes how Kith & Kin Barbershop ("we," "us," or "our") collects, uses, and discloses your personal information when you visit our website and use our services.
         </p>

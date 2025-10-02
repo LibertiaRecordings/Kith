@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Inter, IBM_Plex_Mono, Playfair_Display } from "next/font/google"; // Import Playfair_Display
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
@@ -7,8 +7,14 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 
 const inter = Inter({
+  variable: "--font-body", // Assign Inter to --font-body
+  subsets: ["latin"],
+});
+
+const playfairDisplay = Playfair_Display({ // Define Playfair Display
   variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -62,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
+        className={`${playfairDisplay.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

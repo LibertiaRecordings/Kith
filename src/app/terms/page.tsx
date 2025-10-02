@@ -9,9 +9,9 @@ export default function TermsAndConditionsPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Terms & Conditions</h1>
-      <p className="mt-3 text-muted-foreground font-display text-lg">Please read these terms carefully.</p>
+      <p className="mt-3 text-muted-foreground font-body text-lg">Please read these terms carefully.</p>
 
-      <section className="mt-8 bg-card rounded-2xl p-8 shadow-ultra-soft prose prose-invert max-w-none text-muted-foreground leading-relaxed text-lg">
+      <section className="mt-8 bg-card rounded-2xl p-8 shadow-ultra-soft prose prose-invert max-w-none text-muted-foreground leading-relaxed text-base">
         <p>
           Welcome to Kith & Kin Barbershop. These Terms and Conditions ("Terms") govern your use of our website and services. By accessing or using our website and services, you agree to be bound by these Terms.
         </p>
