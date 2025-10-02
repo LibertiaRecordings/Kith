@@ -7,11 +7,6 @@ import ReviewCard from "@/components/ReviewCard"; // Import the new ReviewCard c
 export default function Home() {
   const reviews = [
     {
-      review: "Aaron is the best barber in the city, been with him for 10 years. Wherever he goes is wherever I go.",
-      author: "Shawn Zhang",
-      rating: 5,
-    },
-    {
       review: "Great atmosphere and an even better haircut! Aaron is a meticulous barber who understands hair. Easy to book an appointment and fair priced.",
       author: "Tommy Ton",
       rating: 5,

@@ -18,7 +18,6 @@ export const Navbar = () => {
     { href: "/contact", label: "Location" },
     { href: "/barbers", label: "Barbers" },
     { href: "/gift-cards", label: "Gift Cards" },
-    { href: "/playlists", label: "Playlists" }, // Added Playlists link
   ];
 
   return (
