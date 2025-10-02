@@ -4,11 +4,23 @@ import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { supabase } from '@/integrations/supabase/client';
 import { Metadata } from 'next';
+import { useEffect, useState } from 'react';
 
 // Note: Metadata cannot be exported from client components.
 // This page will use the root layout's metadata or a default.
 
 export default function LoginPage() {
+  const [redirectUrl, setRedirectUrl] = useState<string>('');
+
+  useEffect(() => {
+    // Ensure this runs client-side to get window.location.origin
+    setRedirectUrl(process.env.NEXT_PUBLIC_BASE_URL || window.location.origin + '/');
+  }, []);
+
+  if (!redirectUrl) {
+    return null; // Or a loading spinner while redirectUrl is being determined
+  }
+
   return (
     <div className="grid grid-rows-[1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20 font-display bg-background text-foreground">
       <main className="flex flex-col gap-8 row-start-1 items-center text-center max-w-md w-full">
@@ -42,7 +54,7 @@ export default function LoginPage() {
               },
             }}
             theme="dark" // Using dark theme to match the app's aesthetic
-            redirectTo={process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'}
+            redirectTo={redirectUrl} // Use the state variable
           />
         </div>
       </main>
