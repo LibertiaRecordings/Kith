@@ -36,8 +36,8 @@ export default function Home() {
             <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
             <p className="text-muted-foreground mt-3 text-lg leading-relaxed">Secure your spot for a flawless cut with our easy online booking.</p>
           </Link>
-          <Link href="/artists" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2> {/* Changed to Barbers */}
+          <Link href="/barbers" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group"> {/* Changed from /artists to /barbers */}
+            <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2>
             <p className="text-muted-foreground mt-3 text-lg leading-relaxed">Discover the skilled hands and unique styles of our master barbers.</p>
           </Link>
           <Link href="/services" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
