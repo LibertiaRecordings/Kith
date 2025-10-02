@@ -34,24 +34,20 @@ const formSchema = z.object({
     z.literal('500'),
     z.literal('custom'),
   ]),
-  customAmount: z.string().optional().transform((val) => {
-    if (!val || val.trim() === '') return undefined;
-    const num = Number(val);
-    return isNaN(num) ? undefined : num;
-  }).pipe(
-    z.number().min(10, { message: 'Minimum custom amount is $10' }).max(1000, { message: 'Maximum custom amount is $1000' }).optional()
-  ),
+  customAmount: z.string().optional(), // Input type is string
   recipientName: z.string().min(1, { message: 'Recipient name is required.' }),
   recipientEmail: z.string().email({ message: 'Invalid email address.' }),
   senderName: z.string().min(1, { message: 'Your name is required.' }),
   message: z.string().max(500, { message: 'Message cannot exceed 500 characters.' }).optional(),
 }).refine((data) => {
-  if (data.amount === 'custom' && (data.customAmount === undefined || data.customAmount === null)) {
-    return false;
+  if (data.amount === 'custom') {
+    const num = Number(data.customAmount);
+    // Check if it's a valid number and within range
+    return !isNaN(num) && num >= 10 && num <= 1000;
   }
   return true;
 }, {
-  message: 'Custom amount is required when "Other Amount" is selected.',
+  message: 'Custom amount must be between $10 and $1000.',
   path: ['customAmount'],
 });
 
@@ -63,7 +59,7 @@ const GiftCardPurchaseForm: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       amount: '50',
-      customAmount: undefined, // Explicitly set default for customAmount
+      customAmount: '', // Default to empty string for string input
       recipientName: '',
       recipientEmail: '',
       senderName: '',
@@ -74,7 +70,13 @@ const GiftCardPurchaseForm: React.FC = () => {
   const selectedAmount = form.watch('amount');
 
   const onSubmit = async (values: GiftCardFormValues) => {
-    const finalAmount = values.amount === 'custom' ? values.customAmount : Number(values.amount);
+    let finalAmount: number | undefined;
+    if (values.amount === 'custom') {
+      const num = Number(values.customAmount);
+      finalAmount = isNaN(num) ? undefined : num;
+    } else {
+      finalAmount = Number(values.amount);
+    }
 
     if (!finalAmount) {
       toast.error('Please select or enter a valid amount.');
@@ -94,7 +96,7 @@ const GiftCardPurchaseForm: React.FC = () => {
       });
 
       if (result.success) {
-        toast.success(`Gift card for ${finalAmount} created! Code: ${result.code}`, { id: loadingToastId });
+        toast.success(`Gift card for $${finalAmount.toFixed(2)} created! Code: ${result.code}`, { id: loadingToastId });
         form.reset();
       } else {
         toast.error(result.error || 'Failed to create gift card.', { id: loadingToastId });
@@ -146,7 +148,8 @@ const GiftCardPurchaseForm: React.FC = () => {
                     placeholder="e.g., 75"
                     className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary"
                     {...field}
-                    onChange={(e) => field.onChange(e.target.value === '' ? '' : Number(e.target.value))}
+                    value={field.value ?? ''} // Ensure value is always a string for the input
+                    onChange={(e) => field.onChange(e.target.value)} // Pass string directly, validation in refine
                   />
                 </FormControl>
                 <FormMessage />
