@@ -26,7 +26,7 @@ export default async function ProfilePage() {
     return (
       <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground text-center">
         <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Profile</h1>
-        <p className="mt-3 text-muted-foreground font-mono">Could not load profile data. Please try again later.</p>
+        <p className="mt-3 text-muted-foreground font-display text-base">Could not load profile data. Please try again later.</p>
       </main>
     );
   }
@@ -34,7 +34,7 @@ export default async function ProfilePage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground text-center">My Profile</h1>
-      <p className="mt-3 text-muted-foreground font-mono text-center max-w-2xl mx-auto">Update your personal information.</p>
+      <p className="mt-3 text-muted-foreground font-display text-base text-center max-w-2xl mx-auto">Update your personal information.</p>
 
       <section className="mt-12 max-w-md mx-auto bg-card rounded-2xl p-8 shadow-ultra-soft">
         <ProfileForm initialData={profileData} />

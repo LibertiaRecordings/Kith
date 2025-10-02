@@ -39,10 +39,10 @@ export default function Home() {
       >
         <main className="flex flex-col gap-8 items-center text-center p-8 pb-20 sm:p-20 w-full max-w-7xl mx-auto">
           <section className="hero-section max-w-4xl mx-auto text-paper">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
+            <h1 className="text-4xl md:text-6xl font-display font-medium tracking-tight leading-tight">
               Crafted Cuts. <br className="block" /><span className="text-primary">Community Roots.</span>
             </h1>
-            <p className="mt-6 text-xl text-paper/90 max-w-2xl mx-auto font-mono">
+            <p className="mt-6 text-lg text-paper/90 max-w-2xl mx-auto font-display">
               Where precision meets kinship. Calgary's premium barbershop experience.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -61,22 +61,22 @@ export default function Home() {
       <div className="container mx-auto px-6 py-10">
         <section className="cta-tiles mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
           <Link href="/book" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
-            <p className="text-muted-foreground mt-3 text-lg leading-relaxed">Secure your spot for a flawless cut with our easy online booking in Calgary.</p>
+            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">Secure your spot for a flawless cut with our easy online booking in Calgary.</p>
           </Link>
           <Link href="/barbers" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2>
-            <p className="text-muted-foreground mt-3 text-lg leading-relaxed">Discover the skilled hands and unique styles of our master barbers in Calgary.</p>
+            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">Discover the skilled hands and unique styles of our master barbers in Calgary.</p>
           </Link>
           <Link href="/services" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-3xl font-display font-semibold text-foreground group-hover:text-primary transition-colors">Explore Services</h2>
-            <p className="text-muted-foreground mt-3 text-lg leading-relaxed">From classic fades to modern styling, find your perfect grooming experience at our Calgary barbershop.</p>
+            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Explore Services</h2>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">From classic fades to modern styling, find your perfect grooming experience at our Calgary barbershop.</p>
           </Link>
         </section>
 
         <section className="mt-16 w-full max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-display font-semibold text-foreground">The Kith & Kin Experience</h2>
-          <p className="mt-4 text-muted-foreground text-lg font-mono">More than a haircut, it's a ritual in Calgary.</p>
+          <h2 className="text-3xl font-display font-semibold text-foreground">The Kith & Kin Experience</h2>
+          <p className="mt-4 text-muted-foreground text-base font-display">More than a haircut, it's a ritual in Calgary.</p>
           
           {/* New "Our Space" section with shop photos */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,8 +105,8 @@ export default function Home() {
 
         {/* What Our Clients Say section */}
         <section className="mt-16 w-full max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-display font-semibold text-foreground">What Our Clients Say</h2>
-          <p className="mt-4 text-muted-foreground text-lg font-mono">Hear it from the Calgary community.</p>
+          <h2 className="text-3xl font-display font-semibold text-foreground">What Our Clients Say</h2>
+          <p className="mt-4 text-muted-foreground text-base font-display">Hear it from the Calgary community.</p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reviews.map((review, index) => (
               <ReviewCard key={index} review={review.review} author={review.author} rating={review.rating} />

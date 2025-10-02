@@ -15,14 +15,14 @@ export default function GiftCardsPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground text-center">Gift Cards</h1>
-      <p className="mt-3 text-muted-foreground font-mono text-center max-w-2xl mx-auto">The perfect gift for any occasion.</p>
+      <p className="mt-3 text-muted-foreground font-display text-base text-center max-w-2xl mx-auto">The perfect gift for any occasion.</p>
 
       <section className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
         {/* Purchase Gift Card Section */}
         <div className="bg-card rounded-2xl p-8 shadow-ultra-soft flex flex-col items-center text-center border border-muted-foreground/20">
           <Gift className="h-16 w-16 text-primary mb-6" />
-          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Purchase a Gift Card</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
+          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Purchase a Gift Card</h2>
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-md text-base">
             Treat someone to the Kith & Kin experience. Click below to purchase a personalized gift card directly through Square.
           </p>
           
@@ -32,15 +32,15 @@ export default function GiftCardsPage() {
             </Link>
           </div>
 
-          <p className="text-muted-foreground/70 font-mono text-xs mt-8">
+          <p className="text-muted-foreground/70 font-display text-xs mt-8">
             You will be redirected to Square to complete your gift card purchase.
           </p>
         </div>
 
         {/* Enhanced Check Gift Card Balance Section */}
         <div className="bg-card rounded-2xl p-8 shadow-ultra-soft flex flex-col items-center text-center border border-muted-foreground/20">
-          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Check Your Gift Card Balance</h2>
-          <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Check Your Gift Card Balance</h2>
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto text-base">
             Have a Kith & Kin gift card? Enter its code below to instantly check the current value and status.
           </p>
           <div className="w-full max-w-sm mx-auto bg-background rounded-xl p-4 border border-muted-foreground/30 shadow-inner">
@@ -51,7 +51,7 @@ export default function GiftCardsPage() {
               title="Square Gift Card Balance Checker"
             />
           </div>
-          <p className="text-muted-foreground/70 font-mono text-xs mt-6">
+          <p className="text-muted-foreground/70 font-display text-xs mt-6">
             This balance checker is provided securely by Square.
           </p>
         </div>

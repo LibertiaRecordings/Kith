@@ -110,6 +110,22 @@
   html {
     color-scheme: dark light;
   }
+  /* General heading styles for a sleeker look */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight; /* Tighter letter spacing for headings */
+  }
+  h1 {
+    @apply text-4xl md:text-5xl font-semibold; /* Reduced size and weight for main titles */
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl font-medium;
+  }
+  p {
+    @apply text-base leading-relaxed; /* Consistent body text */
+  }
 }
 
 @layer utilities {

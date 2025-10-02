@@ -35,16 +35,16 @@ export default function PostsPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Posts</h1>
-      <p className="mt-3 text-chrome font-mono">Culture, tips, and community stories.</p>
+      <p className="mt-3 text-muted-foreground font-display text-base">Culture, tips, and community stories.</p>
 
       <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
           <Link href={`/posts/${post.slug}`} key={post.slug} className="block">
             <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group">
               <img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover rounded-lg mb-4 border border-muted-foreground/30 group-hover:border-primary transition-colors" />
-              <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">{post.title}</h2>
+              <h2 className="text-xl font-display font-medium text-foreground group-hover:text-primary transition-colors">{post.title}</h2>
               <p className="text-muted-foreground mt-2 leading-relaxed text-sm">{post.excerpt}</p>
-              <p className="text-muted-foreground/70 font-mono text-xs mt-4">{new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p className="text-muted-foreground/70 font-display text-xs mt-4">{new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             </div>
           </Link>
         ))}

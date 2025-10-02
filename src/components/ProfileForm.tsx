@@ -88,7 +88,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
           name="firstName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-foreground">First Name</FormLabel>
+              <FormLabel className="text-foreground font-display">First Name</FormLabel>
               <FormControl>
                 <Input placeholder="John" className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary" {...field} />
               </FormControl>
@@ -102,7 +102,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
           name="lastName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-foreground">Last Name</FormLabel>
+              <FormLabel className="text-foreground font-display">Last Name</FormLabel>
               <FormControl>
                 <Input placeholder="Doe" className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary" {...field} />
               </FormControl>
@@ -116,7 +116,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ initialData }) => {
           name="avatarUrl"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-foreground">Avatar URL (Optional)</FormLabel>
+              <FormLabel className="text-foreground font-display">Avatar URL (Optional)</FormLabel>
               <FormControl>
                 <Input placeholder="https://example.com/avatar.jpg" className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary" {...field} />
               </FormControl>

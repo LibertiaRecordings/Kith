@@ -11,11 +11,11 @@ export default function PlaylistsPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Our Playlists</h1>
-      <p className="mt-3 text-muted-foreground font-mono">The soundtrack to your next cut, curated by our staff.</p>
+      <p className="mt-3 text-muted-foreground font-display text-base">The soundtrack to your next cut, curated by our staff.</p>
 
       <section className="mt-8 bg-card rounded-2xl p-4 shadow-ultra-soft">
-        <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Kith & Kin Staff Picks</h2>
-        <p className="text-muted-foreground leading-relaxed mb-6">
+        <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Kith & Kin Staff Picks</h2>
+        <p className="text-muted-foreground leading-relaxed mb-6 text-base">
           Get a taste of the vibes at Kith & Kin with this selection made by our talented team of barbers and music enthusiasts.
         </p>
         <iframe

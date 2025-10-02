@@ -140,14 +140,14 @@ export default function ServicesPage() {
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Our Services</h1>
-      <p className="mt-3 text-muted-foreground font-mono">Crafted for precision, designed for you.</p>
+      <p className="mt-3 text-muted-foreground font-display text-base">Crafted for precision, designed for you.</p>
 
       <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <div key={service.slug} className="bg-card rounded-2xl p-6 shadow-ultra-soft flex flex-col h-full">
-            <h2 className="text-2xl font-display font-medium text-foreground">{service.name}</h2>
-            <p className="text-primary font-mono text-lg mt-2">{service.displayPrice} <span className="text-muted-foreground text-sm">({service.displayDuration})</span></p>
-            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow mb-8">{service.description}</p>
+            <h2 className="text-xl font-display font-medium text-foreground">{service.name}</h2>
+            <p className="text-primary font-display text-lg mt-2">{service.displayPrice} <span className="text-muted-foreground text-sm">({service.displayDuration})</span></p>
+            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow mb-8 text-base">{service.description}</p>
 
             {service.addOns.length > 0 && (
               <div className="mt-4 pt-4 border-t border-muted-foreground/20">
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                   {service.addOns.map((addon, index) => (
                     <li key={index} className="flex justify-between items-center text-muted-foreground text-sm">
                       <span>{addon.name}</span>
-                      <span className="font-mono">${addon.price} ({addon.duration} min)</span>
+                      <span className="font-display">${addon.price} ({addon.duration} min)</span>
                     </li>
                   ))}
                 </ul>
