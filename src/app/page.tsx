@@ -12,8 +12,8 @@ export default function Home() {
       rating: 5,
     },
     {
-      review: "Best haircut I've ever had, reasonable price, and great atmosphere and people. Becca can't miss, always a perfect cut.",
-      author: "Milan Z",
+      review: "The attention to detail here is incredible. Every cut is precise, and the staff are always friendly and professional.",
+      author: "Michael P.",
       rating: 5,
     },
     {
