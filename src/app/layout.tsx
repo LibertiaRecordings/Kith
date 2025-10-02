@@ -19,7 +19,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "Kith & Kin Barbershop",
-  description: "Where precision meets kinship. Your family barbershop experience.",
+  description: "Where precision meets kinship. Calgary's premium barbershop experience.",
 };
 
 // Define the organization schema directly in the layout file
@@ -59,7 +59,7 @@ export default function RootLayout({
           id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        />
+        ></script> {/* Changed to explicitly close the script tag */}
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
@@ -67,7 +67,7 @@ export default function RootLayout({
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" // TODO: Replace GTM-XXXXXXX with your actual GTM ID
+            src="https://www.googletagmanager.com/ns.html?id=GTM-YOUR_ID" // TODO: Replace GTM-YOUR_ID with your actual GTM ID
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}
@@ -83,7 +83,7 @@ export default function RootLayout({
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-XXXXXXX'); // TODO: Replace GTM-XXXXXXX with your actual GTM ID
+              })(window,document,'script','dataLayer','GTM-YOUR_ID'); // TODO: Replace GTM-YOUR_ID with your actual GTM ID
             `,
           }}
         />
