@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono, Montserrat } from "next/font/google"; // Import Montserrat
+import { Inter, IBM_Plex_Mono, Montserrat, Archivo_Black } from "next/font/google"; // Import Montserrat and Archivo_Black
 import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
@@ -11,9 +11,16 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat({ // Define Montserrat
+const montserrat = Montserrat({ // Define Montserrat for general display
   variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const archivoBlack = Archivo_Black({ // Define Archivo Black for hero text
+  variable: "--font-hero",
+  subsets: ["latin"],
+  weight: ["400"], // Archivo Black is inherently bold, so we only need one weight
   display: "swap",
 });
 
@@ -68,7 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased font-body bg-background text-foreground`}
+        className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} ${archivoBlack.variable} antialiased font-body bg-background text-foreground`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>

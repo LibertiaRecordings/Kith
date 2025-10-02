@@ -111,6 +111,7 @@ export default {
         display: ['var(--font-display)', ...defaultTheme.fontFamily.sans],
         body: ['var(--font-body)', ...defaultTheme.fontFamily.sans],
         mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
+        hero: ['var(--font-hero)', ...defaultTheme.fontFamily.sans], // Added font-hero here
       },
       boxShadow: {
         'ultra-soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',

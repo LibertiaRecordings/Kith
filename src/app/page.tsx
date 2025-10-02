@@ -39,7 +39,7 @@ export default function Home() {
       >
         <main className="flex flex-col gap-8 items-center text-center p-8 pb-20 sm:p-20 w-full max-w-7xl mx-auto">
           <section className="hero-section max-w-4xl mx-auto text-paper">
-            <h1 className="text-5xl md:text-7xl font-display font-normal tracking-tight leading-tight">
+            <h1 className="text-6xl md:text-8xl font-hero tracking-tight leading-none uppercase"> {/* Applied font-hero and adjusted size */}
               Crafted Cuts. <br className="block" /><span className="text-primary">Community Roots.</span>
             </h1>
             <p className="mt-6 text-xl text-paper/90 max-w-2xl mx-auto font-body leading-relaxed">

@@ -53,6 +53,7 @@
     --font-display: "Montserrat", sans-serif; /* Sans-serif font for headings */
     --font-body: "Inter", sans-serif; /* Sans-serif for body text */
     --font-mono: "IBM Plex Mono", monospace;
+    --font-hero: "Archivo Black", sans-serif; /* New font for hero text */
   }
 
   .dark {
@@ -113,10 +114,10 @@
   }
   /* General heading styles for a sleeker look */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight; /* Use Montserrat for all headings */
+    @apply font-display tracking-tight; /* Use Montserrat for all headings by default */
   }
   h1 {
-    @apply text-5xl md:text-7xl font-bold; /* Larger and bolder for main titles */
+    @apply text-5xl md:text-7xl font-normal; /* Default H1 is normal weight, can be overridden */
   }
   h2 {
     @apply text-3xl md:text-4xl font-semibold; /* Slightly larger and semi-bold */
