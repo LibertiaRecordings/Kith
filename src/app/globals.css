@@ -9,7 +9,7 @@
     --ink: 20 10% 15%; /* A deep, soft brown/charcoal */
     --graphite: 30 5% 30%; /* Darker neutral for cards/sections */
     --chrome: 30 5% 50%; /* Warm, medium grey */
-    --neon: 100 30% 50%; /* Earthy Green - new accent color */
+    --neon: 140 25% 40%; /* Muted, deeper forest green - new accent color */
     --danger: 350 90% 60%; /* Red for destructive actions */
 
     /* Shadcn/UI colors adapted to new palette */
@@ -60,14 +60,13 @@
     --ink: 20 10% 15%;
     --graphite: 30 5% 30%;
     --chrome: 30 5% 50%;
-    --neon: 100 30% 50%;
+    --neon: 140 25% 40%; /* Muted, deeper forest green - new accent color */
     --danger: 350 90% 60%;
 
     /* Shadcn/UI dark mode colors adapted to new palette */
     --background: var(--ink);
     --foreground: var(--paper);
     --card: var(--graphite);
-    --card-foreground: var(--paper);
     --popover: var(--graphite);
     --popover-foreground: var(--paper);
     --primary: var(--neon);
