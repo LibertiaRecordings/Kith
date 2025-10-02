@@ -34,8 +34,11 @@ const formSchema = z.object({
     z.literal('500'),
     z.literal('custom'),
   ]),
-  customAmount: z.preprocess(
-    (val) => (val === '' ? undefined : Number(val)),
+  customAmount: z.string().optional().transform((val) => {
+    if (!val || val.trim() === '') return undefined;
+    const num = Number(val);
+    return isNaN(num) ? undefined : num;
+  }).pipe(
     z.number().min(10, { message: 'Minimum custom amount is $10' }).max(1000, { message: 'Maximum custom amount is $1000' }).optional()
   ),
   recipientName: z.string().min(1, { message: 'Recipient name is required.' }),
@@ -43,7 +46,7 @@ const formSchema = z.object({
   senderName: z.string().min(1, { message: 'Your name is required.' }),
   message: z.string().max(500, { message: 'Message cannot exceed 500 characters.' }).optional(),
 }).refine((data) => {
-  if (data.amount === 'custom' && !data.customAmount) {
+  if (data.amount === 'custom' && (data.customAmount === undefined || data.customAmount === null)) {
     return false;
   }
   return true;
@@ -60,6 +63,7 @@ const GiftCardPurchaseForm: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       amount: '50',
+      customAmount: undefined, // Explicitly set default for customAmount
       recipientName: '',
       recipientEmail: '',
       senderName: '',
