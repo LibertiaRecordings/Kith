@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import GiftCardBalanceChecker from "@/components/GiftCardBalanceChecker"; // Import the new component
+// Removed: import GiftCardBalanceChecker from "@/components/GiftCardBalanceChecker";
 
 export const metadata: Metadata = {
   title: "Gift Cards & Loyalty | Kith & Kin Barbershop",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function GiftCardsPage() {
-  const squareGiftCardLink = "https://app.squareup.com/gift/GN4AGXPR30ESR/order";
+  const squareGiftCardPurchaseLink = "https://app.squareup.com/gift/GN4AGXPR30ESR/order";
+  const squareGiftCardBalanceCheckerLink = "https://app.squareup.com/gift/GN4AGXPR30ESR/check-balance";
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
@@ -24,7 +25,7 @@ export default function GiftCardsPage() {
           </p>
           
           <div className="w-full max-w-md">
-            <Link href={squareGiftCardLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            <Link href={squareGiftCardPurchaseLink} target="_blank" rel="noopener noreferrer" className="w-full inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               Purchase Gift Card on Square
             </Link>
           </div>
@@ -66,10 +67,15 @@ export default function GiftCardsPage() {
       <section className="mt-16 max-w-2xl mx-auto bg-card rounded-2xl p-8 shadow-ultra-soft text-center">
         <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Check Gift Card Balance</h2>
         <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
-          Enter your 12-character gift card code to check its current value and status.
+          Enter your gift card code directly below to check its current value and status.
         </p>
         <div className="w-full max-w-sm mx-auto">
-          <GiftCardBalanceChecker />
+          <iframe
+            src={squareGiftCardBalanceCheckerLink}
+            className="w-full h-[300px] rounded-xl border border-muted-foreground/30"
+            loading="lazy"
+            title="Square Gift Card Balance Checker"
+          />
         </div>
       </section>
     </main>
