@@ -67,8 +67,8 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
   if (!barber) {
     return (
       <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
-        <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Barber Not Found</h1>
-        <p className="mt-3 text-muted-foreground font-display text-base">The barber you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
+        <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Barber Not Found</h1>
+        <p className="mt-3 text-muted-foreground font-display text-lg">The barber you are looking for does not exist at Kith & Kin Barbershop Calgary.</p>
         <Link href="/barbers" className="mt-8 inline-flex items-center text-primary hover:underline">
           <ArrowLeft className="mr-2 h-4 w-4" /> Back to Barbers
         </Link>
@@ -90,7 +90,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           <div className="relative w-full h-80 rounded-2xl overflow-hidden object-cover border border-muted-foreground/30 shadow-ultra-soft aspect-square">
             <Image src={barber.imageUrl} alt={`${barber.name}, ${barber.role} at Kith & Kin Barbershop Calgary`} fill style={{ objectFit: "cover" }} sizes="(max-width: 1024px) 100vw, 33vw" className="transition-transform duration-300 ease-in-out hover:scale-105" />
           </div>
-          <h1 className="text-3xl font-display font-semibold tracking-tight text-foreground mt-6">{barber.name}</h1>
+          <h1 className="text-3xl font-display font-medium tracking-tight text-foreground mt-6">{barber.name}</h1>
           <p className="text-muted-foreground font-display text-lg mt-1">{barber.role} in Calgary</p>
 
           <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -105,13 +105,13 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
         </div>
 
         <div className="lg:col-span-2 bg-card rounded-2xl p-8 shadow-ultra-soft">
-          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">About {barber.name}</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6 text-base">{barber.bio}</p>
+          <h2 className="text-2xl font-display font-medium text-foreground mb-4">About {barber.name}</h2>
+          <p className="text-muted-foreground leading-relaxed mb-6 text-lg">{barber.bio}</p>
 
-          <h3 className="text-xl font-display font-semibold text-foreground mb-3">Specialties</h3>
+          <h3 className="text-xl font-display font-normal text-foreground mb-3">Specialties</h3>
           <ul className="flex flex-wrap gap-3 mb-6">
             {barber.specialties.map((spec, index) => (
-              <li key={index} className="bg-background text-primary text-sm px-4 py-2 rounded-full border border-primary">
+              <li key={index} className="bg-background text-primary text-base px-4 py-2 rounded-full border border-primary">
                 {spec}
               </li>
             ))}
@@ -119,7 +119,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
 
           {barber.gallery.length > 0 && (
             <>
-              <h3 className="text-xl font-display font-semibold text-foreground mb-3">Gallery</h3>
+              <h3 className="text-xl font-display font-normal text-foreground mb-3">Gallery</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {barber.gallery.map((image) => (
                   <div key={image._key} className="relative w-full h-48 rounded-lg overflow-hidden border border-muted-foreground/30 aspect-video">

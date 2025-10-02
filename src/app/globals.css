@@ -115,16 +115,16 @@
     @apply tracking-tight; /* Tighter letter spacing for headings */
   }
   h1 {
-    @apply text-4xl md:text-5xl font-semibold; /* Reduced size and weight for main titles */
+    @apply text-5xl md:text-6xl font-normal; /* Larger and lighter for main titles */
   }
   h2 {
-    @apply text-3xl md:text-4xl font-semibold;
+    @apply text-3xl md:text-4xl font-medium; /* Slightly larger and medium weight */
   }
   h3 {
-    @apply text-2xl md:text-3xl font-medium;
+    @apply text-2xl md:text-3xl font-normal; /* Slightly larger and normal weight */
   }
   p {
-    @apply text-base leading-relaxed; /* Consistent body text */
+    @apply text-lg leading-relaxed; /* Consistent, slightly larger body text */
   }
 }
 

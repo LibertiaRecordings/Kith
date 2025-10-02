@@ -14,21 +14,21 @@ export default function ContactPage() {
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
-      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Contact & Visit</h1>
-      <p className="mt-3 text-muted-foreground font-display text-base">We're here to help you look your best in Calgary.</p>
+      <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Contact & Visit</h1>
+      <p className="mt-3 text-muted-foreground font-display text-lg">We're here to help you look your best in Calgary.</p>
 
       <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column: Contact Info & Hours */}
         <div className="flex flex-col gap-8">
           <div className="bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/30">
-            <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Get in Touch</h2>
-            <div className="space-y-6 text-muted-foreground text-base">
+            <h2 className="text-2xl font-display font-medium text-foreground mb-4">Get in Touch</h2>
+            <div className="space-y-6 text-muted-foreground text-lg">
               <div className="flex items-start">
                 <MapPin className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-foreground text-base font-display">Address</p>
+                  <p className="font-medium text-foreground text-lg font-display">Address</p>
                   <p>1040 12 Ave SW, Calgary, AB</p>
-                  <Link href="https://maps.app.goo.gl/YOUR_MAP_LINK" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-xs">
+                  <Link href="https://maps.app.goo.gl/YOUR_MAP_LINK" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
                     Get Directions to our Calgary Barbershop
                   </Link>
                 </div>
@@ -36,9 +36,9 @@ export default function ContactPage() {
               <div className="flex items-start">
                 <Phone className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-foreground text-base font-display">Phone</p>
+                  <p className="font-medium text-foreground text-lg font-display">Phone</p>
                   <p>+1-403-452-4590</p>
-                  <Link href="tel:+1-403-452-4590" className="text-primary hover:underline text-xs">
+                  <Link href="tel:+1-403-452-4590" className="text-primary hover:underline text-sm">
                     Call Our Calgary Barbershop
                   </Link>
                 </div>
@@ -46,9 +46,9 @@ export default function ContactPage() {
               <div className="flex items-start">
                 <Mail className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-foreground text-base font-display">Email</p>
+                  <p className="font-medium text-foreground text-lg font-display">Email</p>
                   <p>info@kithandkin.com</p>
-                  <Link href="mailto:info@kithandkin.com" className="text-primary hover:underline text-xs">
+                  <Link href="mailto:info@kithandkin.com" className="text-primary hover:underline text-sm">
                     Send an Email to Kith & Kin
                   </Link>
                 </div>
@@ -57,13 +57,13 @@ export default function ContactPage() {
           </div>
 
           <div className="bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/30">
-            <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Hours & Information</h2>
-            <div className="space-y-6 text-muted-foreground text-base">
+            <h2 className="text-2xl font-display font-medium text-foreground mb-4">Hours & Information</h2>
+            <div className="space-y-6 text-muted-foreground text-lg">
               <div className="flex items-start">
                 <Clock className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-foreground text-base font-display">Opening Hours</p>
-                  <ul className="list-disc list-inside ml-4 text-sm">
+                  <p className="font-medium text-foreground text-lg font-display">Opening Hours</p>
+                  <ul className="list-disc list-inside ml-4 text-base">
                     <li>Tuesday - Friday: 10 AM - 8 PM</li>
                     <li>Monday & Saturday: 10 AM - 6 PM</li>
                     <li>Sunday: Closed</li>
@@ -71,12 +71,12 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <p className="font-medium text-foreground text-base font-display">Parking</p>
-                <p className="text-sm">Street parking available directly in front of our Calgary barbershop. Please do not park in the private lot behind our building.</p>
+                <p className="font-medium text-foreground text-lg font-display">Parking</p>
+                <p className="text-base">Street parking available directly in front of our Calgary barbershop. Please do not park in the private lot behind our building.</p>
               </div>
               <div>
-                <p className="font-medium text-foreground text-base font-display">Accessibility</p>
-                <p className="text-sm">Our barbershop is wheelchair accessible. Please contact us if you have specific accessibility needs for your visit.</p>
+                <p className="font-medium text-foreground text-lg font-display">Accessibility</p>
+                <p className="text-base">Our barbershop is wheelchair accessible. Please contact us if you have specific accessibility needs for your visit.</p>
               </div>
             </div>
           </div>

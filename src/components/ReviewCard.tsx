@@ -20,7 +20,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({ review, author, rating }) => {
           />
         ))}
       </div>
-      <p className="text-muted-foreground leading-relaxed text-base flex-grow mb-4">
+      <p className="text-muted-foreground leading-relaxed text-lg flex-grow mb-4">
         "{review}"
       </p>
       <p className="text-foreground font-medium text-base mt-auto font-display">

@@ -60,7 +60,7 @@ export const Navbar = () => {
         ) : (
           <nav className="hidden sm:flex gap-8 items-center">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-display font-medium">
+              <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-display font-medium text-lg">
                 {link.label}
               </Link>
             ))}
