@@ -67,12 +67,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Organization JSON-LD Schema directly embedded */}
-        <script
+        {/* Organization JSON-LD Schema using next/script for proper hydration */}
+        <Script
           id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        ></script> {/* Changed to explicit closing tag */}
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} ${archivoBlack.variable} antialiased font-body bg-background text-foreground`}
