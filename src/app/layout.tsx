@@ -35,7 +35,7 @@ const organizationSchema = {
     "streetAddress": "1040 12 Ave SW",
     "addressLocality": "Calgary",
     "addressRegion": "AB",
-    "postalCode": "T2R 0H4", // Updated postal code
+    "postalCode": "T2R 0H4",
     "addressCountry": "CA"
   },
   "sameAs": [
@@ -55,11 +55,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Organization JSON-LD Schema directly embedded */}
-        <Script
+        <script
           id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-          strategy="beforeInteractive" // Use beforeInteractive for JSON-LD in head
         />
       </head>
       <body
