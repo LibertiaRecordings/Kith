@@ -113,17 +113,20 @@
     color-scheme: dark light;
   }
   /* General heading styles for a sleeker look */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight; /* Use Montserrat for all headings by default */
+  h1, h2, h3 {
+    @apply font-hero tracking-tight; /* Apply font-hero to h1, h2, h3 */
+  }
+  h4, h5, h6 {
+    @apply font-display tracking-tight; /* Keep font-display for smaller headings */
   }
   h1 {
-    @apply font-hero text-5xl md:text-7xl font-normal; /* Apply font-hero to h1 */
+    @apply text-5xl md:text-7xl font-normal; /* Archivo Black is already bold, so font-normal is fine */
   }
   h2 {
-    @apply text-3xl md:text-4xl font-semibold; /* Slightly larger and semi-bold */
+    @apply text-4xl md:text-5xl font-normal; /* Make h2 more prominent, use font-hero */
   }
   h3 {
-    @apply text-2xl md:text-3xl font-semibold; /* Slightly larger and semi-bold */
+    @apply text-3xl md:text-4xl font-normal; /* Make h3 more prominent, use font-hero */
   }
   p {
     @apply font-body text-base leading-relaxed; /* Use Inter for body text, smaller size, relaxed line height */
