@@ -98,8 +98,8 @@ export default function ContactPage() {
         <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Our Inviting Space</h2>
         <div className="relative w-full h-96 rounded-xl overflow-hidden border border-muted-foreground/30 aspect-video">
           <Image
-            src="/images/barber-client-haircut-calgary.jpg" // New image
-            alt="Interior of Kith & Kin Barbershop with a barber providing a precision haircut to a client, reflecting our professional and comfortable environment in Calgary."
+            src="/images/kith-kin-interior.jpg" // Changed to a wider interior shot
+            alt="Interior of Kith & Kin Barbershop, showcasing a clean and inviting space with barber chairs and decor in Calgary."
             fill
             style={{ objectFit: "cover" }}
             sizes="100vw"
