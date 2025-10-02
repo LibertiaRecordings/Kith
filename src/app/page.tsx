@@ -119,7 +119,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
               <Image
-                src="/images/barber-client-trim-detail.jpg"
+                src="/images/barber-trimming-side-profile-new.jpg"
                 alt="Close-up of a barber meticulously trimming a client's hair, showcasing precision and attention to detail in a black and white analog style."
                 fill
                 style={{ objectFit: "cover" }}
@@ -129,8 +129,8 @@ export default function Home() {
             </div>
             <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
               <Image
-                src="/images/kith-kin-exterior-interior-collage-bw.jpg"
-                alt="Black and white collage showcasing the exterior and interior aesthetics of Kith & Kin Barbershop, capturing its unique ambiance in an analog style."
+                src="/images/client-centered-face.jpg"
+                alt="Client with a fresh haircut looking directly at the camera, showcasing a clean and confident look in a black and white analog style."
                 fill
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, 33vw"
@@ -139,7 +139,7 @@ export default function Home() {
             </div>
             <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
               <Image
-                src="/images/barber-trimming-side-profile.jpg"
+                src="/images/barber-trimming-side-profile-alt.jpg"
                 alt="Barber carefully trimming a client's side profile, highlighting the focused craftsmanship and clean lines in a black and white analog style."
                 fill
                 style={{ objectFit: "cover" }}
