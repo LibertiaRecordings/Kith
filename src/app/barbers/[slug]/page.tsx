@@ -2,14 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-interface ArtistDetailPageProps {
+interface BarberDetailPageProps {
   params: { slug: string };
 }
 
-// Placeholder function to fetch artist data
-async function getArtistBySlug(slug: string) {
+// Placeholder function to fetch barber data
+async function getBarberBySlug(slug: string) {
   // In a real app, this would fetch from your CMS (e.g., Sanity/Contentful)
-  const artists = [
+  const barbers = [
     {
       slug: "john-doe",
       name: "John Doe",
@@ -41,35 +41,35 @@ async function getArtistBySlug(slug: string) {
       imageUrl: "https://via.placeholder.com/200/305%2530/FFFCF7?text=Jane", // Updated placeholder color
     },
   ];
-  return artists.find((artist) => artist.slug === slug);
+  return barbers.find((barber) => barber.slug === slug);
 }
 
-export async function generateMetadata({ params }: ArtistDetailPageProps): Promise<Metadata> {
-  const artist = await getArtistBySlug(params.slug);
+export async function generateMetadata({ params }: BarberDetailPageProps): Promise<Metadata> {
+  const barber = await getBarberBySlug(params.slug);
 
-  if (!artist) {
+  if (!barber) {
     return {
-      title: "Artist Not Found | Kith & Kin Barbershop",
-      description: "The artist you are looking for could not be found.",
+      title: "Barber Not Found | Kith & Kin Barbershop",
+      description: "The barber you are looking for could not be found.",
     };
   }
 
   return {
-    title: `${artist.name} | Kith & Kin Barbershop`,
-    description: artist.bio.substring(0, 155) + "...",
+    title: `${barber.name} | Kith & Kin Barbershop`,
+    description: barber.bio.substring(0, 155) + "...",
   };
 }
 
-export default async function ArtistDetailPage({ params }: ArtistDetailPageProps) {
-  const artist = await getArtistBySlug(params.slug);
+export default async function BarberDetailPage({ params }: BarberDetailPageProps) {
+  const barber = await getBarberBySlug(params.slug);
 
-  if (!artist) {
+  if (!barber) {
     return (
       <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
-        <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Artist Not Found</h1>
-        <p className="mt-3 text-muted-foreground font-mono">The artist you are looking for does not exist.</p>
-        <Link href="/artists" className="mt-8 inline-flex items-center text-primary hover:underline">
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Artists
+        <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Barber Not Found</h1>
+        <p className="mt-3 text-muted-foreground font-mono">The barber you are looking for does not exist.</p>
+        <Link href="/barbers" className="mt-8 inline-flex items-center text-primary hover:underline">
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Barbers
         </Link>
       </main>
     );
@@ -81,45 +81,45 @@ export default async function ArtistDetailPage({ params }: ArtistDetailPageProps
 
   return (
     <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
-      <Link href="/artists" className="inline-flex items-center text-primary hover:underline mb-8">
-        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Artists
+      <Link href="/barbers" className="inline-flex items-center text-primary hover:underline mb-8">
+        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Barbers
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-1">
-          <img src={artist.imageUrl} alt={artist.name} className="w-full h-auto rounded-2xl object-cover border border-muted-foreground/30 shadow-ultra-soft" />
-          <h1 className="text-4xl font-display font-semibold tracking-tight text-foreground mt-6">{artist.name}</h1>
-          <p className="text-muted-foreground font-mono text-lg mt-1">{artist.role}</p>
+          <img src={barber.imageUrl} alt={barber.name} className="w-full h-auto rounded-2xl object-cover border border-muted-foreground/30 shadow-ultra-soft" />
+          <h1 className="text-4xl font-display font-semibold tracking-tight text-foreground mt-6">{barber.name}</h1>
+          <p className="text-muted-foreground font-mono text-lg mt-1">{barber.role}</p>
 
           <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-            Book with {artist.name}
+            Book with {barber.name}
           </Link>
 
-          {artist.socials.instagram && (
-            <Link href={artist.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+          {barber.socials.instagram && (
+            <Link href={barber.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
               Instagram
             </Link>
           )}
         </div>
 
         <div className="lg:col-span-2 bg-card rounded-2xl p-8 shadow-ultra-soft">
-          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">About {artist.name}</h2>
-          <p className="text-muted-foreground leading-relaxed mb-6">{artist.bio}</p>
+          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">About {barber.name}</h2>
+          <p className="text-muted-foreground leading-relaxed mb-6">{barber.bio}</p>
 
           <h3 className="text-2xl font-display font-semibold text-foreground mb-3">Specialties</h3>
           <ul className="flex flex-wrap gap-3 mb-6">
-            {artist.specialties.map((spec, index) => (
+            {barber.specialties.map((spec, index) => (
               <li key={index} className="bg-background text-primary text-sm px-4 py-2 rounded-full border border-primary">
                 {spec}
               </li>
             ))}
           </ul>
 
-          {artist.gallery.length > 0 && (
+          {barber.gallery.length > 0 && (
             <>
               <h3 className="text-2xl font-display font-semibold text-foreground mb-3">Gallery</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {artist.gallery.map((image) => (
+                {barber.gallery.map((image) => (
                   <img key={image._key} src={image.url} alt={image.alt} className="w-full h-auto rounded-lg object-cover border border-muted-foreground/30" />
                 ))}
               </div>

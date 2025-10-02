@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Our Artists | Kith & Kin Barbershop",
-  description: "Meet the skilled barbers of Kith & Kin. Explore their bios, specialties, and book your next cut with your preferred artist.",
+  title: "Our Barbers | Kith & Kin Barbershop",
+  description: "Meet the skilled barbers of Kith & Kin. Explore their bios, specialties, and book your next cut with your preferred barber.",
 };
 
-export default function ArtistsPage() {
-  // Placeholder data for artists
-  const artists = [
+export default function BarbersPage() {
+  // Placeholder data for barbers
+  const barbers = [
     { slug: "john-doe", name: "John Doe", role: "Master Barber", specialties: ["Classic Fades", "Beard Trims"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=John" }, // Updated placeholder color
     { slug: "jane-smith", name: "Jane Smith", role: "Stylist & Barber", specialties: ["Modern Cuts", "Hot Shaves"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Jane" }, // Updated placeholder color
     { slug: "peter-jones", name: "Peter Jones", role: "Senior Barber", specialties: ["Long Hair Styling", "Kids Cuts"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Peter" }, // Updated placeholder color
@@ -16,18 +16,18 @@ export default function ArtistsPage() {
 
   return (
     <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
-      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Our Artists</h1>
+      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Our Barbers</h1>
       <p className="mt-3 text-muted-foreground font-mono">Meet the hands behind the precision.</p>
 
       <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {artists.map((artist) => (
-          <Link href={`/artists/${artist.slug}`} key={artist.slug} className="block">
+        {barbers.map((barber) => (
+          <Link href={`/barbers/${barber.slug}`} key={barber.slug} className="block">
             <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group">
-              <img src={artist.imageUrl} alt={artist.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-muted-foreground/30 group-hover:border-primary transition-colors" />
-              <h2 className="text-2xl font-display font-medium text-foreground text-center group-hover:text-primary transition-colors">{artist.name}</h2>
-              <p className="text-muted-foreground text-center font-mono text-sm mt-1">{artist.role}</p>
+              <img src={barber.imageUrl} alt={barber.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-muted-foreground/30 group-hover:border-primary transition-colors" />
+              <h2 className="text-2xl font-display font-medium text-foreground text-center group-hover:text-primary transition-colors">{barber.name}</h2>
+              <p className="text-muted-foreground text-center font-mono text-sm mt-1">{barber.role}</p>
               <ul className="mt-4 flex flex-wrap justify-center gap-2">
-                {artist.specialties.map((spec, index) => (
+                {barber.specialties.map((spec, index) => (
                   <li key={index} className="bg-background text-muted-foreground text-xs px-3 py-1 rounded-full border border-muted-foreground/30 group-hover:border-primary transition-colors">
                     {spec}
                   </li>
