@@ -24,7 +24,7 @@ async function getJournalPostBySlug(slug: string) {
       `,
       tags: ["Haircut", "Fade", "Grooming Tips"],
       seo: {
-        title: "The Art of the Perfect Fade | Kith & Kin Journal",
+        title: "The Art of the Perfect Fade | Kith & Kin Posts",
         description: "Learn the secrets behind mastering the perfect fade haircut from the expert barbers at Kith & Kin.",
       },
       publishedAt: "2023-10-26",
@@ -44,7 +44,7 @@ async function getJournalPostBySlug(slug: string) {
       `,
       tags: ["Beard", "Winter", "Grooming Tips", "Products"],
       seo: {
-        title: "Winter Beard Care Essentials | Kith & Kin Journal",
+        title: "Winter Beard Care Essentials | Kith & Kin Posts",
         description: "Discover essential tips and products to keep your beard healthy and hydrated during the winter months.",
       },
       publishedAt: "2023-11-15",
@@ -58,8 +58,8 @@ export async function generateMetadata({ params }: JournalPostDetailPageProps): 
 
   if (!post) {
     return {
-      title: "Journal Post Not Found | Kith & Kin Barbershop",
-      description: "The journal post you are looking for could not be found.",
+      title: "Post Not Found | Kith & Kin Barbershop",
+      description: "The post you are looking for could not be found.",
     };
   }
 
@@ -76,9 +76,9 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
     return (
       <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
         <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Post Not Found</h1>
-        <p className="mt-3 text-muted-foreground font-mono">The journal post you are looking for does not exist.</p>
-        <Link href="/journal" className="mt-8 inline-flex items-center text-primary hover:underline">
-          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Journal
+        <p className="mt-3 text-muted-foreground font-mono">The post you are looking for does not exist.</p>
+        <Link href="/posts" className="mt-8 inline-flex items-center text-primary hover:underline">
+          <ArrowLeft className="mr-2 h-4 w-4" /> Back to Posts
         </Link>
       </main>
     );
@@ -86,8 +86,8 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
 
   return (
     <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
-      <Link href="/journal" className="inline-flex items-center text-primary hover:underline mb-8">
-        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Journal
+      <Link href="/posts" className="inline-flex items-center text-primary hover:underline mb-8">
+        <ArrowLeft className="mr-2 h-4 w-4" /> Back to Posts
       </Link>
 
       <article className="bg-card rounded-2xl p-8 shadow-ultra-soft">

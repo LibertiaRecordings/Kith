@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Journal | Kith & Kin Barbershop",
-  description: "Stay updated with Kith & Kin's journal. Discover grooming tips, culture insights, product features, and community stories.",
+  title: "Posts | Kith & Kin Barbershop",
+  description: "Stay updated with Kith & Kin's posts. Discover grooming tips, culture insights, product features, and community stories.",
 };
 
-export default function JournalPage() {
+export default function PostsPage() {
   // Placeholder data for journal posts
   const posts = [
     {
@@ -34,12 +34,12 @@ export default function JournalPage() {
 
   return (
     <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
-      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Journal</h1>
+      <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Posts</h1>
       <p className="mt-3 text-chrome font-mono">Culture, tips, and community stories.</p>
 
       <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <Link href={`/journal/${post.slug}`} key={post.slug} className="block">
+          <Link href={`/posts/${post.slug}`} key={post.slug} className="block">
             <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group">
               <img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover rounded-lg mb-4 border border-muted-foreground/30 group-hover:border-primary transition-colors" />
               <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">{post.title}</h2>

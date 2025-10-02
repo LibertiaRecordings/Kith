@@ -15,8 +15,8 @@ export const Navbar = () => {
   const navLinks = [
     { href: "/book", label: "Book" },
     { href: "/services", label: "Services" },
-    { href: "/barbers", label: "Barbers" }, // Changed from /artists to /barbers
-    { href: "/journal", label: "Journal" },
+    { href: "/barbers", label: "Barbers" },
+    { href: "/posts", label: "Posts" }, // Changed from /journal to /posts
     { href: "/specials", label: "Specials" },
     { href: "/gift-cards", label: "Gift Cards" },
     { href: "/contact", label: "Contact" },
