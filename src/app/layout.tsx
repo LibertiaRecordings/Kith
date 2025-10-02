@@ -5,7 +5,6 @@ import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import { JsonLdSchema } from "@/components/JsonLdSchema"; // Import the new Server Component
 
 const inter = Inter({
   variable: "--font-display",
@@ -23,6 +22,30 @@ export const metadata: Metadata = {
   description: "Where precision meets kinship. Your family barbershop experience.",
 };
 
+// Define the organization schema directly in the layout file
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Barbershop",
+  "name": "Kith & Kin Barbershop",
+  "image": "https://kithkin.family/assets/images/share.jpg",
+  "url": "https://kithkin.family",
+  "telephone": "+1-403-452-4590",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1040 12 Ave SW",
+    "addressLocality": "Calgary",
+    "addressRegion": "AB",
+    "postalCode": "",
+    "addressCountry": "CA"
+  },
+  "sameAs": [
+    "https://www.instagram.com/kithkinbarberco/",
+    "http://facebook.com/kithkinbarberco",
+  ]
+};
+
+const organizationSchemaString = JSON.stringify(organizationSchema);
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,7 +55,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Organization JSON-LD Schema */}
-        <JsonLdSchema />
+        <script
+          id="json-ld-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
+        />
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
