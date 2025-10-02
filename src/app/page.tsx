@@ -28,6 +28,9 @@ export default function Home() {
     },
   ];
 
+  // Common image classes for the black and white, analog feel
+  const imageClasses = "object-cover grayscale contrast-125 transition-transform duration-300 ease-in-out hover:scale-105";
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <HeroVideoBackground
@@ -108,6 +111,42 @@ export default function Home() {
             {reviews.map((review, index) => (
               <ReviewCard key={index} review={review.review} author={review.author} rating={review.rating} />
             ))}
+          </div>
+        </section>
+
+        {/* New Sleek Minimalistic Gallery */}
+        <section className="mt-16 w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+              <Image
+                src="/images/barber-client-trim-detail.jpg"
+                alt="Close-up of a barber meticulously trimming a client's hair, showcasing precision and attention to detail in a black and white analog style."
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className={`${imageClasses}`}
+              />
+            </div>
+            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+              <Image
+                src="/images/kith-kin-exterior-interior-collage-bw.jpg"
+                alt="Black and white collage showcasing the exterior and interior aesthetics of Kith & Kin Barbershop, capturing its unique ambiance in an analog style."
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className={`${imageClasses}`}
+              />
+            </div>
+            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
+              <Image
+                src="/images/barber-trimming-side-profile.jpg"
+                alt="Barber carefully trimming a client's side profile, highlighting the focused craftsmanship and clean lines in a black and white analog style."
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className={`${imageClasses}`}
+              />
+            </div>
           </div>
         </section>
       </div>
