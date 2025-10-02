@@ -96,43 +96,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Our Inviting Space - New Dynamic Gallery Layout */}
-      <section className="mt-16 bg-card rounded-2xl p-4 shadow-ultra-soft border border-muted-foreground/30">
-        <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Our Inviting Space</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="relative col-span-1 md:col-span-2 h-64 md:h-96 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-            <Image
-              src="/images/kith-kin-interior-wide-shot.jpg"
-              alt="Wide shot of Kith & Kin Barbershop's modern interior in Calgary, featuring multiple barber chairs and a welcoming atmosphere, in a black and white analog style."
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 66vw"
-              className={`${imageClasses}`}
-            />
-          </div>
-          <div className="relative col-span-1 h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-            <Image
-              src="/images/kith-kin-interior-barber-chair.jpg"
-              alt="Close-up of a classic barber chair in the Kith & Kin Barbershop interior, highlighting the attention to detail and comfort, in a black and white analog style."
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className={`${imageClasses}`}
-            />
-          </div>
-          <div className="relative col-span-1 h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-            <Image
-              src="/images/kith-kin-interior.jpg"
-              alt="A view of the Kith & Kin Barbershop interior, showcasing the stylish decor and comfortable waiting area, in a black and white analog style."
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className={`${imageClasses}`}
-            />
-          </div>
-        </div>
-      </section>
-
       <section className="mt-8 bg-card rounded-2xl p-4 shadow-ultra-soft border border-muted-foreground/30">
         <h2 className="sr-only">Location Map for Kith & Kin Barbershop Calgary</h2>
         <iframe
