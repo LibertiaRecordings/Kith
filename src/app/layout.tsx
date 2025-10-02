@@ -35,7 +35,7 @@ const organizationSchema = {
     "streetAddress": "1040 12 Ave SW",
     "addressLocality": "Calgary",
     "addressRegion": "AB",
-    "postalCode": "",
+    "postalCode": "T2R 0H4", // Updated postal code
     "addressCountry": "CA"
   },
   "sameAs": [
@@ -79,7 +79,7 @@ export default function RootLayout({
           id="google-tag-manager-body"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-YOUR_ID');`,
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];l.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-YOUR_ID');`,
           }}
         />
         <SessionContextProvider>
