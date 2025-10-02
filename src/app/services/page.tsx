@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   const services: Service[] = [ // Explicitly type the services array
     {
+      _id: "svc-sub-check-in", // Added missing _id
       slug: "subscription-check-in",
       name: "Subscription Check-in",
       price: 0.05,
@@ -18,10 +19,11 @@ export default function ServicesPage() {
       displayDuration: "5 mins",
       description: "Only book this option if you are a subscriber.",
       addOns: [],
-      category: "Subscription", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Subscription",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-skin-zero-fade", // Added missing _id
       slug: "skin-zero-fade",
       name: "Skin/Zero Fade",
       price: 40.00,
@@ -30,10 +32,11 @@ export default function ServicesPage() {
       displayDuration: "40 mins",
       description: "A precise fade with a smooth skin finish. Service includes a zero fade. Suggested upkeep: every 1 to 2 weeks or more.",
       addOns: [],
-      category: "Haircut", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Haircut",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-ladies-dry-cut", // Added missing _id
       slug: "ladies-dry-cut",
       name: "Ladies Dry Cut",
       price: 45.00,
@@ -42,10 +45,11 @@ export default function ServicesPage() {
       displayDuration: "45 mins+",
       description: "A simple trim for the ladies without any styling or finishing.",
       addOns: [],
-      category: "Haircut", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Haircut",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-jr-kin-cut", // Added missing _id
       slug: "jr-kin-cut",
       name: "Jr. Kin Cut",
       price: 25.00,
@@ -54,10 +58,11 @@ export default function ServicesPage() {
       displayDuration: "45 mins",
       description: "A haircut tailored just for the little fellas. Only available for ages 12 & under. Ages 12 & up counts as adult pricing. Suggested upkeep: every 3-4 weeks.",
       addOns: [],
-      category: "Haircut", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Haircut",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-head-wash-massage", // Added missing _id
       slug: "head-wash-massage",
       name: "Head Wash & Massage",
       price: 5.00,
@@ -66,10 +71,11 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "A relaxing head wash & massage to pair perfectly with your service.",
       addOns: [],
-      category: "Add-on", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Add-on",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-classic-cut", // Added missing _id
       slug: "classic-cut",
       name: "Classic Cut",
       price: 35.00,
@@ -78,10 +84,11 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "A classic haircut with a straight edged finish for a clean & timeless look. Service does not include a zero or skin fade. Suggested upkeep: every 2 to 4 weeks.",
       addOns: [],
-      category: "Haircut", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Haircut",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-buzz-cut", // Added missing _id
       slug: "buzz-cut",
       name: "Buzz Cut",
       price: 24.00,
@@ -90,10 +97,11 @@ export default function ServicesPage() {
       displayDuration: "30 mins+",
       description: "All around head buzz. Service does not include skin/zero fade. Suggested upkeep: every 1-3 weeks.",
       addOns: [],
-      category: "Haircut", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Haircut",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-beard-service", // Added missing _id
       slug: "beard-service",
       name: "Beard Service",
       price: 25.00,
@@ -102,10 +110,11 @@ export default function ServicesPage() {
       displayDuration: "15 mins+",
       description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. Suggested upkeep: weekly.",
       addOns: [],
-      category: "Beard", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Beard",
+      finishLookExamples: [],
     },
     {
+      _id: "svc-beard-service-add-on", // Added missing _id
       slug: "beard-service-add-on",
       name: "Beard Service (Add-on)",
       price: 20.00,
@@ -114,8 +123,8 @@ export default function ServicesPage() {
       displayDuration: "20 mins",
       description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. This add-on item must be combined with another service.",
       addOns: [],
-      category: "Add-on", // Added missing property
-      finishLookExamples: [], // Added missing property
+      category: "Add-on",
+      finishLookExamples: [],
     },
   ];
 
