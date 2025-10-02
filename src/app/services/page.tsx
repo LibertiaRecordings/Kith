@@ -110,7 +110,7 @@ export default function ServicesPage() {
           <div key={service.slug} className="bg-card rounded-2xl p-6 shadow-ultra-soft flex flex-col h-full">
             <h2 className="text-2xl font-display font-medium text-foreground">{service.name}</h2>
             <p className="text-primary font-mono text-lg mt-2">{service.displayPrice} <span className="text-muted-foreground text-sm">({service.displayDuration})</span></p>
-            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow">{service.description}</p>
+            <p className="text-muted-foreground mt-4 leading-relaxed flex-grow mb-8">{service.description}</p> {/* Added mb-8 here */}
 
             {service.addOns.length > 0 && (
               <div className="mt-4 pt-4 border-t border-muted-foreground/20">
@@ -126,7 +126,7 @@ export default function ServicesPage() {
               </div>
             )}
 
-            <Link href="/book" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto">
+            <Link href="/book" className="w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto">
               Book {service.name}
             </Link>
           </div>
