@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button"; // Assuming you have a Button component
+import { Button } from "@/components/ui/button";
+import GiftCardPurchaseForm from "@/components/GiftCardPurchaseForm"; // Import the new form component
 
 export const metadata: Metadata = {
   title: "Gift Cards & Loyalty | Kith & Kin Barbershop",
@@ -8,9 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function GiftCardsPage() {
-  // Direct link to Square's general gift card purchase page
-  const squareGiftCardPurchaseLink = "https://squareup.com/gift-cards/buy"; 
-
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground text-center">Gift Cards & Loyalty</h1>
@@ -18,27 +16,16 @@ export default function GiftCardsPage() {
 
       <section className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
         <div className="bg-card rounded-2xl p-8 shadow-ultra-soft flex flex-col items-center text-center">
-          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Gift Cards</h2>
+          <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Purchase a Gift Card</h2>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-md">
-            Treat someone to the Kith & Kin experience. Our gift cards are perfect for any occasion and can be used for any service or product.
+            Treat someone to the Kith & Kin experience. Select an amount and send a personalized gift card instantly.
           </p>
           
-          <Link href={squareGiftCardPurchaseLink} target="_blank" rel="noopener noreferrer" passHref>
-            <Button className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-              Purchase Gift Cards
-            </Button>
-          </Link>
-
-          {/* Square Gift Cards iframe for direct embed purchase */}
-          <div className="mt-8 w-full">
-            <iframe
-              src="https://squareup.com/gift-cards/buy" // Your actual Square Gift Cards embed URL
-              className="w-full h-[400px] rounded-xl border border-muted-foreground/30"
-              loading="lazy"
-              title="Square Gift Cards"
-            />
+          <div className="w-full max-w-md">
+            <GiftCardPurchaseForm />
           </div>
-          <p className="text-muted-foreground/70 font-mono text-xs mt-4">
+
+          <p className="text-muted-foreground/70 font-mono text-xs mt-8">
             Gift cards are delivered by email and contain instructions to redeem them at checkout.
           </p>
         </div>
