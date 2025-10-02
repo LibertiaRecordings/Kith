@@ -7,46 +7,95 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  // Placeholder data for services
   const services = [
     {
-      slug: "precision-cut",
-      name: "Precision Cut",
-      price: 60,
+      slug: "subscription-check-in",
+      name: "Subscription Check-in",
+      price: 0.05,
+      displayPrice: "$0.05",
+      duration: 5, // Assuming 5 minutes for a check-in
+      displayDuration: "5 mins",
+      description: "Only book this option if you are a subscriber.",
+      addOns: [],
+    },
+    {
+      slug: "skin-zero-fade",
+      name: "Skin/Zero Fade",
+      price: 40.00,
+      displayPrice: "$40.00+",
+      duration: 40,
+      displayDuration: "40 mins",
+      description: "A precise fade with a smooth skin finish. Service includes a zero fade. Suggested upkeep: every 1 to 2 weeks or more.",
+      addOns: [],
+    },
+    {
+      slug: "ladies-dry-cut",
+      name: "Ladies Dry Cut",
+      price: 45.00,
+      displayPrice: "$45.00",
       duration: 45,
-      description: "A meticulous haircut tailored to your style, finished with a hot towel and neck shave.",
-      addOns: [{ name: "Beard Trim", price: 25, duration: 15 }],
-    },
-    {
-      slug: "hot-shave",
-      name: "Traditional Hot Shave",
-      price: 45,
-      duration: 30,
-      description: "Experience the ultimate relaxation with a classic hot lather and straight razor shave.",
+      displayDuration: "45 mins+",
+      description: "A simple trim for the ladies without any styling or finishing.",
       addOns: [],
     },
     {
-      slug: "beard-sculpt",
-      name: "Beard Sculpt & Line-up",
-      price: 35,
+      slug: "jr-kin-cut",
+      name: "Jr. Kin Cut",
+      price: 25.00,
+      displayPrice: "$25.00",
+      duration: 45,
+      displayDuration: "45 mins",
+      description: "A haircut tailored just for the little fellas. Only available for ages 12 & under. Ages 12 & up counts as adult pricing. Suggested upkeep: every 3-4 weeks.",
+      addOns: [],
+    },
+    {
+      slug: "head-wash-massage",
+      name: "Head Wash & Massage",
+      price: 5.00,
+      displayPrice: "$5.00",
+      duration: 30,
+      displayDuration: "30 mins+",
+      description: "A relaxing head wash & massage to pair perfectly with your service.",
+      addOns: [],
+    },
+    {
+      slug: "classic-cut",
+      name: "Classic Cut",
+      price: 35.00,
+      displayPrice: "$35.00+",
+      duration: 30,
+      displayDuration: "30 mins+",
+      description: "A classic haircut with a straight edged finish for a clean & timeless look. Service does not include a zero or skin fade. Suggested upkeep: every 2 to 4 weeks.",
+      addOns: [],
+    },
+    {
+      slug: "buzz-cut",
+      name: "Buzz Cut",
+      price: 24.00,
+      displayPrice: "$24.00",
+      duration: 30,
+      displayDuration: "30 mins+",
+      description: "All around head buzz. Service does not include skin/zero fade. Suggested upkeep: every 1-3 weeks.",
+      addOns: [],
+    },
+    {
+      slug: "beard-service",
+      name: "Beard Service",
+      price: 25.00,
+      displayPrice: "$25.00",
+      duration: 15,
+      displayDuration: "15 mins+",
+      description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. Suggested upkeep: weekly.",
+      addOns: [],
+    },
+    {
+      slug: "beard-service-add-on",
+      name: "Beard Service (Add-on)",
+      price: 20.00,
+      displayPrice: "$20.00",
       duration: 20,
-      description: "Expert shaping and precise line-up to perfect your beard, finished with conditioning.",
-      addOns: [{ name: "Facial Steamer", price: 15, duration: 10 }],
-    },
-    {
-      slug: "head-shave",
-      name: "Head Shave",
-      price: 50,
-      duration: 30,
-      description: "A smooth, clean head shave with hot towels and soothing aftershave.",
-      addOns: [],
-    },
-    {
-      slug: "kids-cut",
-      name: "Kids Cut (Under 12)",
-      price: 40,
-      duration: 30,
-      description: "A stylish and comfortable haircut for our younger clients.",
+      displayDuration: "20 mins",
+      description: "A meticulous beard trim and styling as per clients requests leaving your face feeling light & clean. This add-on item must be combined with another service.",
       addOns: [],
     },
   ];
@@ -60,7 +109,7 @@ export default function ServicesPage() {
         {services.map((service) => (
           <div key={service.slug} className="bg-card rounded-2xl p-6 shadow-ultra-soft">
             <h2 className="text-2xl font-display font-medium text-foreground">{service.name}</h2>
-            <p className="text-primary font-mono text-lg mt-2">${service.price} <span className="text-muted-foreground text-sm">({service.duration} min)</span></p>
+            <p className="text-primary font-mono text-lg mt-2">{service.displayPrice} <span className="text-muted-foreground text-sm">({service.displayDuration})</span></p>
             <p className="text-muted-foreground mt-4 leading-relaxed">{service.description}</p>
 
             {service.addOns.length > 0 && (
