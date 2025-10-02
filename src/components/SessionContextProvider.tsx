@@ -61,7 +61,7 @@ export const SessionContextProvider = ({ children }: { children: ReactNode }) =>
       const timer = setTimeout(() => {
         setShowSpecialDialog(true);
         localStorage.setItem('hasSeenFirstVisitSpecial', 'true'); // Mark as seen
-      }, 3000); // Show after 3 seconds
+      }, 1500); // Show after 1.5 seconds
 
       return () => clearTimeout(timer);
     }

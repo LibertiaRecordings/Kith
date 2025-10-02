@@ -15,7 +15,7 @@ export default function BarbersPage() {
   ];
 
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+    <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Our Barbers</h1>
       <p className="mt-3 text-muted-foreground font-mono">Meet the hands behind the precision.</p>
 

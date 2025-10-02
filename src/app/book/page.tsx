@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function BookPage() {
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+    <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Book an Appointment</h1>
       <p className="mt-3 text-muted-foreground font-mono">Precision cuts, exact times. Reserve in seconds.</p>
       <section className="mt-8 rounded-2xl bg-card p-4 shadow-ultra-soft">

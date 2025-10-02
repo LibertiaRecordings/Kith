@@ -74,7 +74,7 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
 
   if (!post) {
     return (
-      <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+      <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
         <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Post Not Found</h1>
         <p className="mt-3 text-muted-foreground font-mono">The post you are looking for does not exist.</p>
         <Link href="/posts" className="mt-8 inline-flex items-center text-primary hover:underline">
@@ -85,7 +85,7 @@ export default async function JournalPostDetailPage({ params }: JournalPostDetai
   }
 
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+    <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <Link href="/posts" className="inline-flex items-center text-primary hover:underline mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Posts
       </Link>

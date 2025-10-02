@@ -65,7 +65,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
 
   if (!barber) {
     return (
-      <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+      <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
         <h1 className="text-4xl md:text-5xl font-display font-semibold tracking-tight text-foreground">Barber Not Found</h1>
         <p className="mt-3 text-muted-foreground font-mono">The barber you are looking for does not exist.</p>
         <Link href="/barbers" className="mt-8 inline-flex items-center text-primary hover:underline">
@@ -80,7 +80,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
   const squareBookingLink = `https://kithkinco.square.site/s/appointments`; // Updated base URL
 
   return (
-    <main id="main" className="container mx-auto px-6 py-10 min-h-screen bg-background text-foreground">
+    <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
       <Link href="/barbers" className="inline-flex items-center text-primary hover:underline mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" /> Back to Barbers
       </Link>

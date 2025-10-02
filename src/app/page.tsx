@@ -12,7 +12,7 @@ export default function Home() {
         <main className="flex flex-col gap-8 items-center text-center p-8 pb-20 sm:p-20 w-full max-w-7xl mx-auto">
           <section className="hero-section max-w-4xl mx-auto text-paper"> {/* Text color changed to paper for contrast */}
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-              Crafted Cuts. <span className="text-primary">Community Roots.</span>
+              Crafted Cuts. <br className="block" /><span className="text-primary">Community Roots.</span>
             </h1>
             <p className="mt-6 text-xl text-paper/90 max-w-2xl mx-auto font-mono">
               Where precision meets kinship. Your family barbershop experience.
