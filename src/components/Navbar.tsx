@@ -20,6 +20,11 @@ export const Navbar = () => {
     { href: "/gift-cards", label: "Gift Cards" },
   ];
 
+  // Add profile link if session exists
+  if (session) {
+    navLinks.push({ href: "/profile", label: "Profile" });
+  }
+
   return (
     <header className="w-full p-4 sm:p-6 bg-paper text-ink border-b border-muted-foreground/20 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
