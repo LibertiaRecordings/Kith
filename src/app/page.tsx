@@ -2,8 +2,32 @@ import Link from "next/link";
 import Image from "next/image"; // Import Image component
 import { ArrowRight } from "lucide-react";
 import HeroVideoBackground from "@/components/HeroVideoBackground";
+import ReviewCard from "@/components/ReviewCard"; // Import the new ReviewCard component
 
 export default function Home() {
+  const reviews = [
+    {
+      review: "Aaron is the best barber in the city, been with him for 10 years. Wherever he goes is wherever I go.",
+      author: "Shawn Zhang",
+      rating: 5,
+    },
+    {
+      review: "Great atmosphere and an even better haircut! Aaron is a meticulous barber who understands hair. Easy to book an appointment and fair priced.",
+      author: "Tommy Ton",
+      rating: 5,
+    },
+    {
+      review: "Best haircut I've ever had, reasonable price, and great atmosphere and people. Becca can't miss, always a perfect cut.",
+      author: "Milan Z",
+      rating: 5,
+    },
+    {
+      review: "I LOVE KITH & KIN! As a woman, I appreciate the skill and comfort here. It's an awesome quick cut without the discomfort of traditional men's shops.",
+      author: "Jen",
+      rating: 5,
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <HeroVideoBackground
@@ -73,6 +97,17 @@ export default function Home() {
                 className="transition-transform duration-300 ease-in-out hover:scale-105"
               />
             </div>
+          </div>
+        </section>
+
+        {/* What Our Clients Say section */}
+        <section className="mt-16 w-full max-w-5xl mx-auto text-center">
+          <h2 className="text-4xl font-display font-semibold text-foreground">What Our Clients Say</h2>
+          <p className="mt-4 text-muted-foreground text-lg font-mono">Hear it from the community.</p>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {reviews.map((review, index) => (
+              <ReviewCard key={index} review={review.review} author={review.author} rating={review.rating} />
+            ))}
           </div>
         </section>
       </div>
