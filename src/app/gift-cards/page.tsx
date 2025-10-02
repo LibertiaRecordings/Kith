@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import GiftCardPurchaseForm from "@/components/GiftCardPurchaseForm"; // Import the new form component
+import GiftCardPurchaseForm from "@/components/GiftCardPurchaseForm";
+import GiftCardBalanceChecker from "@/components/GiftCardBalanceChecker"; // Import the new component
 
 export const metadata: Metadata = {
   title: "Gift Cards & Loyalty | Kith & Kin Barbershop",
@@ -55,6 +56,17 @@ export default function GiftCardsPage() {
           <p className="text-muted-foreground/70 font-mono text-xs mt-4">
             You will be prompted to join our loyalty program after your booking confirmation.
           </p>
+        </div>
+      </section>
+
+      {/* New section for checking gift card balance */}
+      <section className="mt-16 max-w-2xl mx-auto bg-card rounded-2xl p-8 shadow-ultra-soft text-center">
+        <h2 className="text-3xl font-display font-semibold text-foreground mb-4">Check Gift Card Balance</h2>
+        <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+          Enter your 12-character gift card code to check its current value and status.
+        </p>
+        <div className="w-full max-w-sm mx-auto">
+          <GiftCardBalanceChecker />
         </div>
       </section>
     </main>
