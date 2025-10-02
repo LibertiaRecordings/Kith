@@ -61,7 +61,7 @@ export default function RootLayout({
           id="json-ld-organization" // Unique ID for the script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        />
+        ></script> {/* Explicitly closing the script tag */}
       </head>
       <body
         className={`${inter.variable} ${ibmPlexMono.variable} antialiased font-display bg-background text-foreground`}
