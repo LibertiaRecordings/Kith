@@ -34,11 +34,22 @@ const uploadMixFormSchema = z.object({
       (file) => !file || ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
-  duration_seconds: z.coerce.number() // Use z.coerce.number to handle string to number conversion
-    .int("Duration must be an integer.")
-    .min(0, { message: 'Duration must be a positive number.' })
-    .nullable() // Allows null for empty input
-    .optional(), // Allows undefined
+  duration_seconds: z.string() // Input from HTML number field is string
+    .nullable() // Can be null if input is empty
+    .optional() // Can be undefined if field is not present
+    .transform((val) => {
+      if (val === '' || val === null || val === undefined) {
+        return null; // Transform empty string, null, undefined to null
+      }
+      const num = Number(val);
+      return isNaN(num) ? null : num; // Transform invalid numbers to null
+    })
+    .pipe(
+      z.number()
+        .int("Duration must be an integer.")
+        .min(0, { message: 'Duration must be a positive number.' })
+        .nullable() // The transformed value can be null
+    ),
   is_dj_mix: z.boolean().default(true),
 });
 
@@ -54,7 +65,7 @@ const AdminUploadMixForm: React.FC = () => {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: null, // This now correctly matches number | null | undefined
+      duration_seconds: null,
       is_dj_mix: true,
     },
   });
