@@ -5,7 +5,9 @@ import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import FloatingBookButton from "@/components/FloatingBookButton"; // Import the new component
+import FloatingBookButton from "@/components/FloatingBookButton";
+import { RadioPlayerProvider } from "@/components/radio/RadioPlayerProvider"; // Import RadioPlayerProvider
+import RadioStationSheet from "@/components/radio/RadioStationSheet"; // Import RadioStationSheet
 
 const inter = Inter({
   variable: "--font-body", // Assign Inter to --font-body
@@ -97,10 +99,13 @@ export default function RootLayout({
           }}
         />
         <SessionContextProvider>
-          <Navbar />
-          {children}
-          <Footer />
-          <FloatingBookButton /> {/* Add the floating button here */}
+          <RadioPlayerProvider> {/* Wrap with RadioPlayerProvider */}
+            <Navbar />
+            {children}
+            <Footer />
+            <FloatingBookButton />
+            <RadioStationSheet /> {/* Include the RadioStationSheet */}
+          </RadioPlayerProvider>
         </SessionContextProvider>
       </body>
     </html>

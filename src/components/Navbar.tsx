@@ -4,13 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "@/components/SessionContextProvider";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet"; // Removed SheetContent as it's now in RadioStationSheet
+import { Menu, Radio } from "lucide-react"; // Added Radio icon
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useRadioPlayer } from "./radio/RadioPlayerProvider"; // Import useRadioPlayer
 
 export const Navbar = () => {
   const { session } = useSession();
   const isMobile = useIsMobile();
+  const { toggleSheet, isPlaying } = useRadioPlayer(); // Use toggleSheet and isPlaying from context
 
   const navLinks = [
     { href: "/book", label: "Book" },
@@ -39,33 +41,42 @@ export const Navbar = () => {
           />
         </Link>
 
-        {isMobile ? (
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-ink hover:bg-muted/50">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-paper text-ink border-l border-muted-foreground/20 w-[250px] sm:w-[300px]">
-              <nav className="flex flex-col gap-4 pt-8">
-                {navLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="text-lg font-body font-medium text-ink hover:text-primary transition-colors">
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <nav className="hidden sm:flex gap-8 items-center">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-body font-medium text-lg">
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        <div className="flex items-center gap-4"> {/* Wrapper for nav and radio button */}
+          {isMobile ? (
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-ink hover:bg-muted/50">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              {/* SheetContent is now part of RadioStationSheet, so it's not here */}
+            </Sheet>
+          ) : (
+            <nav className="hidden sm:flex gap-8 items-center">
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="text-ink hover:text-primary transition-colors font-body font-medium text-lg">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          )}
+
+          {/* Live Radio Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleSheet}
+            className="text-ink hover:bg-muted/50 relative"
+            aria-label="Open Live Radio"
+          >
+            <Radio className={`h-6 w-6 ${isPlaying ? 'text-primary animate-pulse' : ''}`} />
+            {isPlaying && (
+              <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-primary animate-ping-slow" />
+            )}
+            <span className="sr-only">Live Radio</span>
+          </Button>
+        </div>
       </div>
     </header>
   );
