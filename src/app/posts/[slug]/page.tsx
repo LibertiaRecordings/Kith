@@ -4,10 +4,10 @@ import { ArrowLeft } from "lucide-react";
 import Image from "next/image"; // Import Image component
 
 // Define the expected PageProps structure for this dynamic route
-type PageProps = {
+interface PageProps {
   params: { slug: string };
   // searchParams?: { [key: string]: string | string[] | undefined }; // Removed as not currently used
-};
+}
 
 // Placeholder function to fetch journal post data
 async function getJournalPostBySlug(slug: string) {
@@ -56,7 +56,7 @@ async function getJournalPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const post = await getJournalPostBySlug(params.slug);
 
   if (!post) {
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function JournalPostDetailPage({ params }: { params: { slug: string } }) {
+export default async function JournalPostDetailPage({ params }: PageProps) {
   const post = await getJournalPostBySlug(params.slug);
 
   if (!post) {

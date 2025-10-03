@@ -5,7 +5,11 @@ import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
 import BarberGallery from "@/components/BarberGallery"; // Import the new client component
 
-// Removed: type PageProps = { params: { slug: string }; };
+// Define the expected PageProps structure for this dynamic route
+interface PageProps {
+  params: { slug: string };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Optional: if you need search params
+}
 
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
@@ -78,7 +82,7 @@ async function getBarberBySlug(slug: string) {
   return barbers.find((barber) => barber.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
@@ -94,7 +98,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BarberDetailPage({ params }: { params: { slug: string } }) {
+export default async function BarberDetailPage({ params }: PageProps) {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
