@@ -1,12 +1,11 @@
 "use client";
 
-import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode, useState } from 'react';
 
-// Create a client
-const queryClient = new QueryClient();
+export function QueryProvider({ children }: { children: ReactNode }) {
+  const [queryClient] = useState(() => new QueryClient());
 
-export function QueryProvider({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
