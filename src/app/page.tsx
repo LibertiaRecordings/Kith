@@ -61,7 +61,7 @@ export default function Home() {
       <div className="container mx-auto px-6 py-10">
         <section className="cta-tiles mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
           <Link href="/book" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-3xl font-hero text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
+            <h2 className="text-3xl font-hero text-foreground group-hover:text-primary transition-colors">Book Your Visit Today</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed font-body">Secure your spot for a flawless cut with our easy online booking in Calgary.</p>
           </Link>
           <Link href="/barbers" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
