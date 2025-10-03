@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import crypto from 'crypto'; // Import Node.js crypto module
 
 // Initialize a Supabase client for server-side operations (e.g., with service role key)
 const supabaseAdmin = createClient(
@@ -13,40 +12,10 @@ const supabaseAdmin = createClient(
   }
 );
 
-// Utility function to hash PII using SHA-256
-function hashSha256(data: string): string {
-  return crypto.createHash('sha256').update(data).digest('hex');
-}
-
-// Function to verify Square webhook signature
-function verifySignature(body: string, signature: string | null, secret: string | undefined): boolean {
-  if (!signature || !secret) {
-    console.warn('Webhook secret or signature missing. Skipping verification.');
-    return false; // In production, you might want to return false here
-  }
-
-  const hmac = crypto.createHHmac('sha1', secret);
-  hmac.update(body);
-  const expectedSignature = hmac.digest('base64');
-
-  // Compare the expected signature with the received signature
-  return crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature));
-}
-
 export async function POST(req: NextRequest) {
   console.log('Received Square webhook event.');
 
-  const squareWebhookSecret = process.env.SQUARE_WEBHOOK_SECRET;
-  const signature = req.headers.get('X-Square-Signature');
-  const rawBody = await req.text(); // Read body as text for signature verification
-
-  // Verify Square webhook signature
-  if (!verifySignature(rawBody, signature, squareWebhookSecret)) {
-    console.error('Invalid Square webhook signature.');
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
-  }
-
-  const event = JSON.parse(rawBody); // Parse body to JSON after verification
+  const event = await req.json(); // Parse body directly as JSON
   console.log('Webhook event data:', event);
 
   try {
@@ -62,17 +31,14 @@ export async function POST(req: NextRequest) {
       const serviceValue = booking.appointment_segments?.[0]?.service_variation_money?.amount / 100 || 0; // Convert cents to dollars
       const bookingTimestamp = booking.start_at; // ISO 8601 format
 
-      // Hash PII (customer_id) before storing
-      const hashedCustomerId = customerId ? hashSha256(customerId) : null;
-
-      // Store relevant booking details in Supabase
+      // Store relevant booking details in Supabase (without hashing customer_id for now)
       const { data, error } = await supabaseAdmin
         .from('square_bookings_ledger')
         .insert({
           event_id: event.event_id,
           event_type: event.type,
           booking_id: bookingId,
-          customer_id: hashedCustomerId, // Store hashed customer ID
+          customer_id: customerId, // Storing customer ID directly as hashing is removed
           staff_id: staffId,
           service_name: serviceName,
           service_value: serviceValue,
@@ -90,8 +56,8 @@ export async function POST(req: NextRequest) {
       console.log('Square event successfully logged to Supabase:', data);
 
       // TODO:
-      // 1. Forward hashed data to Meta CAPI and Google Ads Enhanced Conversions with event_id dedupe
-      //    (Ensure any PII sent to these services is also hashed)
+      // 1. Forward data to Meta CAPI and Google Ads Enhanced Conversions with event_id dedupe
+      //    (If PII is sent to these services, ensure it is hashed at that point if required)
     } else {
       console.log(`Unhandled Square event type: ${event.type}`);
     }
