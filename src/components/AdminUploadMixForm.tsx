@@ -45,9 +45,17 @@ const uploadMixFormSchema: z.ZodType<UploadMixFormValues> = z.object({
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(
-    (val: unknown) => (val === '' ? null : Number(val)),
-    z.number().int().min(0, { message: 'Duration must be a positive number.' }).nullable().optional()
-  ),
+    (val: unknown) => {
+      // If the input is an empty string or undefined, treat it as null
+      if (val === '' || val === undefined) {
+        return null;
+      }
+      const num = Number(val);
+      // If Number(val) results in NaN, also treat it as null for the schema
+      return isNaN(num) ? null : num;
+    },
+    z.number().int().min(0, { message: 'Duration must be a positive number.' }).nullable() // The preprocessed value can be null or a number
+  ).optional(), // The entire field is optional
   is_dj_mix: z.boolean().default(true),
 });
 
