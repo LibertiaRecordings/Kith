@@ -69,7 +69,7 @@ async function getBarberBySlug(slug: string) {
         { _key: "2", url: "/images/barber-client-trim-detail.jpg", alt: "Close-up of Bojan's detailed trimming work" },
         { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "Bojan styling a client's hair" },
       ],
-      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan", // Placeholder image
+      imageUrl: "/images/bojan.jpeg", // Placeholder image
     },
   ];
   return barbers.find((barber) => barber.slug === slug);
