@@ -23,7 +23,7 @@ const BarberBookingDialog: React.FC<BarberBookingDialogProps> = ({ barberName, s
       </Button>
 
       <Dialog open={isBookingDialogOpen} onOpenChange={setIsBookingDialogOpen}>
-        <DialogContent className="sm:max-w-[90vw] max-h-[90vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
+        <DialogContent className="sm:max-w-[95vw] max-h-[95vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
           <DialogHeader className="p-6 pb-0">
             <DialogTitle className="text-3xl font-hero text-foreground">Book with {barberName}</DialogTitle>
           </DialogHeader>
