@@ -26,10 +26,8 @@ const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
-    .instanceof(File)
-    .nullable() // Allow null
-    .optional() // Allow undefined
-    .refine((file): file is File => file !== undefined && file !== null, { message: 'Audio file is required.' }) // Refine to ensure it's present and a File
+    .union([z.instanceof(File), z.literal(undefined)]) // Explicitly allow File or undefined
+    .refine((file): file is File => file !== undefined, { message: 'Audio file is required.' }) // Refine to ensure it's present and a File
     .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
       (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
@@ -52,7 +50,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: null,
-      audioFile: undefined, // This now correctly matches `File | null | undefined` from the schema
+      audioFile: undefined, // This now correctly matches `File | undefined` from the schema
       duration_seconds: null,
       is_dj_mix: true,
     },
