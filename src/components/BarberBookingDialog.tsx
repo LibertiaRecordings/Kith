@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog'; // Import DialogClose
+import { X } from 'lucide-react'; // Import X icon for the close button
 
 interface BarberBookingDialogProps {
   barberName: string;
@@ -23,11 +24,17 @@ const BarberBookingDialog: React.FC<BarberBookingDialogProps> = ({ barberName, s
       </Button>
 
       <Dialog open={isBookingDialogOpen} onOpenChange={setIsBookingDialogOpen}>
-        <DialogContent className="max-w-[98vw] max-h-[98vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
-          <DialogHeader className="p-4 pb-2">
+        <DialogContent className="fixed inset-0 w-[98vw] h-[98vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+          <DialogHeader className="p-4 pb-2 flex flex-row items-center justify-between">
             <DialogTitle className="text-3xl font-hero text-foreground">Book with {barberName}</DialogTitle>
+            <DialogClose asChild>
+              <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+                <X className="h-5 w-5" />
+                <span className="sr-only">Close</span>
+              </Button>
+            </DialogClose>
           </DialogHeader>
-          <div className="flex-grow p-0 overflow-hidden"> {/* Removed all padding here */}
+          <div className="flex-grow p-4 pt-0 overflow-hidden"> {/* Adjusted padding for iframe container */}
             <iframe
               src={squareBookingLink}
               className="w-full h-full rounded-xl border border-muted-foreground/30"
