@@ -29,7 +29,7 @@ export default function BarbersPage() {
                 {barber.name}
               </h2>
               <p className="text-muted-foreground text-center font-body text-base mt-1">{barber.role}</p>
-              <ul className="mt-4 flex flex-wrap justify-center gap-2 flex-grow">
+              <ul className="mt-4 flex flex-wrap justify-center gap-2 flex-grow min-h-[3.5rem]">
                 {barber.specialties.map((spec, index) => (
                   <li key={index} className="bg-background text-muted-foreground text-sm px-3 py-1 rounded-full border border-muted-foreground/30 group-hover:border-primary transition-colors font-body">
                     {spec}
