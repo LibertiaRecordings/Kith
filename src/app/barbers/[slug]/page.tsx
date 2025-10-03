@@ -4,8 +4,6 @@ import { ArrowLeft, Instagram } from "lucide-react";
 import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
 
-// Removed PageProps interface as we are inlining the type definitions directly
-
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
   // In a real app, this would fetch from your CMS (e.g., Sanity/Contentful)
@@ -152,8 +150,15 @@ export default async function BarberDetailPage({ params }: { params: { slug: str
               <h3 className="text-2xl font-hero text-foreground mb-3">Gallery</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {barber.gallery.map((image) => (
-                  <div key={image._key} className="relative w-full h-48 rounded-lg overflow-hidden border border-muted-foreground/30 aspect-video">
-                    <Image src={image.url} alt={image.alt} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" className="transition-transform duration-300 ease-in-out hover:scale-105" />
+                  <div key={image._key} className="relative w-full h-48 rounded-lg overflow-hidden border border-muted-foreground/30 aspect-video group">
+                    <Image
+                      src={image.url}
+                      alt={image.alt}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="grayscale contrast-125 transition-all duration-300 ease-in-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-110"
+                    />
                   </div>
                 ))}
               </div>
