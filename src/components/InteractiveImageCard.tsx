@@ -17,15 +17,15 @@ const InteractiveImageCard: React.FC<InteractiveImageCardProps> = ({
   src,
   alt,
   linkHref,
-  initialAspectRatio = 'aspect-video',
-  initialHeight = 'h-48',
-  hoverHeight = 'h-64',
+  initialAspectRatio = 'aspect-square', // Default to square
+  initialHeight = 'h-64', // Default square height
+  hoverHeight = 'h-72', // Slightly larger square on hover
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const content = (
     <div
-      className={`relative w-full rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 transition-all duration-300 ease-in-out
+      className={`relative w-full rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 transition-all duration-300 ease-in-out group
         ${isHovered ? `${hoverHeight} aspect-square` : `${initialHeight} ${initialAspectRatio}`}
       `}
       onMouseEnter={() => setIsHovered(true)}
@@ -35,10 +35,10 @@ const InteractiveImageCard: React.FC<InteractiveImageCardProps> = ({
         src={src}
         alt={alt}
         fill
-        style={{ objectFit: isHovered ? "contain" : "cover" }} // Change objectFit on hover
+        style={{ objectFit: isHovered ? "contain" : "cover" }} // Change objectFit on hover to show full image
         sizes="(max-width: 768px) 100vw, 33vw"
         className={`transition-all duration-300 ease-in-out
-          ${isHovered ? 'grayscale-0 contrast-100' : 'grayscale contrast-125'}
+          ${isHovered ? 'grayscale-0 contrast-100 scale-105' : 'grayscale contrast-125'}
         `}
       />
     </div>
