@@ -15,7 +15,7 @@ interface RadioPlayerContextType {
   currentChannel: RadioChannel | null;
   play: () => void;
   pause: () => void;
-  nextChannel: () => void; // Renamed from nextTrack
+  nextChannel: () => void;
   toggleSheet: () => void;
   isSheetOpen: boolean;
   isLoadingChannel: boolean;
@@ -28,18 +28,22 @@ const CHANNELS: RadioChannel[] = [
   {
     id: 'dance-channel',
     name: 'Electronic / Dance',
-    youtubePlaylistId: 'RDl_7rlC_L4Rk', // From the user's provided URL
-    // Updated embedUrl to hide controls, branding, and prevent fullscreen/keyboard controls
+    youtubePlaylistId: 'RDl_7rlC_L4Rk',
     embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDl_7rlC_L4Rk&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
-  // Add more channels here if needed in the future
+  {
+    id: 'soul-channel',
+    name: '60\'s 70\'s Soul',
+    youtubePlaylistId: 'RD3C01eaL5_Xw',
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RD3C01eaL5_Xw&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
+  },
 ];
 
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentChannel, setCurrentChannel] = useState<RadioChannel | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isLoadingChannel, setIsLoadingChannel] = useState(true); // Renamed from isLoadingTracks
+  const [isLoadingChannel, setIsLoadingChannel] = useState(true);
 
   useEffect(() => {
     // Initialize with the first channel
@@ -61,14 +65,10 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
 
   const pause = () => {
     setIsPlaying(false);
-    // Optionally, you might want to close the sheet here, or let the user close it manually
-    // setIsSheetOpen(false);
     toast.info(`Paused: ${currentChannel?.name || 'Radio'}`);
   };
 
   const nextChannel = () => {
-    // For now, with only one channel, this will just "restart" it by re-setting the current channel
-    // In the future, this would cycle through CHANNELS array
     if (CHANNELS.length > 0) {
       const currentIndex = CHANNELS.findIndex(c => c.id === currentChannel?.id);
       const nextIndex = (currentIndex + 1) % CHANNELS.length;
@@ -84,10 +84,8 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
   const toggleSheet = () => {
     setIsSheetOpen(prev => {
       if (prev) {
-        // If closing the sheet, also pause playback
         setIsPlaying(false);
       } else {
-        // If opening the sheet, start playing
         setIsPlaying(true);
       }
       return !prev;
