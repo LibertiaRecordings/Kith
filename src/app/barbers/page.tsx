@@ -25,7 +25,9 @@ export default function BarbersPage() {
           <Link href={`/barbers/${barber.slug}`} key={barber.slug} className="block">
             <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group flex flex-col h-full">
               <img src={barber.imageUrl} alt={barber.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-muted-foreground/30 group-hover:border-primary transition-colors" />
-              <h2 className="text-2xl font-hero text-foreground text-center group-hover:text-primary transition-colors">{barber.name}</h2>
+              <h2 className="text-2xl font-hero text-foreground text-center group-hover:text-primary transition-colors min-h-[2.5em] flex items-center justify-center">
+                {barber.name}
+              </h2>
               <p className="text-muted-foreground text-center font-body text-base mt-1">{barber.role}</p>
               <ul className="mt-4 flex flex-wrap justify-center gap-2 flex-grow">
                 {barber.specialties.map((spec, index) => (
