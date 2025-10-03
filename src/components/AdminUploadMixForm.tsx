@@ -24,24 +24,30 @@ const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac"
 
 const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
-  artist: z.string().nullable().optional(), // Changed to allow null and undefined
+  artist: z.string().nullable().optional(),
   audioFile: z
-    .union([z.instanceof(File), z.undefined()]) // Allow File or undefined
-    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Make it required for submission
-    .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
+    .union([z.instanceof(File), z.undefined()])
+    .refine((file: File | undefined): file is File => file !== undefined, { message: 'Audio file is required.' })
+    .refine((file: File) => file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
-      (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
+      (file: File) => ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(
-    (val) => (val === '' ? null : Number(val)),
+    (val: unknown) => (val === '' ? null : Number(val)),
     z.nullable(z.number().int().min(0, { message: 'Duration must be a positive number.' })).optional()
   ),
   is_dj_mix: z.boolean().default(true),
 });
 
-// Explicitly define the type for form values to ensure audioFile is always a File after validation
-type UploadMixFormValues = z.infer<typeof uploadMixFormSchema>;
+// Explicitly define the type for form values, allowing audioFile to be undefined initially
+type UploadMixFormValues = {
+  title: string;
+  artist?: string | null;
+  audioFile?: File; // Make audioFile optional in the form's state type
+  duration_seconds?: number | null;
+  is_dj_mix: boolean;
+};
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,8 +56,8 @@ const AdminUploadMixForm: React.FC = () => {
     resolver: zodResolver(uploadMixFormSchema),
     defaultValues: {
       title: '',
-      artist: null, // Default to null to match nullable schema
-      audioFile: undefined, // Keep as undefined initially
+      artist: null,
+      audioFile: undefined,
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -61,21 +67,28 @@ const AdminUploadMixForm: React.FC = () => {
     setIsSubmitting(true);
     const loadingToastId = toast.loading('Uploading track...');
 
+    // Ensure audioFile is present before proceeding, as per schema refinement
+    if (!values.audioFile) {
+      toast.error('Audio file is required.', { id: loadingToastId });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
-        file: values.audioFile, // Now `values.audioFile` is typed as `File`
+        file: values.audioFile, // Now `values.audioFile` is guaranteed to be `File` by validation
         duration_seconds: values.duration_seconds,
         is_dj_mix: values.is_dj_mix,
       });
 
       if (result.success) {
         toast.success('Track uploaded successfully!', { id: loadingToastId });
-        form.reset({ // Reset with initial default values
+        form.reset({
           title: '',
-          artist: null, // Reset with null
-          audioFile: undefined, // Reset with undefined
+          artist: null,
+          audioFile: undefined,
           duration_seconds: null,
           is_dj_mix: true,
         });
@@ -114,12 +127,7 @@ const AdminUploadMixForm: React.FC = () => {
             <FormItem>
               <FormLabel className="text-foreground font-body text-base">Artist Name (Optional)</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Enter artist name"
-                  className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary"
-                  {...field}
-                  value={field.value || ''} // Ensure value is string or empty string, not null
-                />
+                <Input placeholder="Enter artist name" className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary" {...field} value={field.value ?? ''} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -158,7 +166,7 @@ const AdminUploadMixForm: React.FC = () => {
                   placeholder="e.g., 300"
                   className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary"
                   {...field}
-                  value={field.value === null ? '' : field.value} // Convert null to empty string for input value
+                  value={field.value === null ? '' : field.value}
                 />
               </FormControl>
               <FormMessage />
