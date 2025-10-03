@@ -60,14 +60,17 @@ async function getBarberBySlug(slug: string) {
       slug: "bojan-el",
       name: "BOJAN / EL",
       role: "Senior Barber",
-      bio: "Bojan, also known as EL, is passionate about crafting sharp, clean looks. He excels in precision cuts and beard shaping, ensuring every client leaves with a refined and confident appearance.",
+      bio: "Bojan, also known as EL is a precision barber, educator, and creative, with experience cutting for elite shops worldwide. His work is a blend of razor-sharp precision and modern artistry, designed for those who value excellence.",
       specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"],
       staffId: "STAFF_ID_BOJAN", // Placeholder: Replace with actual Square Staff ID for Bojan
       socials: { instagram: "https://instagram.com/bojan_el_barber" },
       gallery: [
-        { _key: "1", url: "/images/barber-trimming-beard-calgary.jpg", alt: "Bojan performing a beard shaping service" },
-        { _key: "2", url: "/images/barber-client-trim-detail.jpg", alt: "Close-up of Bojan's detailed trimming work" },
-        { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "Bojan styling a client's hair" },
+        { _key: "1", url: "/images/bojan-gallery-1.jpeg", alt: "Bojan / EL showcasing a sharp lineup and fade on a client" },
+        { _key: "2", url: "/images/bojan-gallery-2.jpeg", alt: "Bojan / EL's work on a client with textured, curly hair and a clean fade" },
+        { _key: "3", url: "/images/bojan-gallery-3.jpeg", alt: "Close-up of a precise fade and clean hairline by Bojan / EL" },
+        { _key: "4", url: "/images/bojan-gallery-4.jpeg", alt: "Client with a stylish haircut and beard trim by Bojan / EL" },
+        { _key: "5", url: "/images/bojan-gallery-5.jpeg", alt: "Bojan / EL performing a finishing touch with a brush on a client's haircut" },
+        { _key: "6", url: "/images/bojan-gallery-6.jpeg", alt: "Bojan / EL with a client, showcasing a modern, artistic haircut" },
       ],
       imageUrl: "/images/bojan.jpeg", // Placeholder image
     },
