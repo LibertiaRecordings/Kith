@@ -14,14 +14,14 @@ export default function ContactPage() {
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
-      <h1 className="text-4xl md:text-5xl font-display font-normal tracking-tight text-foreground">Contact & Visit</h1>
+      <h1 className="text-4xl md:text-5xl tracking-tight text-foreground">Contact & Visit</h1>
       <p className="mt-3 text-muted-foreground font-body text-lg">We're here to help you look your best in Calgary.</p>
 
       <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column: Contact Info & Hours */}
         <div className="flex flex-col gap-8">
           <div className="bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/30">
-            <h2 className="text-2xl font-display font-medium text-foreground mb-4">Get in Touch</h2>
+            <h2 className="text-3xl font-hero text-foreground mb-4">Get in Touch</h2>
             <div className="space-y-6 text-muted-foreground text-base">
               <div className="flex items-start">
                 <MapPin className="h-6 w-6 text-primary mr-4 flex-shrink-0" />
@@ -57,7 +57,7 @@ export default function ContactPage() {
           </div>
 
           <div className="bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/30">
-            <h2 className="text-2xl font-display font-medium text-foreground mb-4">Hours & Information</h2>
+            <h2 className="text-3xl font-hero text-foreground mb-4">Hours & Information</h2>
             <div className="space-y-6 text-muted-foreground text-base">
               <div className="flex items-start">
                 <Clock className="h-6 w-6 text-primary mr-4 flex-shrink-0" />

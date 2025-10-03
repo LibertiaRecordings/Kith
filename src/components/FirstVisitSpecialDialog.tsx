@@ -17,7 +17,7 @@ const FirstVisitSpecialDialog: React.FC<FirstVisitSpecialDialogProps> = ({ isOpe
       <DialogContent className="sm:max-w-[425px] bg-card text-foreground p-6 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
         <DialogHeader className="text-center">
           <Percent className="h-12 w-12 text-primary mx-auto mb-4" />
-          <DialogTitle className="text-3xl font-display font-semibold text-foreground">
+          <DialogTitle className="text-4xl md:text-5xl font-hero text-foreground">
             20% Off Your First Visit!
           </DialogTitle>
           <DialogDescription className="text-muted-foreground mt-2 leading-relaxed text-base">

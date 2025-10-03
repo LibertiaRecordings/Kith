@@ -61,21 +61,21 @@ export default function Home() {
       <div className="container mx-auto px-6 py-10">
         <section className="cta-tiles mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mx-auto">
           <Link href="/book" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
+            <h2 className="text-3xl font-hero text-foreground group-hover:text-primary transition-colors">Book Your Visit</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed font-body">Secure your spot for a flawless cut with our easy online booking in Calgary.</p>
           </Link>
           <Link href="/barbers" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2>
+            <h2 className="text-3xl font-hero text-foreground group-hover:text-primary transition-colors">Meet Our Barbers</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed font-body">Discover the skilled hands and unique styles of our master barbers in Calgary.</p>
           </Link>
           <Link href="/services" className="block bg-card rounded-2xl p-8 shadow-ultra-soft can-animate group">
-            <h2 className="text-2xl font-display font-medium text-foreground group-hover:text-primary transition-colors">Explore Services</h2>
+            <h2 className="text-3xl font-hero text-foreground group-hover:text-primary transition-colors">Explore Services</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed font-body">From classic fades to modern styling, find your perfect grooming experience at our Calgary barbershop.</p>
           </Link>
         </section>
 
         <section className="mt-16 w-full max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-display font-medium text-foreground">The Kith & Kin Experience</h2>
+          <h2 className="text-4xl font-hero text-foreground">The Kith & Kin Experience</h2>
           <p className="mt-4 text-muted-foreground text-lg font-body">More than a haircut, it's a ritual in Calgary.</p>
           
           {/* New "Our Space" section with shop photos */}
@@ -105,7 +105,7 @@ export default function Home() {
 
         {/* What Our Clients Say section */}
         <section className="mt-16 w-full max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-display font-medium text-foreground">What Our Clients Say</h2>
+          <h2 className="text-3xl font-hero text-foreground">What Our Clients Say</h2>
           <p className="mt-4 text-muted-foreground text-lg font-body">Hear it from the Calgary community.</p>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {reviews.map((review, index) => (
