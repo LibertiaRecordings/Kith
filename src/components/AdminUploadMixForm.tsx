@@ -22,7 +22,9 @@ import { Loader2 } from 'lucide-react';
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac", "audio/flac"];
 
-// Define the schema for form validation
+// Define the schema for the raw input values from the form fields.
+// This schema will be used directly by useForm and zodResolver.
+// Transformations that change types (like string to number) will be handled manually in onSubmit.
 const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
@@ -36,43 +38,28 @@ const uploadMixFormSchema = z.object({
     ),
   duration_seconds: z.string() // Input from HTML number field is string
     .nullable() // Can be null if input is empty
-    .optional() // Can be undefined if field is not present
-    .transform((val) => {
-      if (val === '' || val === null || val === undefined) {
-        return null; // Transform empty string, null, undefined to null
-      }
-      const num = Number(val);
-      return isNaN(num) ? null : num; // Transform invalid numbers to null
-    })
-    .pipe(
-      z.number()
-        .int("Duration must be an integer.")
-        .min(0, { message: 'Duration must be a positive number.' })
-        .nullable() // The transformed value can be null
-    ),
+    .optional(), // Can be undefined if field is not present
   is_dj_mix: z.boolean().default(true),
 });
 
-// Type for the values *before* Zod transformations (for defaultValues and useForm generic)
-type FormInputValues = z.input<typeof uploadMixFormSchema>;
-// Type for the values *after* Zod transformations (for onSubmit)
-type FormOutputValues = z.infer<typeof uploadMixFormSchema>;
+// Type for the values *as they come directly from the form inputs*
+type FormInputValues = z.infer<typeof uploadMixFormSchema>;
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<FormInputValues>({ // Corrected: Use FormInputValues here
-    resolver: zodResolver(uploadMixFormSchema),
+  const form = useForm<FormInputValues>({ // Use FormInputValues for useForm generic
+    resolver: zodResolver(uploadMixFormSchema), // Use the schema without type-changing transforms
     defaultValues: {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: '', // Corrected: Set to empty string to match FormInputValues
+      duration_seconds: '', // This correctly matches z.string().nullable().optional()
       is_dj_mix: true,
     },
   });
 
-  const onSubmit = async (values: FormOutputValues) => { // Use FormOutputValues here
+  const onSubmit = async (values: FormInputValues) => { // onSubmit receives FormInputValues
     setIsSubmitting(true);
     const loadingToastId = toast.loading('Uploading track...');
 
@@ -82,12 +69,35 @@ const AdminUploadMixForm: React.FC = () => {
       return;
     }
 
+    // Manually transform duration_seconds from string to number | null
+    let transformedDurationSeconds: number | null = null;
+    if (values.duration_seconds !== '' && values.duration_seconds !== null && values.duration_seconds !== undefined) {
+      const num = Number(values.duration_seconds);
+      if (!isNaN(num)) {
+        transformedDurationSeconds = num;
+      }
+    }
+
+    // Add client-side validation for the transformed duration_seconds
+    if (transformedDurationSeconds !== null) {
+      if (transformedDurationSeconds < 0) {
+        toast.error('Duration must be a positive number.', { id: loadingToastId });
+        setIsSubmitting(false);
+        return;
+      }
+      if (!Number.isInteger(transformedDurationSeconds)) {
+        toast.error('Duration must be an integer.', { id: loadingToastId });
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
     try {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
         file: values.audioFile,
-        duration_seconds: values.duration_seconds,
+        duration_seconds: transformedDurationSeconds, // Use the manually transformed value
         is_dj_mix: values.is_dj_mix,
       });
 
@@ -97,7 +107,7 @@ const AdminUploadMixForm: React.FC = () => {
           title: '',
           artist: null,
           audioFile: undefined,
-          duration_seconds: '', // Corrected: Reset to empty string
+          duration_seconds: '', // Reset to empty string
           is_dj_mix: true,
         });
       } else {
