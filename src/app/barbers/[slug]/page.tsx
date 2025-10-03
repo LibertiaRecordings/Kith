@@ -12,34 +12,64 @@ async function getBarberBySlug(slug: string) {
   // In a real app, this would fetch from your CMS (e.g., Sanity/Contentful)
   const barbers = [
     {
-      slug: "john-doe",
-      name: "John Doe",
+      slug: "kenneth",
+      name: "Kenneth",
       role: "Master Barber",
-      bio: "With over 15 years of experience, John specializes in classic fades and intricate beard designs. His precision and attention to detail ensure every client leaves feeling sharp and confident. A true artisan of the craft, John brings a calm and focused energy to every cut, making him a top barber in Calgary.",
-      specialties: ["Classic Fades", "Beard Trims", "Straight Razor Shaves"],
-      staffId: "STAFF_ID_JOHN", // TODO: Replace with actual Square Staff ID
-      socials: { instagram: "https://instagram.com/johndoe_barber" },
+      bio: "Kenneth is a master of classic barbering techniques, known for his sharp fades and meticulous attention to detail. He ensures every client leaves with a fresh look and a great experience.",
+      specialties: ["Classic Fades", "Hot Shaves", "Traditional Cuts"],
+      staffId: "STAFF_ID_KENNETH", // Placeholder: Replace with actual Square Staff ID for Kenneth
+      socials: { instagram: "https://instagram.com/kenneth_barber" },
       gallery: [
-        { _key: "1", url: "/images/barber-trimming-beard-calgary.jpg", alt: "John Doe performing a precise beard trim at Kith & Kin Barbershop Calgary" },
-        { _key: "2", url: "/images/barber-scissors-haircut-detail.jpg", alt: "Close-up of John Doe's hands expertly cutting hair with scissors for a client" },
-        { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "John Doe styling a client's hair with a comb and product, showcasing his finishing touch" },
+        { _key: "1", url: "/images/barber-trimming-beard-calgary.jpg", alt: "Kenneth performing a precise beard trim at Kith & Kin Barbershop Calgary" },
+        { _key: "2", url: "/images/barber-scissors-haircut-detail.jpg", alt: "Close-up of Kenneth's hands expertly cutting hair with scissors for a client" },
+        { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "Kenneth styling a client's hair with a comb and product, showcasing his finishing touch" },
       ],
-      imageUrl: "/images/barber-trimming-beard-calgary.jpg", // New image for John Doe's profile
+      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Kenneth", // Placeholder image
     },
     {
-      slug: "jane-smith",
-      name: "Jane Smith",
+      slug: "heather",
+      name: "Heather",
       role: "Stylist & Barber",
-      bio: "Jane brings a fresh, modern approach to barbering, excelling in contemporary cuts and hot shaves. Her keen eye for style and commitment to client satisfaction make her a favorite. She loves transforming looks and ensuring a relaxing experience for all clients in Calgary.",
-      specialties: ["Modern Cuts", "Hot Shaves", "Textured Hair"],
-      staffId: "STAFF_ID_JANE", // TODO: Replace with actual Square Staff ID
-      socials: { instagram: "https://instagram.com/janesmith_cuts" },
+      bio: "Heather brings a vibrant and modern touch to Kith & Kin. Specializing in contemporary cuts and creative coloring, she loves helping clients express their unique style.",
+      specialties: ["Modern Cuts", "Creative Coloring", "Textured Hair"],
+      staffId: "STAFF_ID_HEATHER", // Placeholder: Replace with actual Square Staff ID for Heather
+      socials: { instagram: "https://instagram.com/heather_stylist" },
       gallery: [
-        { _key: "1", url: "/images/barber-client-haircut-calgary.jpg", alt: "Jane Smith giving a modern haircut to a client at Kith & Kin Barbershop Calgary" },
-        { _key: "2", url: "/images/layrite-cement-clay-product.jpg", alt: "Layrite Cement Clay, a premium styling product recommended by Jane Smith for high hold and matte finish" },
-        { _key: "3", url: "/images/uppercut-salt-spray-product.jpg", alt: "Uppercut Deluxe Salt Spray, a popular grooming product for texture and volume, used by Jane Smith" },
+        { _key: "1", url: "/images/barber-client-haircut-calgary.jpg", alt: "Heather giving a modern haircut to a client at Kith & Kin Barbershop Calgary" },
+        { _key: "2", url: "/images/layrite-cement-clay-product.jpg", alt: "Layrite Cement Clay, a premium styling product recommended by Heather" },
+        { _key: "3", url: "/images/uppercut-salt-spray-product.jpg", alt: "Uppercut Deluxe Salt Spray, a popular grooming product for texture and volume, used by Heather" },
       ],
-      imageUrl: "/images/barber-client-haircut-calgary.jpg", // New image for Jane Smith's profile
+      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather", // Placeholder image
+    },
+    {
+      slug: "liam",
+      name: "Liam",
+      role: "Senior Barber",
+      bio: "Liam is our expert for longer hair styles and kids' cuts, combining patience with precision. He creates comfortable and enjoyable experiences for clients of all ages.",
+      specialties: ["Long Hair Styling", "Kids Cuts", "Scissor Cuts"],
+      staffId: "STAFF_ID_LIAM", // Placeholder: Replace with actual Square Staff ID for Liam
+      socials: { instagram: "https://instagram.com/liam_barber" },
+      gallery: [
+        { _key: "1", url: "/images/barber-trimming-side-profile.jpg", alt: "Liam giving a haircut to a client at Kith & Kin Barbershop Calgary" },
+        { _key: "2", url: "/images/client-centered-face.jpg", alt: "Client with a fresh haircut by Liam" },
+        { _key: "3", url: "/images/barber-trimming-side-profile-alt.jpg", alt: "Liam carefully trimming a client's side profile" },
+      ],
+      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam", // Placeholder image
+    },
+    {
+      slug: "bojan-el",
+      name: "BOJAN / EL",
+      role: "Barber",
+      bio: "Bojan, also known as EL, is passionate about crafting sharp, clean looks. He excels in precision cuts and beard shaping, ensuring every client leaves with a refined and confident appearance.",
+      specialties: ["Precision Cuts", "Beard Shaping", "Modern Styling"],
+      staffId: "STAFF_ID_BOJAN", // Placeholder: Replace with actual Square Staff ID for Bojan
+      socials: { instagram: "https://instagram.com/bojan_el_barber" },
+      gallery: [
+        { _key: "1", url: "/images/barber-trimming-beard-calgary.jpg", alt: "Bojan performing a beard shaping service" },
+        { _key: "2", url: "/images/barber-client-trim-detail.jpg", alt: "Close-up of Bojan's detailed trimming work" },
+        { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "Bojan styling a client's hair" },
+      ],
+      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan", // Placeholder image
     },
   ];
   return barbers.find((barber) => barber.slug === slug);

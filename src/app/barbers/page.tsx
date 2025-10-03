@@ -9,9 +9,10 @@ export const metadata: Metadata = {
 export default function BarbersPage() {
   // Placeholder data for barbers
   const barbers = [
-    { slug: "john-doe", name: "John Doe", role: "Master Barber", specialties: ["Classic Fades", "Beard Trims"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=John" }, // Updated placeholder color
-    { slug: "jane-smith", name: "Jane Smith", role: "Stylist & Barber", specialties: ["Modern Cuts", "Hot Shaves"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Jane" }, // Updated placeholder color
-    { slug: "peter-jones", name: "Peter Jones", role: "Senior Barber", specialties: ["Long Hair Styling", "Kids Cuts"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Peter" }, // Updated placeholder color
+    { slug: "kenneth", name: "Kenneth", role: "Master Barber", specialties: ["Classic Fades", "Hot Shaves"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Kenneth" },
+    { slug: "heather", name: "Heather", role: "Stylist & Barber", specialties: ["Modern Cuts", "Coloring"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather" },
+    { slug: "liam", name: "Liam", role: "Senior Barber", specialties: ["Long Hair Styling", "Kids Cuts"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam" },
+    { slug: "bojan-el", name: "BOJAN / EL", role: "Barber", specialties: ["Precision Cuts", "Beard Shaping"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan" },
   ];
 
   return (
