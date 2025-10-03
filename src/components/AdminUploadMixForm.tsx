@@ -22,7 +22,7 @@ import { Loader2 } from 'lucide-react';
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac", "audio/flac"];
 
-// Define the schema for form validation, letting Zod infer the output type
+// Define the schema for form validation
 const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
@@ -53,24 +53,26 @@ const uploadMixFormSchema = z.object({
   is_dj_mix: z.boolean().default(true),
 });
 
-// Derive the TypeScript type from the Zod schema
-type UploadMixFormValues = z.infer<typeof uploadMixFormSchema>;
+// Type for the values *before* Zod transformations (for defaultValues)
+type FormInputValues = z.input<typeof uploadMixFormSchema>;
+// Type for the values *after* Zod transformations (for onSubmit)
+type FormOutputValues = z.infer<typeof uploadMixFormSchema>;
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<UploadMixFormValues>({
+  const form = useForm<FormInputValues>({ // Use FormInputValues here
     resolver: zodResolver(uploadMixFormSchema),
     defaultValues: {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: '', // Changed to empty string to match Zod's string input type
+      duration_seconds: '', // This now correctly matches z.string().nullable().optional()
       is_dj_mix: true,
     },
   });
 
-  const onSubmit = async (values: UploadMixFormValues) => {
+  const onSubmit = async (values: FormOutputValues) => { // Use FormOutputValues here
     setIsSubmitting(true);
     const loadingToastId = toast.loading('Uploading track...');
 
@@ -95,7 +97,7 @@ const AdminUploadMixForm: React.FC = () => {
           title: '',
           artist: null,
           audioFile: undefined,
-          duration_seconds: '', // Reset to empty string
+          duration_seconds: '', // Reset to empty string to match FormInputValues
           is_dj_mix: true,
         });
       } else {
