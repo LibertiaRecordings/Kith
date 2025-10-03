@@ -89,8 +89,7 @@ export default function Home() {
               hoverHeight="h-80"
             />
             <InteractiveImageCard
-              src="/images/barber-styling-hair-comb.
-              jpg"
+              src="/images/barber-styling-hair-comb.jpg"
               alt="Skilled barber styling a client's hair with a comb and product, showcasing precision grooming at Kith & Kin Calgary"
               initialHeight="h-64"
               hoverHeight="h-80"
