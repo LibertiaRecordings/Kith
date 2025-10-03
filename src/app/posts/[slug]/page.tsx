@@ -57,7 +57,7 @@ async function getJournalPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const post = await getJournalPostBySlug(params.slug);
 
   if (!post) {
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function JournalPostDetailPage({ params }: { params: { slug: string } }) {
+export default async function JournalPostDetailPage({ params }) {
   const post = await getJournalPostBySlug(params.slug);
 
   if (!post) {

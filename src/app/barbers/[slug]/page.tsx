@@ -79,7 +79,7 @@ async function getBarberBySlug(slug: string) {
   return barbers.find((barber) => barber.slug === slug);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }) {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BarberDetailPage({ params }: { params: { slug: string } }) {
+export default async function BarberDetailPage({ params }) {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
