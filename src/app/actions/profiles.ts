@@ -9,6 +9,14 @@ interface ProfileData {
   avatar_url: string | null;
 }
 
+interface ProfileGetResponse {
+  profile: ProfileData;
+}
+
+interface ErrorResponse {
+  message: string;
+}
+
 interface UpdateProfileParams {
   userId: string;
   first_name?: string | null;
@@ -30,11 +38,11 @@ export async function getProfile(userId: string): Promise<{ success: boolean; da
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = await response.json() as ErrorResponse;
       return { success: false, error: errorData.message || 'Failed to fetch profile.' };
     }
 
-    const data = await response.json();
+    const data = await response.json() as ProfileGetResponse;
     return { success: true, data: data.profile };
   } catch (e: any) {
     console.error('Error fetching profile:', e);
@@ -55,7 +63,7 @@ export async function updateProfile({ userId, first_name, last_name, avatar_url 
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
+      const errorData = await response.json() as ErrorResponse;
       return { success: false, error: errorData.message || 'Failed to update profile.' };
     }
 

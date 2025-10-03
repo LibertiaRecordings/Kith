@@ -1,6 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+// Define interfaces for the Square webhook event structure
+interface SquareBookingSegment {
+  service_variation_name?: string;
+  service_variation_money?: {
+    amount: number;
+    currency: string;
+  };
+}
+
+interface SquareBooking {
+  id: string;
+  customer_id?: string;
+  staff_member_id?: string;
+  start_at?: string;
+  appointment_segments?: SquareBookingSegment[];
+}
+
+interface SquareWebhookObject {
+  booking: SquareBooking;
+}
+
+interface SquareWebhookData {
+  object: SquareWebhookObject;
+}
+
+interface SquareWebhookEvent {
+  event_id: string;
+  type: string;
+  data: SquareWebhookData;
+}
+
 // Initialize a Supabase client for server-side operations (e.g., with service role key)
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -15,7 +46,7 @@ const supabaseAdmin = createClient(
 export async function POST(req: NextRequest) {
   console.log('Received Square webhook event.');
 
-  const event = await req.json(); // Parse body directly as JSON
+  const event = await req.json() as SquareWebhookEvent; // Assert the type of the incoming event
   console.log('Webhook event data:', event);
 
   try {
@@ -25,11 +56,11 @@ export async function POST(req: NextRequest) {
 
       // Extract relevant details
       const bookingId = booking.id;
-      const customerId = booking.customer_id;
-      const staffId = booking.staff_member_id;
+      const customerId = booking.customer_id || null;
+      const staffId = booking.staff_member_id || null;
       const serviceName = booking.appointment_segments?.[0]?.service_variation_name || 'Unknown Service';
-      const serviceValue = booking.appointment_segments?.[0]?.service_variation_money?.amount / 100 || 0; // Convert cents to dollars
-      const bookingTimestamp = booking.start_at; // ISO 8601 format
+      const serviceValue = booking.appointment_segments?.[0]?.service_variation_money?.amount ? booking.appointment_segments[0].service_variation_money.amount / 100 : 0; // Convert cents to dollars
+      const bookingTimestamp = booking.start_at || null; // ISO 8601 format
 
       // Store relevant booking details in Supabase (without hashing customer_id for now)
       const { data, error } = await supabaseAdmin

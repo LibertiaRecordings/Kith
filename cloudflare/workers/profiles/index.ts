@@ -11,6 +11,12 @@ export interface Env {
   AVATARS: R2Bucket;
 }
 
+interface ProfileUpdatePayload {
+  first_name?: string | null;
+  last_name?: string | null;
+  avatar_url?: string | null;
+}
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
@@ -43,7 +49,8 @@ export default {
         case 'PUT':
           // Implement logic to update profile in D1
           try {
-            const { first_name, last_name, avatar_url } = await request.json();
+            const body = await request.json() as ProfileUpdatePayload;
+            const { first_name, last_name, avatar_url } = body;
             const { success } = await env.DB.prepare('UPDATE profiles SET first_name = ?, last_name = ?, avatar_url = ?, updated_at = ? WHERE id = ?')
               .bind(first_name, last_name, avatar_url, new Date().toISOString(), userId)
               .run();
