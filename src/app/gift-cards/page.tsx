@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Gift } from "lucide-react"; // Importing a relevant icon for gift cards
+import { Gift, CreditCard } from "lucide-react"; // Importing CreditCard icon
 
 export const metadata: Metadata = {
   title: "Gift Cards | Kith & Kin Barbershop",
@@ -39,6 +39,7 @@ export default function GiftCardsPage() {
 
         {/* Enhanced Check Gift Card Balance Section */}
         <div className="bg-card rounded-2xl p-8 shadow-ultra-soft flex flex-col items-center text-center border border-muted-foreground/20">
+          <CreditCard className="h-16 w-16 text-primary mb-6" /> {/* Added CreditCard icon */}
           <h2 className="text-3xl font-hero text-foreground mb-4">Check Your Gift Card Balance</h2>
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto text-lg font-body">
             Have a Kith & Kin gift card? Enter its code below to instantly check the current value and status.
