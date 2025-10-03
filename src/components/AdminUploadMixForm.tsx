@@ -27,24 +27,18 @@ const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
-    .instanceof(File)
-    .optional() // It's optional in the UI, so it should be optional in the base schema
-    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Refine to ensure it's present for submission
-    .refine((file) => !file || file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`) // Guard with !file
+    .instanceof(File, { message: 'Invalid file type.' })
+    .optional() // This makes it File | undefined
+    .refine((file) => !file || file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
-      (file) => !file || ACCEPTED_MIME_TYPES.includes(file.type), // Guard with !file
+      (file) => !file || ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
-  duration_seconds: z.preprocess(
-    (val: unknown) => {
-      if (val === '' || val === undefined || val === null) {
-        return null;
-      }
-      const num = Number(val);
-      return isNaN(num) ? null : num;
-    },
-    z.number().int().min(0, { message: 'Duration must be a positive number.' })
-  ).nullable().optional(), // Apply nullable and optional after the number validation
+  duration_seconds: z.coerce.number() // Use z.coerce.number to handle string to number conversion
+    .int("Duration must be an integer.")
+    .min(0, { message: 'Duration must be a positive number.' })
+    .nullable() // Allows null for empty input
+    .optional(), // Allows undefined
   is_dj_mix: z.boolean().default(true),
 });
 
@@ -60,7 +54,7 @@ const AdminUploadMixForm: React.FC = () => {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: null,
+      duration_seconds: null, // This now correctly matches number | null | undefined
       is_dj_mix: true,
     },
   });
@@ -69,7 +63,6 @@ const AdminUploadMixForm: React.FC = () => {
     setIsSubmitting(true);
     const loadingToastId = toast.loading('Uploading track...');
 
-    // The schema's refine ensures audioFile is a File here, but for type safety in runtime
     if (!values.audioFile) {
       toast.error('Audio file is required.', { id: loadingToastId });
       setIsSubmitting(false);
@@ -80,7 +73,7 @@ const AdminUploadMixForm: React.FC = () => {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
-        file: values.audioFile, // Now `values.audioFile` is guaranteed to be `File` by validation
+        file: values.audioFile,
         duration_seconds: values.duration_seconds,
         is_dj_mix: values.is_dj_mix,
       });
