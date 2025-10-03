@@ -23,9 +23,9 @@ export default function PlaylistsPage() {
           style={{ borderRadius: '12px' }}
           src={spotifyPlaylistUrl}
           width="100%"
-          height="352"
+          height="600" {/* Increased height to show more tracks */}
           frameBorder="0"
-          allowFullScreen={true} // Changed to true as 'allowfullscreen=""' implies true
+          allowFullScreen={true}
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
           title="Kith & Kin Staff Picks Spotify Playlist"
