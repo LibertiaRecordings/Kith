@@ -114,7 +114,7 @@
   }
   /* General heading styles for a sleeker look */
   h1, h2, h3 {
-    @apply font-hero tracking-tight font-normal; /* Apply font-hero and its natural weight to h1, h2, h3 */
+    @apply font-hero tracking-tight font-normal uppercase; /* Apply font-hero, normal weight, and uppercase to h1, h2, h3 */
   }
   h4, h5, h6 {
     @apply font-display tracking-tight font-medium; /* Keep font-display for smaller headings, make them medium weight */
