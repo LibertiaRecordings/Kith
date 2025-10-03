@@ -39,7 +39,7 @@ const uploadMixFormSchema = z.object({
   duration_seconds: z.string() // Input from HTML number field is string
     .nullable() // Can be null if input is empty
     .optional(), // Can be undefined if field is not present
-  is_dj_mix: z.boolean().default(true),
+  is_dj_mix: z.boolean().optional(), // Changed to optional to align input/output types for zodResolver
 });
 
 // Type for the values *as they come directly from the form inputs*
@@ -55,7 +55,7 @@ const AdminUploadMixForm: React.FC = () => {
       artist: null,
       audioFile: undefined,
       duration_seconds: '', // This correctly matches z.string().nullable().optional()
-      is_dj_mix: true,
+      is_dj_mix: true, // Default value for the checkbox
     },
   });
 
@@ -98,7 +98,7 @@ const AdminUploadMixForm: React.FC = () => {
         artist: values.artist || null,
         file: values.audioFile,
         duration_seconds: transformedDurationSeconds, // Use the manually transformed value
-        is_dj_mix: values.is_dj_mix,
+        is_dj_mix: values.is_dj_mix ?? true, // Coalesce with true if undefined (checkbox default)
       });
 
       if (result.success) {
@@ -108,7 +108,7 @@ const AdminUploadMixForm: React.FC = () => {
           artist: null,
           audioFile: undefined,
           duration_seconds: '', // Reset to empty string
-          is_dj_mix: true,
+          is_dj_mix: true, // Reset to default checked state
         });
       } else {
         toast.error(result.error || 'Failed to upload track.', { id: loadingToastId });
