@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Percent } from 'lucide-react';
+import { DollarSign } from 'lucide-react'; // Changed from Percent to DollarSign
 
 interface FirstVisitSpecialDialogProps {
   isOpen: boolean;
@@ -16,7 +16,7 @@ const FirstVisitSpecialDialog: React.FC<FirstVisitSpecialDialogProps> = ({ isOpe
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px] bg-card text-foreground p-6 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
         <DialogHeader className="text-center">
-          <Percent className="h-12 w-12 text-primary mx-auto mb-4" />
+          <DollarSign className="h-12 w-12 text-primary mx-auto mb-4" /> {/* Updated icon */}
           <DialogTitle className="text-4xl md:text-5xl font-hero text-foreground">
             20% Off Your First Visit!
           </DialogTitle>
