@@ -4,11 +4,7 @@ import { ArrowLeft, Instagram } from "lucide-react";
 import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
 
-// Define the standard PageProps type for Next.js App Router
-interface PageProps {
-  params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+// Removed PageProps interface as we are inlining the type definitions directly
 
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
@@ -81,7 +77,7 @@ async function getBarberBySlug(slug: string) {
   return barbers.find((barber) => barber.slug === slug);
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
@@ -97,7 +93,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BarberDetailPage({ params }: PageProps) {
+export default async function BarberDetailPage({ params }: { params: { slug: string } }) {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
