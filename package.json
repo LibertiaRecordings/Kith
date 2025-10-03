@@ -10,6 +10,7 @@
     "postinstall": "echo 'Dependencies installed'"
   },
   "dependencies": {
+    "@cloudflare/workers-types": "^4.20251003.0",
     "@google/generative-ai": "^0.24.1",
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.11",

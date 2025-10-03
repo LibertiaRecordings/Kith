@@ -1,3 +1,5 @@
+/// <reference types="@cloudflare/workers-types" />
+
 // cloudflare/workers/profiles/index.ts
 // This is a placeholder for your Cloudflare Worker.
 // You would deploy this Worker to Cloudflare, and it would interact with your D1 database.
