@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/integrations/supabase/server'; // Using the helper
 import { cookies } from 'next/headers';
-import ProfileForm from '@/components/ProfileForm';
+import { ProfileForm } from '@/components/ProfileForm';
 import { getProfile } from '@/app/actions/profiles';
 
 export const metadata: Metadata = {
