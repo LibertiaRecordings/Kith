@@ -47,7 +47,7 @@ export default function GiftCardsPage() {
           <div className="w-full max-w-sm mx-auto bg-background rounded-xl p-4 border border-muted-foreground/30 shadow-inner">
             <iframe
               src={squareGiftCardBalanceCheckerLink}
-              className="w-full h-[250px] rounded-lg border border-muted-foreground/20"
+              className="w-full h-[350px] rounded-lg border border-muted-foreground/20"
               loading="lazy"
               title="Square Gift Card Balance Checker"
             />
