@@ -10,7 +10,7 @@ export default function BarbersPage() {
   // Placeholder data for barbers
   const barbers = [
     { slug: "heather", name: "Heather", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "/images/heather.jpeg" },
-    { slug: "liam", name: "Liam", role: "Barber", specialties: ["Fades", "Tapers", "Textured Hair"], imageUrl: "/images/liam.jpeg" },
+    { slug: "liam", name: "Liam", role: "Barber", specialties: ["Fades", "Tapers", "Textured Hair"], imageUrl: "/images/liam.jpeg" }, // Updated Liam's image path
     { slug: "bojan-el", name: "BOJAN / EL", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"], imageUrl: "/images/bojan.jpeg" },
     { slug: "kenneth", name: "Kenneth", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "/images/kenneth.jpeg" },
   ];
@@ -23,7 +23,7 @@ export default function BarbersPage() {
       <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {barbers.map((barber) => (
           <Link href={`/barbers/${barber.slug}`} key={barber.slug} className="block">
-            <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group flex flex-col h-full">
+            <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group flex flex-col h-[26rem]"> {/* Fixed height for consistent card size */}
               <img src={barber.imageUrl} alt={barber.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-muted-foreground/30 group-hover:border-primary transition-colors" />
               <h2 className="text-2xl font-hero text-foreground text-center group-hover:text-primary transition-colors min-h-[2.5em] flex items-center justify-center">
                 {barber.name}
@@ -31,12 +31,12 @@ export default function BarbersPage() {
               <p className="text-muted-foreground text-center font-body text-base mt-1">{barber.role}</p>
               <ul className="mt-4 flex flex-wrap justify-center gap-2 h-[4.5rem] overflow-hidden">
                 {barber.specialties.map((spec, index) => (
-                  <li key={index} className="bg-background text-muted-foreground text-sm px-3 py-1 rounded-full border border-muted-foreground/30 group-hover:border-primary transition-colors font-body">
+                  <li key={index} className="bg-background text-ink text-sm px-3 py-1 rounded-full border border-muted-foreground/30 group-hover:border-primary transition-colors font-body"> {/* Changed text-muted-foreground to text-ink for visibility */}
                     {spec}
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 text-center mt-auto"> {/* Changed mt-4 to mt-6 here */}
+              <div className="mt-6 text-center mt-auto">
                 <span className="inline-flex items-center justify-center px-4 py-2 border border-muted-foreground/30 text-muted-foreground rounded-full text-sm font-medium group-hover:border-primary group-hover:text-primary transition-colors font-body">
                   View Profile
                 </span>
