@@ -9,7 +9,7 @@ import FloatingBookButton from "@/components/FloatingBookButton";
 import { RadioPlayerProvider } from "@/components/radio/RadioPlayerProvider";
 import RadioStationSheet from "@/components/radio/RadioStationSheet";
 import GoogleTagManager from "@/components/GoogleTagManager";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
+import { QueryProvider } from '@/components/QueryProvider'; // Import the new QueryProvider
 
 const inter = Inter({
   variable: "--font-body",
@@ -63,9 +63,6 @@ const organizationSchema = {
 
 const organizationSchemaString = JSON.stringify(organizationSchema);
 
-// Create a client for TanStack Query
-const queryClient = new QueryClient();
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,7 +91,7 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <GoogleTagManager gtmId={gtmId} />
-        <QueryClientProvider client={queryClient}> {/* Wrap with QueryClientProvider */}
+        <QueryProvider> {/* Use the new QueryProvider here */}
           <SessionContextProvider>
             <RadioPlayerProvider>
               <Navbar />
@@ -104,7 +101,7 @@ export default function RootLayout({
               <RadioStationSheet />
             </RadioPlayerProvider>
           </SessionContextProvider>
-        </QueryClientProvider>
+        </QueryProvider>
       </body>
     </html>
   );
