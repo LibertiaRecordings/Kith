@@ -22,17 +22,8 @@ import { Loader2 } from 'lucide-react';
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac", "audio/flac"];
 
-// Explicitly define the type for form values to ensure consistency with defaultValues
-type UploadMixFormValues = {
-  title: string;
-  artist?: string | null;
-  audioFile?: File; // This matches the optional() in the schema and defaultValues
-  duration_seconds?: number | null;
-  is_dj_mix: boolean;
-};
-
-// Define the schema for form validation, explicitly typing it with UploadMixFormValues
-const uploadMixFormSchema: z.ZodType<UploadMixFormValues> = z.object({
+// Define the schema for form validation, letting Zod infer the output type
+const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
@@ -46,16 +37,19 @@ const uploadMixFormSchema: z.ZodType<UploadMixFormValues> = z.object({
     ),
   duration_seconds: z.preprocess(
     (val: unknown) => {
-      if (val === '' || val === undefined) {
+      if (val === '' || val === undefined || val === null) {
         return null;
       }
       const num = Number(val);
       return isNaN(num) ? null : num;
     },
-    z.union([z.number().int().min(0, { message: 'Duration must be a positive number.' }), z.literal(null)])
-  ).optional(),
+    z.number().int().min(0, { message: 'Duration must be a positive number.' })
+  ).nullable().optional(), // Apply nullable and optional after the number validation
   is_dj_mix: z.boolean().default(true),
 });
+
+// Derive the TypeScript type from the Zod schema
+type UploadMixFormValues = z.infer<typeof uploadMixFormSchema>;
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -65,7 +59,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: null,
-      audioFile: undefined, // This correctly matches `File | undefined` from the schema
+      audioFile: undefined,
       duration_seconds: null,
       is_dj_mix: true,
     },
