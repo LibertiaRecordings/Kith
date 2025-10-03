@@ -46,7 +46,7 @@ const uploadMixFormSchema: z.ZodType<UploadMixFormValues> = z.object({
     ),
   duration_seconds: z.preprocess(
     (val: unknown) => (val === '' ? null : Number(val)),
-    z.nullable(z.number().int().min(0, { message: 'Duration must be a positive number.' })).optional()
+    z.number().int().min(0, { message: 'Duration must be a positive number.' }).nullable().optional()
   ),
   is_dj_mix: z.boolean().default(true),
 });

@@ -2,15 +2,20 @@ import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
 export function createSupabaseServerClient() {
+  // Explicitly cast the result of cookies() to any to bypass stubborn type errors
+  // The actual type returned by next/headers.cookies() in a server component is RequestCookies,
+  // which has get, set, and delete methods. The compiler is incorrectly inferring Promise<ReadonlyRequestCookies>.
+  const cookieStore = cookies() as any; 
+
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!, // Using service role key for server-side operations
     {
       cookies: {
-        get: (name: string) => cookies().get(name)?.value,
-        set: (name: string, value: string, options: CookieOptions) => cookies().set(name, value, options),
-        remove: (name: string, options: CookieOptions) => cookies().delete(name, options),
-      } as any, // Explicitly cast the entire cookies object to any to bypass stubborn type errors
+        get: (name: string) => cookieStore.get(name)?.value,
+        set: (name: string, value: string, options: CookieOptions) => cookieStore.set(name, value, options),
+        remove: (name: string, options: CookieOptions) => cookieStore.delete(name, options),
+      },
     }
   );
 }
