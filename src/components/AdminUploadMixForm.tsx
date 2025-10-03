@@ -40,7 +40,14 @@ const uploadMixFormSchema = z.object({
   is_dj_mix: z.boolean().default(true),
 });
 
-type UploadMixFormValues = z.infer<typeof uploadMixFormSchema>;
+// Explicitly define the type for form values to ensure audioFile is always a File after validation
+type UploadMixFormValues = {
+  title: string;
+  artist?: string | null;
+  audioFile: File; // This is explicitly set to File
+  duration_seconds?: number | null;
+  is_dj_mix: boolean;
+};
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +57,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: '',
-      audioFile: undefined, // Explicitly undefined to match z.union initial state
+      audioFile: undefined as any, // Cast to any for defaultValues, as it's not a File initially
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -64,7 +71,7 @@ const AdminUploadMixForm: React.FC = () => {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
-        file: values.audioFile as File, // Cast to File as schema ensures it's a File at this point
+        file: values.audioFile, // Now `values.audioFile` is typed as `File`
         duration_seconds: values.duration_seconds,
         is_dj_mix: values.is_dj_mix,
       });
@@ -74,7 +81,7 @@ const AdminUploadMixForm: React.FC = () => {
         form.reset({ // Reset with initial default values
           title: '',
           artist: '',
-          audioFile: undefined,
+          audioFile: undefined as any, // Reset with undefined as any
           duration_seconds: null,
           is_dj_mix: true,
         });
