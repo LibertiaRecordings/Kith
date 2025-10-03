@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from 'next/navigation';
-import { createSupabaseServerClient } from '@/integrations/supabase/server'; // Using the helper
-import { cookies } from 'next/headers';
+import { cookies } from 'next/headers'; // Still needed for potential Cloudflare session management
 import { ProfileForm } from '@/components/ProfileForm';
 import { getProfile } from '@/app/actions/profiles';
 
@@ -11,18 +10,19 @@ export const metadata: Metadata = {
 };
 
 export default async function ProfilePage() {
-  const supabase = createSupabaseServerClient(); // Using the helper function
-  const { data: { session } } = await supabase.auth.getSession();
+  // TODO: Implement Cloudflare authentication and session management here.
+  // For now, we'll use a dummy userId and redirect if no session is conceptually present.
+  const dummySessionExists = true; // Replace with actual Cloudflare session check
+  const dummyUserId = 'user_123abc'; // Replace with actual user ID from Cloudflare auth
 
-  if (!session) {
+  if (!dummySessionExists) {
     redirect('/login'); // Redirect unauthenticated users to login
   }
 
-  const { data: profileData, error } = await getProfile(session.user.id);
+  const { data: profileData, error } = await getProfile(dummyUserId);
 
   if (error || !profileData) {
     console.error('Failed to load profile data:', error);
-    // Handle error, maybe show a message or redirect
     return (
       <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground text-center">
         <h1 className="text-4xl md:text-5xl tracking-tight text-foreground">Profile</h1>
@@ -37,7 +37,7 @@ export default async function ProfilePage() {
       <p className="mt-3 text-muted-foreground font-body text-lg text-center max-w-2xl mx-auto">Update your personal information.</p>
 
       <section className="mt-12 max-w-md mx-auto bg-card rounded-2xl p-8 shadow-ultra-soft">
-        <ProfileForm initialData={profileData} userId={session.user.id} />
+        <ProfileForm initialData={profileData} userId={dummyUserId} />
       </section>
     </main>
   );

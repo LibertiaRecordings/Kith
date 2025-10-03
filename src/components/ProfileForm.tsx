@@ -50,10 +50,8 @@ export function ProfileForm({ initialData, userId }: ProfileFormProps) {
       toast.success('Profile updated successfully!');
       router.refresh(); // Refresh the page to show updated data
     } else {
-      // Safely access error message
-      const errorMessage = typeof result.error === 'string'
-        ? result.error
-        : (result.error as { message?: string })?.message || 'Failed to update profile.';
+      // Safely access error message from the placeholder function's return type
+      const errorMessage = result.error || 'Failed to update profile.';
       toast.error(errorMessage);
     }
   }
