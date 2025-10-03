@@ -43,12 +43,7 @@ const CHANNELS: RadioChannel[] = [
     youtubePlaylistId: 'RDLcN8QINjvWM',
     embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDLcN8QINjvWM&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
-  {
-    id: 'classic-hip-hop-channel',
-    name: 'Classic Hip-Hop',
-    youtubePlaylistId: 'RDK6_FNO0aTso',
-    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDK6_FNO0aTso&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
-  },
+  // Removed 'classic-hip-hop-channel' as requested
 ];
 
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
@@ -133,8 +128,8 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
         play,
         pause,
         nextChannel,
-        toggleSheet,
         isSheetOpen,
+        toggleSheet,
         isLoadingChannel,
       }}
     >
