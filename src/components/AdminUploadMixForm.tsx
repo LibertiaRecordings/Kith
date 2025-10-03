@@ -27,11 +27,12 @@ const uploadMixFormSchema = z.object({
   artist: z.string().nullable().optional(),
   audioFile: z
     .instanceof(File)
-    .optional() // Make it optional in the schema first
-    .refine((file): file is File => file !== undefined, { message: 'Audio file is required.' }) // Then refine to ensure it's present
-    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
+    .nullable() // Allow null
+    .optional() // Allow undefined
+    .refine((file): file is File => file !== undefined && file !== null, { message: 'Audio file is required.' }) // Refine to ensure it's present and a File
+    .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
-      (file) => ACCEPTED_MIME_TYPES.includes(file.type),
+      (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(
@@ -51,7 +52,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: null,
-      audioFile: undefined, // This now correctly matches `File | undefined` from the schema
+      audioFile: undefined, // This now correctly matches `File | null | undefined` from the schema
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -72,7 +73,7 @@ const AdminUploadMixForm: React.FC = () => {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
-        file: values.audioFile,
+        file: values.audioFile, // Now `values.audioFile` is guaranteed to be `File` by validation
         duration_seconds: values.duration_seconds,
         is_dj_mix: values.is_dj_mix,
       });
