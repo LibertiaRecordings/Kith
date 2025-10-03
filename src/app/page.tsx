@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import HeroVideoBackground from "@/components/HeroVideoBackground";
 import ReviewCard from "@/components/ReviewCard";
+import RadioAccessButton from "@/components/RadioAccessButton"; // Import the new component
 
 export default function Home() {
   const reviews = [
@@ -101,6 +102,7 @@ export default function Home() {
               />
             </div>
           </div>
+          <RadioAccessButton /> {/* New radio access button */}
         </section>
 
         {/* What Our Clients Say section */}
