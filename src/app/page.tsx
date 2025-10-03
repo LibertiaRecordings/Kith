@@ -3,7 +3,8 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import HeroVideoBackground from "@/components/HeroVideoBackground";
 import ReviewCard from "@/components/ReviewCard";
-import RadioAccessButton from "@/components/RadioAccessButton"; // Import the new component
+import RadioAccessButton from "@/components/RadioAccessButton";
+import InteractiveImageCard from "@/components/InteractiveImageCard"; // Import the new component
 
 export default function Home() {
   const reviews = [
@@ -29,18 +30,15 @@ export default function Home() {
     },
   ];
 
-  // Common image classes for the black and white, analog feel
-  const imageClasses = "object-cover grayscale contrast-125 transition-transform duration-300 ease-in-out hover:scale-105";
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <HeroVideoBackground
         videoSrc="https://kithkin.family/assets/videos/video01.mp4"
-        fallbackImageSrc="/images/barber-client-haircut-calgary.jpg" // New high-quality image for hero fallback
+        fallbackImageSrc="/images/barber-client-haircut-calgary.jpg"
       >
         <main className="flex flex-col gap-8 items-center text-center p-8 pb-20 sm:p-20 w-full max-w-7xl mx-auto">
           <section className="hero-section max-w-4xl mx-auto text-paper">
-            <h1 className="text-6xl md:text-8xl font-hero tracking-tight leading-none uppercase"> {/* Applied font-hero and adjusted size */}
+            <h1 className="text-6xl md:text-8xl font-hero tracking-tight leading-none uppercase">
               Crafted Cuts. <br className="block" /><span className="text-primary">Community Roots.</span>
             </h1>
             <p className="mt-6 text-xl text-paper/90 max-w-2xl mx-auto font-body leading-relaxed">
@@ -79,28 +77,20 @@ export default function Home() {
           <h2 className="text-4xl font-hero text-foreground">The Kith & Kin Experience</h2>
           <p className="mt-4 text-muted-foreground text-lg font-body">More than a haircut, it's a ritual in Calgary.</p>
           
-          {/* New "Our Space" section with shop photos */}
+          {/* "Our Space" section with InteractiveImageCard */}
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 aspect-video">
-              <Image
-                src="/images/barber-scissors-haircut-detail.jpg" // New image
-                alt="Close-up of a barber's hands meticulously cutting hair with scissors at Kith & Kin Barbershop, Calgary"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="transition-transform duration-300 ease-in-out hover:scale-105"
-              />
-            </div>
-            <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 aspect-video">
-              <Image
-                src="/images/barber-styling-hair-comb.jpg" // New image
-                alt="Skilled barber styling a client's hair with a comb and product, showcasing precision grooming at Kith & Kin Calgary"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="transition-transform duration-300 ease-in-out hover:scale-105"
-              />
-            </div>
+            <InteractiveImageCard
+              src="/images/barber-scissors-haircut-detail.jpg"
+              alt="Close-up of a barber's hands meticulously cutting hair with scissors at Kith & Kin Barbershop, Calgary"
+              initialHeight="h-64"
+              hoverHeight="h-80"
+            />
+            <InteractiveImageCard
+              src="/images/barber-styling-hair-comb.jpg"
+              alt="Skilled barber styling a client's hair with a comb and product, showcasing precision grooming at Kith & Kin Calgary"
+              initialHeight="h-64"
+              hoverHeight="h-80"
+            />
           </div>
         </section>
 
@@ -125,39 +115,21 @@ export default function Home() {
           </div>
         </section>
 
-        {/* New Sleek Minimalistic Gallery */}
+        {/* New Sleek Minimalistic Gallery with InteractiveImageCard */}
         <section className="mt-16 w-full max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-              <Image
-                src="/images/barber-trimming-side-profile-new.jpg"
-                alt="Close-up of a barber meticulously trimming a client's hair, showcasing precision and attention to detail in a black and white analog style."
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className={`${imageClasses}`}
-              />
-            </div>
-            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-              <Image
-                src="/images/client-centered-face.jpg"
-                alt="Client with a fresh haircut looking directly at the camera, showcasing a clean and confident look in a black and white analog style."
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className={`${imageClasses}`}
-              />
-            </div>
-            <div className="relative w-full h-64 rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30">
-              <Image
-                src="/images/barber-trimming-side-profile-alt.jpg"
-                alt="Barber carefully trimming a client's side profile, highlighting the focused craftsmanship and clean lines in a black and white analog style."
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className={`${imageClasses}`}
-              />
-            </div>
+            <InteractiveImageCard
+              src="/images/barber-trimming-side-profile-new.jpg"
+              alt="Close-up of a barber meticulously trimming a client's hair, showcasing precision and attention to detail in a black and white analog style."
+            />
+            <InteractiveImageCard
+              src="/images/client-centered-face.jpg"
+              alt="Client with a fresh haircut looking directly at the camera, showcasing a clean and confident look in a black and white analog style."
+            />
+            <InteractiveImageCard
+              src="/images/barber-trimming-side-profile-alt.jpg"
+              alt="Barber carefully trimming a client's side profile, highlighting the focused craftsmanship and clean lines in a black and white analog style."
+            />
           </div>
         </section>
       </div>
