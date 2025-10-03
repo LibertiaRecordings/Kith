@@ -26,14 +26,16 @@ const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
-    .instanceof(File, { message: 'Audio file is required.' }) // Directly enforce File type and required
+    .instanceof(File)
+    .optional() // Make it optional in the schema first
+    .refine((file): file is File => file !== undefined, { message: 'Audio file is required.' }) // Then refine to ensure it's present
     .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
       (file) => ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(
-    (val) => (val === '' ? null : Number(val)),
+    (val: unknown) => (val === '' ? null : Number(val)),
     z.nullable(z.number().int().min(0, { message: 'Duration must be a positive number.' })).optional()
   ),
   is_dj_mix: z.boolean().default(true),
@@ -49,7 +51,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: null,
-      audioFile: undefined, // Still undefined initially for file input
+      audioFile: undefined, // This now correctly matches `File | undefined` from the schema
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -58,6 +60,13 @@ const AdminUploadMixForm: React.FC = () => {
   const onSubmit = async (values: UploadMixFormValues) => {
     setIsSubmitting(true);
     const loadingToastId = toast.loading('Uploading track...');
+
+    // The schema's refine ensures audioFile is a File here, but for type safety in runtime
+    if (!values.audioFile) {
+      toast.error('Audio file is required.', { id: loadingToastId });
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const result = await uploadRadioTrack({

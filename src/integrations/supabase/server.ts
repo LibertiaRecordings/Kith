@@ -7,7 +7,9 @@ export function createSupabaseServerClient() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!, // Using service role key for server-side operations
     {
       cookies: {
-        get: (name: string) => cookies().get(name)?.value,
+        get: (name: string) => {
+          return cookies().get(name)?.value;
+        },
         set: (name: string, value: string, options: CookieOptions) => {
           cookies().set(name, value, options);
         },
