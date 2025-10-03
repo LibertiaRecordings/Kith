@@ -163,7 +163,10 @@ export default function ServicesPage() {
               </div>
             )}
 
-            <Link href={service.ctaLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto">
+            <Link 
+              href={`/book?bookingUrl=${encodeURIComponent(service.ctaLink)}`} 
+              className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary mt-auto"
+            >
               Book {service.name}
             </Link>
           </div>

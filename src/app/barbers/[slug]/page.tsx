@@ -76,8 +76,9 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
     );
   }
 
-  // Deep-link to Square Appointments for this specific staff member
-  const squareBookingLink = `https://kithkinco.square.site/s/appointments`; // Updated base URL
+  // Construct the Square booking link for this specific staff member
+  // Assuming Square Appointments supports staff_id parameter for direct booking
+  const squareBookingLink = `https://kithkinco.square.site/s/appointments?staff_id=${barber.staffId}`;
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
@@ -93,7 +94,10 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           <h1 className="text-4xl font-hero tracking-tight text-foreground mt-6">{barber.name}</h1>
           <p className="text-muted-foreground font-body text-lg mt-1">{barber.role} in Calgary</p>
 
-          <Link href={squareBookingLink} target="_blank" rel="noopener noreferrer" className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+          <Link 
+            href={`/book?bookingUrl=${encodeURIComponent(squareBookingLink)}`} 
+            className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
             Book with {barber.name}
           </Link>
 
