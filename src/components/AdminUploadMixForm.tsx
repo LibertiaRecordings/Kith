@@ -53,21 +53,19 @@ const uploadMixFormSchema = z.object({
   is_dj_mix: z.boolean().default(true),
 });
 
-// Type for the values *before* Zod transformations (for defaultValues)
-type FormInputValues = z.input<typeof uploadMixFormSchema>;
-// Type for the values *after* Zod transformations (for onSubmit)
+// Type for the values *after* Zod transformations (for onSubmit and useForm generic)
 type FormOutputValues = z.infer<typeof uploadMixFormSchema>;
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<FormInputValues>({ // Use FormInputValues here
+  const form = useForm<FormOutputValues>({ // Use FormOutputValues here
     resolver: zodResolver(uploadMixFormSchema),
     defaultValues: {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: '', // This now correctly matches z.string().nullable().optional()
+      duration_seconds: null, // Changed to null to match FormOutputValues (number | null)
       is_dj_mix: true,
     },
   });
@@ -97,7 +95,7 @@ const AdminUploadMixForm: React.FC = () => {
           title: '',
           artist: null,
           audioFile: undefined,
-          duration_seconds: '', // Reset to empty string to match FormInputValues
+          duration_seconds: null, // Reset to null
           is_dj_mix: true,
         });
       } else {
