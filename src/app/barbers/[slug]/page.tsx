@@ -5,11 +5,7 @@ import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
 import BarberGallery from "@/components/BarberGallery"; // Import the new client component
 
-// Define the expected PageProps structure for this dynamic route
-type PageProps = {
-  params: { slug: string };
-  // searchParams?: { [key: string]: string | string[] | undefined }; // Removed as not currently used
-};
+// Removed: type PageProps = { params: { slug: string }; };
 
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
