@@ -54,7 +54,7 @@ async function getBarberBySlug(slug: string) {
         { _key: "2", url: "/images/client-centered-face.jpg", alt: "Client with a fresh haircut by Liam" },
         { _key: "3", url: "/images/barber-trimming-side-profile-alt.jpg", alt: "Liam carefully trimming a client's side profile" },
       ],
-      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam", // Placeholder image
+      imageUrl: "/images/liam.jpeg", // Updated image path
     },
     {
       slug: "bojan-el",
