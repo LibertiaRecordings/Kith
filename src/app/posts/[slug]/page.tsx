@@ -6,7 +6,7 @@ import Image from "next/image"; // Import Image component
 // Define the expected PageProps structure for this dynamic route
 type PageProps = {
   params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Removed as not currently used
 };
 
 // Placeholder function to fetch journal post data

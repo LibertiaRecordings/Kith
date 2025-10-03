@@ -8,7 +8,7 @@ import BarberGallery from "@/components/BarberGallery"; // Import the new client
 // Define the expected PageProps structure for this dynamic route
 type PageProps = {
   params: { slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // searchParams?: { [key: string]: string | string[] | undefined }; // Removed as not currently used
 };
 
 // Placeholder function to fetch barber data
