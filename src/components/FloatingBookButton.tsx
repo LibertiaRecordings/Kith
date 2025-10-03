@@ -56,7 +56,7 @@ const FloatingBookButton = () => {
       <Link href="/book" passHref>
         <Button
           className="flex items-center gap-2 px-6 py-3 rounded-full shadow-lg bg-primary text-primary-foreground text-lg font-medium can-animate hover:bg-primary/90 transition-all duration-200 ease-in-out"
-          size={isMobile ? "lg" : "xl"}
+          size={isMobile ? "lg" : "lg"} {/* Changed "xl" to "lg" */}
         >
           <CalendarDays className="h-5 w-5" />
           Book Now

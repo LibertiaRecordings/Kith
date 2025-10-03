@@ -26,13 +26,12 @@ const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().optional().or(z.literal('')),
   audioFile: z
-    .any()
-    .refine((file) => file?.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
+    .instanceof(File, { message: 'Audio file is required.' }) // Use instanceof File for better type safety
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
-      (file) => ACCEPTED_MIME_TYPES.includes(file?.type),
+      (file) => ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
-    )
-    .refine((file) => file instanceof File, { message: 'Audio file is required.' }),
+    ),
   duration_seconds: z.preprocess(
     (val) => (val === '' ? null : Number(val)),
     z.nullable(z.number().int().min(0, { message: 'Duration must be a positive number.' })).optional()
@@ -50,6 +49,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: '',
+      audioFile: undefined, // File input should be undefined initially
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -70,7 +70,13 @@ const AdminUploadMixForm: React.FC = () => {
 
       if (result.success) {
         toast.success('Track uploaded successfully!', { id: loadingToastId });
-        form.reset(); // Clear the form
+        form.reset({ // Reset with initial default values
+          title: '',
+          artist: '',
+          audioFile: undefined,
+          duration_seconds: null,
+          is_dj_mix: true,
+        });
       } else {
         toast.error(result.error || 'Failed to upload track.', { id: loadingToastId });
       }
@@ -140,7 +146,13 @@ const AdminUploadMixForm: React.FC = () => {
             <FormItem>
               <FormLabel className="text-foreground font-body text-base">Duration in Seconds (Optional)</FormLabel>
               <FormControl>
-                <Input type="number" placeholder="e.g., 300" className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary" {...field} />
+                <Input
+                  type="number"
+                  placeholder="e.g., 300"
+                  className="bg-background border-muted-foreground/30 text-foreground focus:ring-primary"
+                  {...field}
+                  value={field.value === null ? '' : field.value} // Convert null to empty string for input value
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
