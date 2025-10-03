@@ -1,10 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Instagram } from "lucide-react"; // Import Instagram icon
+import { ArrowLeft, Instagram } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button"; // Import Button component
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"; // Import Dialog components
-import { useState } from "react"; // Import useState for dialog state
+import BarberBookingDialog from "@/components/BarberBookingDialog"; // Import the new client component
 
 interface BarberDetailPageProps {
   params: { slug: string };
@@ -99,7 +97,6 @@ export async function generateMetadata({ params }: BarberDetailPageProps): Promi
 
 export default async function BarberDetailPage({ params }: BarberDetailPageProps) {
   const barber = await getBarberBySlug(params.slug);
-  const [isBookingDialogOpen, setIsBookingDialogOpen] = useState(false); // State for dialog
 
   if (!barber) {
     return (
@@ -130,12 +127,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           <h1 className="text-4xl font-hero tracking-tight text-foreground mt-6">{barber.name}</h1>
           <p className="text-muted-foreground font-body text-lg mt-1">{barber.role} in Calgary</p>
 
-          <Button 
-            onClick={() => setIsBookingDialogOpen(true)}
-            className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          >
-            Book with {barber.name}
-          </Button>
+          <BarberBookingDialog barberName={barber.name} squareBookingLink={squareBookingLink} />
 
           {barber.socials.instagram && (
             <Link href={barber.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary font-body">
@@ -171,23 +163,6 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           )}
         </div>
       </div>
-
-      {/* Booking Dialog */}
-      <Dialog open={isBookingDialogOpen} onOpenChange={setIsBookingDialogOpen}>
-        <DialogContent className="sm:max-w-[90vw] max-h-[90vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
-          <DialogHeader className="p-6 pb-0">
-            <DialogTitle className="text-3xl font-hero text-foreground">Book with {barber.name}</DialogTitle>
-          </DialogHeader>
-          <div className="flex-grow p-6 pt-0 overflow-hidden">
-            <iframe
-              src={squareBookingLink}
-              className="w-full h-full rounded-xl border border-muted-foreground/30"
-              loading="lazy"
-              title={`Book an appointment with ${barber.name}`}
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
     </main>
   );
 }
