@@ -1,30 +1,31 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono, Montserrat, Archivo_Black } from "next/font/google"; // Import Montserrat and Archivo_Black
-import Script from "next/script"; // Keep Script for GTM
+import { Inter, IBM_Plex_Mono, Montserrat, Archivo_Black } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import FloatingBookButton from "@/components/FloatingBookButton";
-import { RadioPlayerProvider } from "@/components/radio/RadioPlayerProvider"; // Import RadioPlayerProvider
-import RadioStationSheet from "@/components/radio/RadioStationSheet"; // Import RadioStationSheet
-import GoogleTagManager from "@/components/GoogleTagManager"; // Import the new GTM component
+import { RadioPlayerProvider } from "@/components/radio/RadioPlayerProvider";
+import RadioStationSheet from "@/components/radio/RadioStationSheet";
+import GoogleTagManager from "@/components/GoogleTagManager";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import QueryClient and QueryClientProvider
 
 const inter = Inter({
-  variable: "--font-body", // Assign Inter to --font-body
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat({ // Define Montserrat for general display
+const montserrat = Montserrat({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
 });
 
-const archivoBlack = Archivo_Black({ // Define Archivo Black for hero text
+const archivoBlack = Archivo_Black({
   variable: "--font-hero",
   subsets: ["latin"],
-  weight: ["400"], // Archivo Black is inherently bold, so we only need one weight
+  weight: ["400"],
   display: "swap",
 });
 
@@ -39,7 +40,6 @@ export const metadata: Metadata = {
   description: "Where precision meets kinship. Calgary's premium barbershop experience.",
 };
 
-// Define the organization schema directly in the layout file
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Barbershop",
@@ -63,17 +63,19 @@ const organizationSchema = {
 
 const organizationSchemaString = JSON.stringify(organizationSchema);
 
+// Create a client for TanStack Query
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'; // Use environment variable for GTM ID
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX';
 
   return (
     <html lang="en">
       <head>
-        {/* Organization JSON-LD Schema using a standard script tag */}
         <script
           id="json-ld-organization"
           type="application/ld+json"
@@ -83,7 +85,6 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} ${archivoBlack.variable} antialiased font-body bg-background text-foreground`}
       >
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
@@ -92,17 +93,18 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        {/* Google Tag Manager component */}
         <GoogleTagManager gtmId={gtmId} />
-        <SessionContextProvider>
-          <RadioPlayerProvider> {/* Wrap with RadioPlayerProvider */}
-            <Navbar />
-            {children}
-            <Footer />
-            <FloatingBookButton />
-            <RadioStationSheet /> {/* Include the RadioStationSheet */}
-          </RadioPlayerProvider>
-        </SessionContextProvider>
+        <QueryClientProvider client={queryClient}> {/* Wrap with QueryClientProvider */}
+          <SessionContextProvider>
+            <RadioPlayerProvider>
+              <Navbar />
+              {children}
+              <Footer />
+              <FloatingBookButton />
+              <RadioStationSheet />
+            </RadioPlayerProvider>
+          </SessionContextProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
