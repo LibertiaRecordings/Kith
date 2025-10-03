@@ -9,7 +9,6 @@ import FloatingBookButton from "@/components/FloatingBookButton";
 import { RadioPlayerProvider } from "@/components/radio/RadioPlayerProvider";
 import RadioStationSheet from "@/components/radio/RadioStationSheet";
 import GoogleTagManager from "@/components/GoogleTagManager";
-import { QueryProvider } from '@/components/QueryProvider'; // Import the new QueryProvider
 
 const inter = Inter({
   variable: "--font-body",
@@ -91,7 +90,6 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <GoogleTagManager gtmId={gtmId} />
-        <QueryProvider> {/* Use the new QueryProvider here */}
           <SessionContextProvider>
             <RadioPlayerProvider>
               <Navbar />
@@ -101,7 +99,6 @@ export default function RootLayout({
               <RadioStationSheet />
             </RadioPlayerProvider>
           </SessionContextProvider>
-        </QueryProvider>
       </body>
     </html>
   );
