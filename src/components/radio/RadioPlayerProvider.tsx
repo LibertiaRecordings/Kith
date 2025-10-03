@@ -29,7 +29,8 @@ const CHANNELS: RadioChannel[] = [
     id: 'dance-channel',
     name: 'Electronic / Dance',
     youtubePlaylistId: 'RDl_7rlC_L4Rk', // From the user's provided URL
-    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDl_7rlC_L4Rk&autoplay=1&loop=1&controls=1&modestbranding=1&rel=0',
+    // Updated embedUrl to hide controls, branding, and prevent fullscreen/keyboard controls
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDl_7rlC_L4Rk&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
   // Add more channels here if needed in the future
 ];

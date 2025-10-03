@@ -29,7 +29,7 @@ const RadioStationSheet = () => {
             </div>
           ) : currentChannel && isPlaying ? (
             <>
-              <div className="relative w-full aspect-video mb-6 rounded-lg overflow-hidden border border-muted-foreground/30">
+              <div className="relative w-0 h-0 opacity-0 overflow-hidden"> {/* Visually hide the iframe */}
                 {/* YouTube iframe for the dance channel */}
                 <iframe
                   key={youtubeIframeKey} // Key to force re-render on channel change or play/pause toggle
