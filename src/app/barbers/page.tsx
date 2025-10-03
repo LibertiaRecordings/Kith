@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 export default function BarbersPage() {
   // Placeholder data for barbers
   const barbers = [
-    { slug: "kenneth", name: "Kenneth", role: "Master Barber", specialties: ["Classic Fades", "Hot Shaves"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Kenneth" },
-    { slug: "heather", name: "Heather", role: "Stylist & Barber", specialties: ["Modern Cuts", "Coloring"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather" },
-    { slug: "liam", name: "Liam", role: "Senior Barber", specialties: ["Long Hair Styling", "Kids Cuts"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam" },
-    { slug: "bojan-el", name: "BOJAN / EL", role: "Barber", specialties: ["Precision Cuts", "Beard Shaping"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan" },
+    { slug: "kenneth", name: "Kenneth", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Kenneth" },
+    { slug: "heather", name: "Heather", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather" },
+    { slug: "liam", name: "Liam", role: "Barber", specialties: ["Fades", "Tapers", "Textured Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam" },
+    { slug: "bojan-el", name: "BOJAN / EL", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan" },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function BarbersPage() {
       <h1 className="text-4xl md:text-5xl tracking-tight text-foreground">Our Barbers</h1>
       <p className="mt-3 text-muted-foreground font-body text-lg">Meet the hands behind the precision.</p>
 
-      <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {barbers.map((barber) => (
           <Link href={`/barbers/${barber.slug}`} key={barber.slug} className="block">
             <div className="bg-card rounded-2xl p-6 shadow-ultra-soft can-animate group">

@@ -14,9 +14,9 @@ async function getBarberBySlug(slug: string) {
     {
       slug: "kenneth",
       name: "Kenneth",
-      role: "Master Barber",
+      role: "Senior Barber",
       bio: "Kenneth is a master of classic barbering techniques, known for his sharp fades and meticulous attention to detail. He ensures every client leaves with a fresh look and a great experience.",
-      specialties: ["Classic Fades", "Hot Shaves", "Traditional Cuts"],
+      specialties: ["Scissor Cuts", "Fades", "Textured Hair"],
       staffId: "STAFF_ID_KENNETH", // Placeholder: Replace with actual Square Staff ID for Kenneth
       socials: { instagram: "https://instagram.com/kenneth_barber" },
       gallery: [
@@ -29,9 +29,9 @@ async function getBarberBySlug(slug: string) {
     {
       slug: "heather",
       name: "Heather",
-      role: "Stylist & Barber",
+      role: "Senior Barber",
       bio: "Heather brings a vibrant and modern touch to Kith & Kin. Specializing in contemporary cuts and creative coloring, she loves helping clients express their unique style.",
-      specialties: ["Modern Cuts", "Creative Coloring", "Textured Hair"],
+      specialties: ["Scissor Cuts", "Fades", "Textured Hair"],
       staffId: "STAFF_ID_HEATHER", // Placeholder: Replace with actual Square Staff ID for Heather
       socials: { instagram: "https://instagram.com/heather_stylist" },
       gallery: [
@@ -44,9 +44,9 @@ async function getBarberBySlug(slug: string) {
     {
       slug: "liam",
       name: "Liam",
-      role: "Senior Barber",
+      role: "Barber",
       bio: "Liam is our expert for longer hair styles and kids' cuts, combining patience with precision. He creates comfortable and enjoyable experiences for clients of all ages.",
-      specialties: ["Long Hair Styling", "Kids Cuts", "Scissor Cuts"],
+      specialties: ["Fades", "Tapers", "Textured Hair"],
       staffId: "STAFF_ID_LIAM", // Placeholder: Replace with actual Square Staff ID for Liam
       socials: { instagram: "https://instagram.com/liam_barber" },
       gallery: [
@@ -59,9 +59,9 @@ async function getBarberBySlug(slug: string) {
     {
       slug: "bojan-el",
       name: "BOJAN / EL",
-      role: "Barber",
+      role: "Senior Barber",
       bio: "Bojan, also known as EL, is passionate about crafting sharp, clean looks. He excels in precision cuts and beard shaping, ensuring every client leaves with a refined and confident appearance.",
-      specialties: ["Precision Cuts", "Beard Shaping", "Modern Styling"],
+      specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"],
       staffId: "STAFF_ID_BOJAN", // Placeholder: Replace with actual Square Staff ID for Bojan
       socials: { instagram: "https://instagram.com/bojan_el_barber" },
       gallery: [
