@@ -24,7 +24,7 @@ async function getBarberBySlug(slug: string) {
         { _key: "2", url: "/images/barber-scissors-haircut-detail.jpg", alt: "Close-up of Kenneth's hands expertly cutting hair with scissors for a client" },
         { _key: "3", url: "/images/barber-styling-hair-comb.jpg", alt: "Kenneth styling a client's hair with a comb and product, showcasing his finishing touch" },
       ],
-      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Kenneth", // Placeholder image
+      imageUrl: "/images/kenneth.jpeg", // Updated image path
     },
     {
       slug: "heather",
