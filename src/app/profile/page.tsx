@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from 'next/navigation';
-import { createServerClient } from '@supabase/ssr'; // Corrected import to createServerClient
+import { createSupabaseServerClient } from '@/integrations/supabase/server'; // Using the helper
 import { cookies } from 'next/headers';
 import ProfileForm from '@/components/ProfileForm';
 import { getProfile } from '@/app/actions/profiles';
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function ProfilePage() {
-  const supabase = createServerClient({ cookies }); // Using createServerClient
+  const supabase = createSupabaseServerClient(); // Using the helper function
   const { data: { session } } = await supabase.auth.getSession();
 
   if (!session) {

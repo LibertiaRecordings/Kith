@@ -1,10 +1,10 @@
-import { createServerClient } from '@supabase/ssr'; // Corrected import
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { createSupabaseServerClient } from '@/integrations/supabase/server'; // Using the helper
 
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
-  const supabase = createServerClient({ req, res }); // Using createServerClient
+  const supabase = createSupabaseServerClient(); // Using the helper function
 
   const {
     data: { session },
