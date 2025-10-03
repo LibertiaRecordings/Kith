@@ -10,7 +10,7 @@ export default function BarbersPage() {
   // Placeholder data for barbers
   const barbers = [
     { slug: "kenneth", name: "Kenneth", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "/images/kenneth.jpeg" },
-    { slug: "heather", name: "Heather", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather" },
+    { slug: "heather", name: "Heather", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Textured Hair"], imageUrl: "/images/heather.jpeg" },
     { slug: "liam", name: "Liam", role: "Barber", specialties: ["Fades", "Tapers", "Textured Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Liam" },
     { slug: "bojan-el", name: "BOJAN / EL", role: "Senior Barber", specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"], imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Bojan" },
   ];

@@ -39,7 +39,7 @@ async function getBarberBySlug(slug: string) {
         { _key: "2", url: "/images/layrite-cement-clay-product.jpg", alt: "Layrite Cement Clay, a premium styling product recommended by Heather" },
         { _key: "3", url: "/images/uppercut-salt-spray-product.jpg", alt: "Uppercut Deluxe Salt Spray, a popular grooming product for texture and volume, used by Heather" },
       ],
-      imageUrl: "https://via.placeholder.com/150/305%2530/FFFCF7?text=Heather", // Placeholder image
+      imageUrl: "/images/heather.jpeg", // Placeholder image
     },
     {
       slug: "liam",
