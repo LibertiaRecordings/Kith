@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession } from "@/components/SessionContextProvider";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetTrigger } from "@/components/ui/sheet"; // Removed SheetContent as it's now in RadioStationSheet
-import { Menu, Radio } from "lucide-react"; // Added Radio icon
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose } from "@/components/ui/sheet"; // Added SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose
+import { Menu, Radio, Headphones } from "lucide-react"; // Added Headphones icon
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useRadioPlayer } from "./radio/RadioPlayerProvider"; // Import useRadioPlayer
 
@@ -50,7 +50,38 @@ export const Navbar = () => {
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </SheetTrigger>
-              {/* SheetContent is now part of RadioStationSheet, so it's not here */}
+              <SheetContent side="right" className="bg-card text-foreground border-l border-muted-foreground/20 w-[250px] sm:w-[300px] flex flex-col">
+                <SheetHeader className="text-left">
+                  <SheetTitle className="text-3xl font-hero text-foreground">Navigation</SheetTitle>
+                </SheetHeader>
+                <nav className="flex flex-col gap-4 mt-6 flex-grow">
+                  {navLinks.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link href={link.href} className="text-ink hover:text-primary transition-colors font-body font-medium text-lg py-2">
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+                <SheetFooter className="mt-auto pt-6 border-t border-muted-foreground/20 flex flex-col items-center gap-4">
+                  <Image
+                    src="/images/kith-kin-radio-logo.png"
+                    alt="Kith & Kin Radio Logo"
+                    width={150}
+                    height={150}
+                    className="h-auto w-auto max-w-[150px] opacity-70"
+                  />
+                  <SheetClose asChild>
+                    <Button
+                      onClick={toggleSheet}
+                      className="w-full flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Headphones className="h-5 w-5" />
+                      Listen Live
+                    </Button>
+                  </SheetClose>
+                </SheetFooter>
+              </SheetContent>
             </Sheet>
           ) : (
             <nav className="hidden sm:flex gap-8 items-center">
