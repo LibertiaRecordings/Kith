@@ -1,33 +1,25 @@
-# # Example mutations for a simple movie app
+# Define your GraphQL mutations here.
+# Learn more about GraphQL mutations at:
+# https://graphql.org/learn/queries/
 
-# # Create a movie based on user input
-# mutation CreateMovie($title: String!, $genre: String!, $imageUrl: String!)
-# @auth(level: USER_EMAIL_VERIFIED) {
-#   movie_insert(data: { title: $title, genre: $genre, imageUrl: $imageUrl })
-# }
+# Example: Update a user's profile details
+mutation UpdateProfileDetails($id: ID!, $firstName: String, $lastName: String, $avatarUrl: String) {
+  updateProfile(id: $id, input: { firstName: $firstName, lastName: $lastName, avatarUrl: $avatarUrl }) {
+    id
+    firstName
+    lastName
+    avatarUrl
+    updatedAt
+  }
+}
 
-# # Upsert (update or insert) a user's username based on their auth.uid
-# mutation UpsertUser($username: String!) @auth(level: USER) {
-#   # The "auth.uid" server value ensures that users can only register their own user.
-#   user_upsert(data: { id_expr: "auth.uid", username: $username })
-# }
-
-# # Add a review for a movie
-# mutation AddReview($movieId: UUID!, $rating: Int!, $reviewText: String!)
-# @auth(level: USER) {
-#   review_upsert(
-#     data: {
-#       userId_expr: "auth.uid"
-#       movieId: $movieId
-#       rating: $rating
-#       reviewText: $reviewText
-#       # reviewDate defaults to today in the schema. No need to set it manually.
-#     }
-#   )
-# }
-
-# # Logged in user can delete their review for a movie
-# mutation DeleteReview($movieId: UUID!) @auth(level: USER) {
-#   # The "auth.uid" server value ensures that users can only delete their own reviews.
-#   review_delete(key: { userId_expr: "auth.uid", movieId: $movieId })
-# }
+# Example: Add a new radio track
+mutation AddRadioTrack($title: String!, $artist: String, $filePath: String!, $durationSeconds: Int, $isDjMix: Boolean) {
+  createRadioTrack(input: { title: $title, artist: $artist, filePath: $filePath, durationSeconds: $durationSeconds, isDjMix: $isDjMix }) {
+    id
+    title
+    artist
+    filePath
+    createdAt
+  }
+}

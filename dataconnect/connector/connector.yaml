@@ -1,7 +1,46 @@
-connectorId: default
-generate:
-  javascriptSdk:
-    outputDir: ../../dataconnect-generated/js/default-connector
-    package: "@firebasegen/default-connector"
-    packageJsonDir: ../..
-    react: true
+# This file configures the default connector for your Firebase Data Connect service.
+# Learn more about configuring connectors at:
+# https://firebase.google.com/docs/data-connect/connectors
+
+# The type of database this connector will interact with.
+databaseType: POSTGRES
+
+# Configuration for connecting to your PostgreSQL database.
+# It's highly recommended to use environment variables for sensitive information.
+# You can set these environment variables in your Firebase project configuration.
+# For local development, you might use a .env file or set them directly in your shell.
+connection:
+  host: ${SUPABASE_DB_HOST}
+  port: ${SUPABASE_DB_PORT}
+  database: ${SUPABASE_DB_NAME}
+  user: ${SUPABASE_DB_USER}
+  password: ${SUPABASE_DB_PASSWORD}
+
+# Mappings from your GraphQL types (defined in schema.gql) to your database tables.
+# This tells Data Connect which table each GraphQL type corresponds to.
+typeMappings:
+  Profile:
+    table: profiles
+    # Column mappings are optional if GraphQL field names match database column names
+    # (e.g., firstName -> first_name). Data Connect can often infer these.
+    # Explicitly defining them ensures correctness and handles discrepancies.
+    columnMappings:
+      id: id
+      firstName: first_name
+      lastName: last_name
+      avatarUrl: avatar_url
+      updatedAt: updated_at
+      role: role
+  RadioTrack:
+    table: radio_tracks
+    columnMappings:
+      id: id
+      createdAt: created_at
+      title: title
+      artist: artist
+      filePath: file_path
+      durationSeconds: duration_seconds
+      isDjMix: is_dj_mix
+
+# You can define custom queries and mutations in queries.gql and mutations.gql
+# that use this connector to interact with your database.
