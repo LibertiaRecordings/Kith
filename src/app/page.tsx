@@ -5,7 +5,7 @@ import HeroVideoBackground from "@/components/HeroVideoBackground";
 import ReviewCard from "@/components/ReviewCard";
 import RadioAccessButton from "@/components/RadioAccessButton";
 import InteractiveImageCard from "@/components/InteractiveImageCard";
-import BarberShowcaseGallery from "@/components/BarberShowcaseGallery"; // Import the new component
+// Removed BarberShowcaseGallery import
 
 export default function Home() {
   const reviews = [
@@ -31,14 +31,7 @@ export default function Home() {
     },
   ];
 
-  const showcaseImages = [
-    { src: "/images/barber-client-haircut-calgary.jpg", alt: "Barber giving a fresh haircut to a client" },
-    { src: "/images/barber-trimming-beard-calgary.jpg", alt: "Barber meticulously trimming a client's beard" },
-    { src: "/images/barber-scissors-haircut-detail.jpg", alt: "Close-up of barber's hands cutting hair with scissors" },
-    { src: "/images/barber-styling-hair-comb.jpg", alt: "Barber styling client's hair with a comb" },
-    { src: "/images/barber-trimming-side-profile-new.jpg", alt: "Barber trimming hair from a client's side profile" },
-    { src: "/images/kith-kin-barbers-collage.png", alt: "Collage of Kith & Kin barbers and clients" }, // New collage image
-  ];
+  // Removed showcaseImages array
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -96,7 +89,8 @@ export default function Home() {
               hoverHeight="h-80"
             />
             <InteractiveImageCard
-              src="/images/barber-styling-hair-comb.jpg"
+              src="/images/barber-styling-hair-comb.
+              jpg"
               alt="Skilled barber styling a client's hair with a comb and product, showcasing precision grooming at Kith & Kin Calgary"
               initialHeight="h-64"
               hoverHeight="h-80"
@@ -104,14 +98,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* New "Our Craft" section with BarberShowcaseGallery */}
-        <section className="mt-16 w-full max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-hero text-foreground mb-4">Our Craft</h2>
-          <p className="text-muted-foreground text-lg font-body max-w-2xl mx-auto mb-10">
-            Precision, passion, and artistry in every cut. Explore the essence of Kith & Kin.
-          </p>
-          <BarberShowcaseGallery images={showcaseImages} />
-        </section>
+        {/* Removed "Our Craft" section */}
 
         {/* Dedicated Radio Section */}
         <section className="mt-16 w-full max-w-5xl mx-auto text-center bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/20 flex flex-col items-center">
@@ -134,7 +121,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Existing Sleek Minimalistic Gallery (now above the new "Our Craft" section) */}
+        {/* Existing Sleek Minimalistic Gallery */}
         <section className="mt-16 w-full max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <InteractiveImageCard
