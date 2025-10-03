@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import { Button } from '@/components/ui/button';
 import { Play, Pause, SkipForward, Music, Loader2 } from 'lucide-react';
 import { useRadioPlayer } from './RadioPlayerProvider';
+import Image from 'next/image'; // Import Image component
 
 const RadioStationSheet = () => {
   const { isPlaying, currentChannel, play, pause, nextChannel, isSheetOpen, toggleSheet, isLoadingChannel } = useRadioPlayer();
@@ -66,7 +67,14 @@ const RadioStationSheet = () => {
             </>
           ) : (
             <div className="flex flex-col items-center gap-4">
-              <Music className="h-20 w-20 text-primary mb-6" />
+              <Image
+                src="/images/kith-kin-radio-avatar.png"
+                alt="Kith & Kin Radio Avatar"
+                width={150}
+                height={150}
+                className="h-auto w-auto max-w-[150px] opacity-70 mb-6"
+                priority
+              />
               <h3 className="text-2xl font-hero text-foreground mb-2">Radio Offline</h3>
               <p className="text-muted-foreground font-body text-lg">Press play to start the stream.</p>
               <Button
