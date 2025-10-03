@@ -1,0 +1,25 @@
+# Define your GraphQL schema here.
+# Learn more about GraphQL schema definition language (SDL) at:
+# https://graphql.org/learn/schema/
+
+# The @model directive indicates that this GraphQL type is backed by a database table.
+# Data Connect will automatically generate CRUD operations for models.
+
+type Profile @model {
+  id: ID!
+  firstName: String
+  lastName: String
+  avatarUrl: String
+  updatedAt: String # Using String for timestamp for simplicity, can be refined to DateTime scalar
+  role: String
+}
+
+type RadioTrack @model {
+  id: ID!
+  createdAt: String # Using String for timestamp
+  title: String!
+  artist: String
+  filePath: String!
+  durationSeconds: Int
+  isDjMix: Boolean
+}
