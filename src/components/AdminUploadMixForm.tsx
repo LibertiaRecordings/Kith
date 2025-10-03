@@ -65,7 +65,7 @@ const AdminUploadMixForm: React.FC = () => {
       title: '',
       artist: null,
       audioFile: undefined,
-      duration_seconds: null,
+      duration_seconds: '', // Changed to empty string to match Zod's string input type
       is_dj_mix: true,
     },
   });
@@ -95,7 +95,7 @@ const AdminUploadMixForm: React.FC = () => {
           title: '',
           artist: null,
           audioFile: undefined,
-          duration_seconds: null,
+          duration_seconds: '', // Reset to empty string
           is_dj_mix: true,
         });
       } else {
