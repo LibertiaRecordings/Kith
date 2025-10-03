@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, Instagram } from "lucide-react";
 import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
+import BarberGallery from "@/components/BarberGallery"; // Import the new client component
 
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
@@ -148,20 +149,7 @@ export default async function BarberDetailPage({ params }: { params: { slug: str
           {barber.gallery.length > 0 && (
             <>
               <h3 className="text-2xl font-hero text-foreground mb-3">Gallery</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {barber.gallery.map((image) => (
-                  <div key={image._key} className="relative w-full h-48 rounded-lg overflow-hidden border border-muted-foreground/30 aspect-video group">
-                    <Image
-                      src={image.url}
-                      alt={image.alt}
-                      fill
-                      style={{ objectFit: "cover" }}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="grayscale contrast-125 transition-all duration-300 ease-in-out group-hover:grayscale-0 group-hover:contrast-100 group-hover:scale-110"
-                    />
-                  </div>
-                ))}
-              </div>
+              <BarberGallery gallery={barber.gallery} /> {/* Use the new BarberGallery component */}
             </>
           )}
         </div>
