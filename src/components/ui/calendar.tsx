@@ -54,10 +54,10 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: ({ className, ...props }: React.SVGProps<SVGSVGElement>) => ( // Corrected name back to IconLeft
+        IconArrowLeft: ({ className, ...props }: React.SVGProps<SVGSVGElement>) => ( // Corrected name to IconArrowLeft
           <ChevronLeft className={cn("h-4 w-4", className)} {...props} />
         ),
-        IconRight: ({ className, ...props }: React.SVGProps<SVGSVGElement>) => ( // Corrected name back to IconRight
+        IconArrowRight: ({ className, ...props }: React.SVGProps<SVGSVGElement>) => ( // Corrected name to IconArrowRight
           <ChevronRight className={cn("h-4 w-4", className)} {...props} />
         ),
       }}

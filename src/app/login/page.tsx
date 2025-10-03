@@ -1,6 +1,7 @@
 "use client";
 
-import { Auth, ThemeSupa } from '@supabase/auth-ui-react'; // Corrected import for ThemeSupa
+import { Auth } from '@supabase/auth-ui-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared'; // Corrected import for ThemeSupa
 import { supabase } from '@/integrations/supabase/client';
 import { Metadata } from 'next';
 import { useEffect, useState } from 'react';
