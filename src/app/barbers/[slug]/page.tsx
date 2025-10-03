@@ -5,11 +5,8 @@ import Image from "next/image";
 import BarberBookingDialog from "@/components/BarberBookingDialog";
 import BarberGallery from "@/components/BarberGallery"; // Import the new client component
 
-// Define the expected PageProps structure for this dynamic route
-interface BarberPageProps {
-  params: { slug: string };
-  // searchParams?: { [key: string]: string | string[] | undefined }; // Not currently used, so omitted
-}
+// Removed the BarberPageProps interface to avoid type conflicts with Next.js's internal type generation.
+// The types are now defined inline in the function signatures for clarity and to resolve the error.
 
 // Placeholder function to fetch barber data
 async function getBarberBySlug(slug: string) {
@@ -82,7 +79,7 @@ async function getBarberBySlug(slug: string) {
   return barbers.find((barber) => barber.slug === slug);
 }
 
-export async function generateMetadata({ params }: BarberPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
@@ -98,7 +95,7 @@ export async function generateMetadata({ params }: BarberPageProps): Promise<Met
   };
 }
 
-export default async function BarberDetailPage({ params }: BarberPageProps) {
+export default async function BarberDetailPage({ params }: { params: { slug: string } }) {
   const barber = await getBarberBySlug(params.slug);
 
   if (!barber) {
