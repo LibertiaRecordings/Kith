@@ -1,10 +1,12 @@
-import React from "react";
-import { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Our Playlists | Kith & Kin Barbershop",
-  description: "Discover the music curated by the staff at Kith & Kin Barbershop. Featuring selections from our DJs and music enthusiasts.",
-};
+import React from "react";
+// import { Metadata } from "next"; // Removed as client components cannot export metadata directly
+
+// export const metadata: Metadata = { // Removed as client components cannot export metadata directly
+//   title: "Our Playlists | Kith & Kin Barbershop",
+//   description: "Discover the music curated by the staff at Kith & Kin Barbershop. Featuring selections from our DJs and music enthusiasts.",
+// };
 
 export default function PlaylistsPage() {
   const spotifyPlaylistUrl = "https://open.spotify.com/embed/playlist/4sNPJf4uGhE7FE0G7pqdAp?utm_source=generator&theme=0";
