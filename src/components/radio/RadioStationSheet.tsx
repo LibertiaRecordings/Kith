@@ -19,7 +19,7 @@ const RadioStationSheet = () => {
       <SheetContent side="right" className="bg-card text-foreground border-l border-muted-foreground/20 w-[300px] sm:w-[350px] flex flex-col">
         <SheetHeader className="text-left">
           <SheetTitle className="text-3xl font-hero text-foreground flex items-center gap-2">
-            <Music className="h-7 w-7 text-primary" /> Live Radio
+            <Music className="h-7 w-7 text-primary" /> Radio
           </SheetTitle>
         </SheetHeader>
         <div className="flex-grow flex flex-col justify-center items-center text-center p-4">
