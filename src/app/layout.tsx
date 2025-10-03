@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono, Montserrat, Archivo_Black } from "next/font/google"; // Import Montserrat and Archivo_Black
-import Script from "next/script";
+import Script from "next/script"; // Keep Script for GTM
 import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
@@ -70,12 +70,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Organization JSON-LD Schema using next/script for proper hydration */}
-        <Script
+        {/* Organization JSON-LD Schema using a standard script tag */}
+        <script
           id="json-ld-organization"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-          strategy="beforeInteractive"
         />
       </head>
       <body
