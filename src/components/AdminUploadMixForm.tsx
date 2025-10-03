@@ -26,12 +26,11 @@ const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().optional().or(z.literal('')),
   audioFile: z
-    .instanceof(File) // Expect a File object
-    .optional() // Make it optional in the schema to allow `undefined` as default
-    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Then make it required via refine for submission
-    .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
+    .any() // Start with z.any() to allow undefined initially
+    .refine((file) => file instanceof File, { message: 'Audio file is required.' }) // Refine to ensure it's a File
+    .refine((file) => file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
-      (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
+      (file) => ACCEPTED_MIME_TYPES.includes(file.type),
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(
@@ -51,7 +50,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: '',
-      audioFile: undefined, // Explicitly undefined to match optional schema field
+      audioFile: undefined, // Explicitly undefined to match z.any() initial state
       duration_seconds: null,
       is_dj_mix: true,
     },
@@ -65,7 +64,7 @@ const AdminUploadMixForm: React.FC = () => {
       const result = await uploadRadioTrack({
         title: values.title,
         artist: values.artist || null,
-        file: values.audioFile as File, // Cast to File as schema ensures it's a File at this point
+        file: values.audioFile, // No need to cast, as schema ensures it's a File at this point
         duration_seconds: values.duration_seconds,
         is_dj_mix: values.is_dj_mix,
       });
