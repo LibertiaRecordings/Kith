@@ -28,11 +28,11 @@ const uploadMixFormSchema = z.object({
   artist: z.string().nullable().optional(),
   audioFile: z
     .instanceof(File)
-    .optional() // Make it optional in the schema to match defaultValues
-    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Then refine to ensure it's present for submission
-    .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
+    .optional() // It's optional in the UI, so it should be optional in the base schema
+    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Refine to ensure it's present for submission
+    .refine((file) => !file || file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`) // Guard with !file
     .refine(
-      (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
+      (file) => !file || ACCEPTED_MIME_TYPES.includes(file.type), // Guard with !file
       "Only .mp3, .wav, .ogg, .aac, and .flac formats are supported."
     ),
   duration_seconds: z.preprocess(

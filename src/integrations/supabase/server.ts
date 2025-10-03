@@ -8,13 +8,16 @@ export function createSupabaseServerClient() {
     {
       cookies: {
         get: (name: string) => {
-          return cookies().get(name)?.value;
+          // Explicitly cast cookies() to any to resolve the incorrect Promise inference
+          return (cookies() as any).get(name)?.value;
         },
         set: (name: string, value: string, options: CookieOptions) => {
-          cookies().set(name, value, options);
+          // Explicitly cast cookies() to any
+          (cookies() as any).set(name, value, options);
         },
         remove: (name: string, options: CookieOptions) => {
-          cookies().delete(name, options);
+          // Explicitly cast cookies() to any
+          (cookies() as any).delete(name, options);
         },
       },
     }
