@@ -5,6 +5,7 @@ import "./globals.css";
 import { SessionContextProvider } from "@/components/SessionContextProvider";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import FloatingBookButton from "@/components/FloatingBookButton"; // Import the new component
 
 const inter = Inter({
   variable: "--font-body", // Assign Inter to --font-body
@@ -99,6 +100,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <FloatingBookButton /> {/* Add the floating button here */}
         </SessionContextProvider>
       </body>
     </html>
