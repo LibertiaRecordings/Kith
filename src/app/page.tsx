@@ -102,7 +102,16 @@ export default function Home() {
               />
             </div>
           </div>
-          <RadioAccessButton /> {/* New radio access button */}
+        </section>
+
+        {/* Dedicated Radio Section */}
+        <section className="mt-16 w-full max-w-5xl mx-auto text-center bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/20 flex flex-col items-center">
+          <h2 className="text-4xl font-hero text-foreground mb-4">Kith & Kin Radio</h2>
+          <p className="text-muted-foreground text-lg font-body max-w-2xl mb-8">
+            Tune into the curated sounds of Kith & Kin. From classic hip-hop to electronic beats,
+            our barbershop radio sets the perfect vibe for your visit.
+          </p>
+          <RadioAccessButton />
         </section>
 
         {/* What Our Clients Say section */}
