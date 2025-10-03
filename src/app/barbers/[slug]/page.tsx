@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import Image from "next/image"; // Import Image component
+import { ArrowLeft, Instagram } from "lucide-react"; // Import Instagram icon
+import Image from "next/image";
+import { Button } from "@/components/ui/button"; // Import Button component
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"; // Import Dialog components
+import { useState } from "react"; // Import useState for dialog state
 
 interface BarberDetailPageProps {
   params: { slug: string };
@@ -62,8 +65,8 @@ async function getBarberBySlug(slug: string) {
       role: "Senior Barber",
       bio: "Bojan, also known as EL is a precision barber, educator, and creative, with experience cutting for elite shops worldwide. His work is a blend of razor-sharp precision and modern artistry, designed for those who value excellence.",
       specialties: ["Scissor Cuts", "Fades", "Tapers", "Textured Hair", "Afro Hair"],
-      staffId: "STAFF_ID_BOJAN", // Placeholder: Replace with actual Square Staff ID for Bojan
-      socials: { instagram: "https://instagram.com/bojan_el_barber" },
+      staffId: "TMev-ZDlgbd5FxgV", // Updated with actual Square Staff ID for Bojan
+      socials: { instagram: "https://instagram.com/el.wav" }, // Updated Instagram link
       gallery: [
         { _key: "1", url: "/images/bojan-gallery-1.jpeg", alt: "Bojan / EL showcasing a sharp lineup and fade on a client" },
         { _key: "2", url: "/images/bojan-gallery-2.jpeg", alt: "Bojan / EL's work on a client with textured, curly hair and a clean fade" },
@@ -96,6 +99,7 @@ export async function generateMetadata({ params }: BarberDetailPageProps): Promi
 
 export default async function BarberDetailPage({ params }: BarberDetailPageProps) {
   const barber = await getBarberBySlug(params.slug);
+  const [isBookingDialogOpen, setIsBookingDialogOpen] = useState(false); // State for dialog
 
   if (!barber) {
     return (
@@ -110,8 +114,7 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
   }
 
   // Construct the Square booking link for this specific staff member
-  // Assuming Square Appointments supports staff_id parameter for direct booking
-  const squareBookingLink = `https://kithkinco.square.site/s/appointments?staff_id=${barber.staffId}`;
+  const squareBookingLink = `https://book.squareup.com/appointments/30wjsaqndgj3cy/location/G2ZAD7PBKCNTT/services?buttonTextColor=ffffff&color=000000&locale=en&referrer=so&team_member_id=${barber.staffId}`;
 
   return (
     <main id="main" className="container mx-auto px-6 py-16 min-h-screen bg-background text-foreground">
@@ -127,16 +130,16 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           <h1 className="text-4xl font-hero tracking-tight text-foreground mt-6">{barber.name}</h1>
           <p className="text-muted-foreground font-body text-lg mt-1">{barber.role} in Calgary</p>
 
-          <Link 
-            href={`/book?bookingUrl=${encodeURIComponent(squareBookingLink)}`} 
+          <Button 
+            onClick={() => setIsBookingDialogOpen(true)}
             className="mt-6 w-full inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-full text-lg font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             Book with {barber.name}
-          </Link>
+          </Button>
 
           {barber.socials.instagram && (
             <Link href={barber.socials.instagram} target="_blank" rel="noopener noreferrer" className="mt-4 w-full inline-flex items-center justify-center px-6 py-3 border border-muted-foreground/30 text-muted-foreground rounded-full text-lg font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary font-body">
-              Instagram
+              <Instagram className="mr-2 h-5 w-5" /> Instagram
             </Link>
           )}
         </div>
@@ -168,6 +171,23 @@ export default async function BarberDetailPage({ params }: BarberDetailPageProps
           )}
         </div>
       </div>
+
+      {/* Booking Dialog */}
+      <Dialog open={isBookingDialogOpen} onOpenChange={setIsBookingDialogOpen}>
+        <DialogContent className="sm:max-w-[90vw] max-h-[90vh] flex flex-col bg-card text-foreground p-0 rounded-2xl shadow-ultra-soft border-muted-foreground/30">
+          <DialogHeader className="p-6 pb-0">
+            <DialogTitle className="text-3xl font-hero text-foreground">Book with {barber.name}</DialogTitle>
+          </DialogHeader>
+          <div className="flex-grow p-6 pt-0 overflow-hidden">
+            <iframe
+              src={squareBookingLink}
+              className="w-full h-full rounded-xl border border-muted-foreground/30"
+              loading="lazy"
+              title={`Book an appointment with ${barber.name}`}
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
