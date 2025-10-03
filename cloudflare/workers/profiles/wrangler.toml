@@ -1,0 +1,14 @@
+name = "kithkin-profiles-worker" # A unique name for your worker
+main = "index.ts"
+compatibility_date = "2024-01-01" # Use a recent date
+
+# Bindings for D1 and R2
+[[d1_databases]]
+binding = "DB" # Must match the binding name in your worker's Env interface
+database_name = "kithkin-profiles-db" # The name you gave your D1 database
+database_id = "YOUR_D1_DATABASE_ID" # IMPORTANT: Replace with your actual D1 Database ID
+
+[[r2_buckets]]
+binding = "AVATARS" # Must match the binding name in your worker's Env interface
+bucket_name = "kithkin-avatars" # The name you gave your R2 bucket
+# preview_bucket_name = "kithkin-avatars-dev" # Optional: for local development/preview
