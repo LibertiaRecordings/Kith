@@ -7,7 +7,11 @@ import { Play, Pause, SkipForward, Music, Loader2 } from 'lucide-react';
 import { useRadioPlayer } from './RadioPlayerProvider';
 
 const RadioStationSheet = () => {
-  const { isPlaying, currentTrack, play, pause, nextTrack, isSheetOpen, toggleSheet, isLoadingTracks } = useRadioPlayer();
+  const { isPlaying, currentChannel, play, pause, nextChannel, isSheetOpen, toggleSheet, isLoadingChannel } = useRadioPlayer();
+
+  // The YouTube iframe will only be rendered when the sheet is open and a channel is selected.
+  // We use a key prop on the iframe to force a re-render and restart autoplay if the channel changes.
+  const youtubeIframeKey = currentChannel ? `${currentChannel.id}-${isPlaying}` : 'no-channel';
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={toggleSheet}>
@@ -18,39 +22,63 @@ const RadioStationSheet = () => {
           </SheetTitle>
         </SheetHeader>
         <div className="flex-grow flex flex-col justify-center items-center text-center p-4">
-          {isLoadingTracks ? (
+          {isLoadingChannel ? (
             <div className="flex flex-col items-center gap-4">
               <Loader2 className="h-10 w-10 animate-spin text-primary" />
-              <p className="text-muted-foreground font-body text-lg">Loading tracks...</p>
+              <p className="text-muted-foreground font-body text-lg">Loading channel...</p>
             </div>
-          ) : currentTrack ? (
+          ) : currentChannel && isPlaying ? (
             <>
-              <Music className="h-20 w-20 text-primary mb-6" />
-              <h3 className="text-2xl font-hero text-foreground mb-2">{currentTrack.title}</h3>
-              <p className="text-muted-foreground font-body text-lg">{currentTrack.artist || 'Unknown Artist'}</p>
+              <div className="relative w-full aspect-video mb-6 rounded-lg overflow-hidden border border-muted-foreground/30">
+                {/* YouTube iframe for the dance channel */}
+                <iframe
+                  key={youtubeIframeKey} // Key to force re-render on channel change or play/pause toggle
+                  src={currentChannel.embedUrl}
+                  title={currentChannel.name}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                ></iframe>
+              </div>
+              <h3 className="text-2xl font-hero text-foreground mb-2">{currentChannel.name}</h3>
+              <p className="text-muted-foreground font-body text-lg">Live Stream</p>
               <div className="flex items-center gap-4 mt-8">
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={isPlaying ? pause : play}
+                  onClick={pause} // Pause will now just set isPlaying to false
                   className="h-14 w-14 rounded-full text-primary hover:bg-primary/10 transition-colors"
                 >
-                  {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
-                  <span className="sr-only">{isPlaying ? 'Pause' : 'Play'}</span>
+                  <Pause className="h-8 w-8" />
+                  <span className="sr-only">Pause</span>
                 </Button>
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={nextTrack}
+                  onClick={nextChannel} // Next will cycle channels or restart current
                   className="h-12 w-12 rounded-full text-primary hover:bg-primary/10 transition-colors"
                 >
                   <SkipForward className="h-6 w-6" />
-                  <span className="sr-only">Next Track</span>
+                  <span className="sr-only">Next Channel</span>
                 </Button>
               </div>
             </>
           ) : (
-            <p className="text-muted-foreground font-body text-lg">No tracks available yet.</p>
+            <div className="flex flex-col items-center gap-4">
+              <Music className="h-20 w-20 text-primary mb-6" />
+              <h3 className="text-2xl font-hero text-foreground mb-2">Radio Offline</h3>
+              <p className="text-muted-foreground font-body text-lg">Press play to start the stream.</p>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={play} // Play will now just set isPlaying to true
+                className="h-14 w-14 rounded-full text-primary hover:bg-primary/10 transition-colors mt-8"
+              >
+                <Play className="h-8 w-8" />
+                <span className="sr-only">Play</span>
+              </Button>
+            </div>
           )}
         </div>
         <div className="mt-auto text-center text-muted-foreground text-sm font-body">

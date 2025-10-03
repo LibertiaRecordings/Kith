@@ -1,125 +1,112 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { toast } from 'sonner';
 
-interface RadioTrack {
+interface RadioChannel {
   id: string;
-  title: string;
-  artist: string | null;
-  file_path: string;
-  duration_seconds: number | null;
-  is_dj_mix: boolean;
+  name: string;
+  youtubePlaylistId: string;
+  embedUrl: string;
 }
 
 interface RadioPlayerContextType {
   isPlaying: boolean;
-  currentTrack: RadioTrack | null;
+  currentChannel: RadioChannel | null;
   play: () => void;
   pause: () => void;
-  nextTrack: () => void;
+  nextChannel: () => void; // Renamed from nextTrack
   toggleSheet: () => void;
   isSheetOpen: boolean;
-  isLoadingTracks: boolean;
+  isLoadingChannel: boolean;
 }
 
 const RadioPlayerContext = createContext<RadioPlayerContextType | undefined>(undefined);
 
+// Define our predetermined channels
+const CHANNELS: RadioChannel[] = [
+  {
+    id: 'dance-channel',
+    name: 'Electronic / Dance',
+    youtubePlaylistId: 'RDl_7rlC_L4Rk', // From the user's provided URL
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDl_7rlC_L4Rk&autoplay=1&loop=1&controls=1&modestbranding=1&rel=0',
+  },
+  // Add more channels here if needed in the future
+];
+
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState<RadioTrack | null>(null);
-  const [tracks, setTracks] = useState<RadioTrack[]>([]);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [currentChannel, setCurrentChannel] = useState<RadioChannel | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [isLoadingTracks, setIsLoadingTracks] = useState(true);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isLoadingChannel, setIsLoadingChannel] = useState(true); // Renamed from isLoadingTracks
 
   useEffect(() => {
-    const fetchTracks = async () => {
-      setIsLoadingTracks(true);
-      const { data, error } = await supabase
-        .from('radio_tracks')
-        .select('*')
-        .order('created_at', { ascending: true }); // Order by creation date or add a 'sort_order' column
-
-      if (error) {
-        console.error('Error fetching radio tracks:', error);
-        toast.error('Failed to load radio tracks.');
-      } else {
-        setTracks(data || []);
-        if (data && data.length > 0) {
-          setCurrentTrack(data[0]);
-        }
-      }
-      setIsLoadingTracks(false);
-    };
-
-    fetchTracks();
+    // Initialize with the first channel
+    if (CHANNELS.length > 0) {
+      setCurrentChannel(CHANNELS[0]);
+    }
+    setIsLoadingChannel(false);
   }, []);
 
-  useEffect(() => {
-    if (currentTrack && audioRef.current) {
-      const { data: { publicUrl } } = supabase.storage.from('radio-music').getPublicUrl(currentTrack.file_path);
-      audioRef.current.src = publicUrl;
-      if (isPlaying) {
-        audioRef.current.play().catch(e => console.error("Error playing audio:", e));
-      }
-    } else if (audioRef.current) {
-      audioRef.current.src = ''; // Clear source if no track
-    }
-  }, [currentTrack, isPlaying]);
-
   const play = () => {
-    if (audioRef.current) {
-      audioRef.current.play().catch(e => console.error("Error playing audio:", e));
-      setIsPlaying(true);
+    if (!currentChannel) {
+      toast.error('No radio channel available.');
+      return;
     }
+    setIsPlaying(true);
+    setIsSheetOpen(true); // Open the sheet when playing
+    toast.info(`Now playing: ${currentChannel.name}`);
   };
 
   const pause = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    setIsPlaying(false);
+    // Optionally, you might want to close the sheet here, or let the user close it manually
+    // setIsSheetOpen(false);
+    toast.info(`Paused: ${currentChannel?.name || 'Radio'}`);
   };
 
-  const nextTrack = () => {
-    if (tracks.length === 0) return;
-    const nextIndex = (currentTrackIndex + 1) % tracks.length;
-    setCurrentTrackIndex(nextIndex);
-    setCurrentTrack(tracks[nextIndex]);
-    // If currently playing, automatically play the next track
-    if (isPlaying) {
-      setTimeout(() => { // Small delay to ensure src is set before playing
-        audioRef.current?.play().catch(e => console.error("Error playing next track:", e));
-      }, 50);
+  const nextChannel = () => {
+    // For now, with only one channel, this will just "restart" it by re-setting the current channel
+    // In the future, this would cycle through CHANNELS array
+    if (CHANNELS.length > 0) {
+      const currentIndex = CHANNELS.findIndex(c => c.id === currentChannel?.id);
+      const nextIndex = (currentIndex + 1) % CHANNELS.length;
+      setCurrentChannel(CHANNELS[nextIndex]);
+      if (isPlaying) {
+        toast.info(`Switching to: ${CHANNELS[nextIndex].name}`);
+      }
+    } else {
+      toast.error('No other channels available.');
     }
-  };
-
-  const handleAudioEnded = () => {
-    nextTrack();
   };
 
   const toggleSheet = () => {
-    setIsSheetOpen(prev => !prev);
+    setIsSheetOpen(prev => {
+      if (prev) {
+        // If closing the sheet, also pause playback
+        setIsPlaying(false);
+      } else {
+        // If opening the sheet, start playing
+        setIsPlaying(true);
+      }
+      return !prev;
+    });
   };
 
   return (
     <RadioPlayerContext.Provider
       value={{
         isPlaying,
-        currentTrack,
+        currentChannel,
         play,
         pause,
-        nextTrack,
+        nextChannel,
         toggleSheet,
         isSheetOpen,
-        isLoadingTracks,
+        isLoadingChannel,
       }}
     >
       {children}
-      <audio ref={audioRef} onEnded={handleAudioEnded} />
     </RadioPlayerContext.Provider>
   );
 };
