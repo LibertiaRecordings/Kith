@@ -22,8 +22,17 @@ import { Loader2 } from 'lucide-react';
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac", "audio/flac"];
 
-// Define the schema for form validation
-const uploadMixFormSchema = z.object({
+// Explicitly define the type for form values to ensure consistency with defaultValues
+type UploadMixFormValues = {
+  title: string;
+  artist?: string | null;
+  audioFile?: File; // This matches the optional() in the schema and defaultValues
+  duration_seconds?: number | null;
+  is_dj_mix: boolean;
+};
+
+// Define the schema for form validation, explicitly typing it with UploadMixFormValues
+const uploadMixFormSchema: z.ZodType<UploadMixFormValues> = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
@@ -41,15 +50,6 @@ const uploadMixFormSchema = z.object({
   ),
   is_dj_mix: z.boolean().default(true),
 });
-
-// Explicitly define the type for form values to ensure consistency with defaultValues
-type UploadMixFormValues = {
-  title: string;
-  artist?: string | null;
-  audioFile?: File; // This matches the optional() in the schema and defaultValues
-  duration_seconds?: number | null;
-  is_dj_mix: boolean;
-};
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
