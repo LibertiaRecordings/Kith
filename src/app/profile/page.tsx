@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { redirect } from 'next/navigation';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createServerComponentClient } from '@supabase/ssr'; // Updated import to @supabase/ssr
 import { cookies } from 'next/headers';
 import ProfileForm from '@/components/ProfileForm';
 import { getProfile } from '@/app/actions/profiles';
