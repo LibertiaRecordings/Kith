@@ -10,7 +10,7 @@ interface InteractiveImageCardProps {
   linkHref?: string; // Optional link for the card
   initialAspectRatio?: 'aspect-video' | 'aspect-square';
   initialHeight?: string; // e.g., 'h-48', 'h-64'
-  hoverHeight?: string; // e.g., 'h-64', 'h-80'
+  hoverHeight?: string; // This prop will no longer be used for height change, but kept for type consistency if needed elsewhere.
 }
 
 const InteractiveImageCard: React.FC<InteractiveImageCardProps> = ({
@@ -19,14 +19,14 @@ const InteractiveImageCard: React.FC<InteractiveImageCardProps> = ({
   linkHref,
   initialAspectRatio = 'aspect-square', // Default to square
   initialHeight = 'h-64', // Default square height
-  hoverHeight = 'h-72', // Slightly larger square on hover
+  // hoverHeight is no longer used for height changes in this component
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const content = (
     <div
       className={`relative w-full rounded-2xl overflow-hidden shadow-ultra-soft border border-muted-foreground/30 transition-all duration-300 ease-in-out group
-        ${isHovered ? `${hoverHeight} aspect-square` : `${initialHeight} ${initialAspectRatio}`}
+        ${initialHeight} ${initialAspectRatio}
       `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -35,7 +35,7 @@ const InteractiveImageCard: React.FC<InteractiveImageCardProps> = ({
         src={src}
         alt={alt}
         fill
-        style={{ objectFit: isHovered ? "contain" : "cover" }} // Change objectFit on hover to show full image
+        style={{ objectFit: "cover" }} // Always cover, no change on hover
         sizes="(max-width: 768px) 100vw, 33vw"
         className={`transition-all duration-300 ease-in-out
           ${isHovered ? 'grayscale-0 contrast-100 scale-105' : 'grayscale contrast-125'}
