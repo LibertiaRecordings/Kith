@@ -36,7 +36,7 @@ export default function BarbersPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 text-center mt-auto">
+              <div className="mt-6 text-center mt-auto"> {/* Changed mt-4 to mt-6 here */}
                 <span className="inline-flex items-center justify-center px-4 py-2 border border-muted-foreground/30 text-muted-foreground rounded-full text-sm font-medium group-hover:border-primary group-hover:text-primary transition-colors font-body">
                   View Profile
                 </span>
