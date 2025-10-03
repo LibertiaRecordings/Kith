@@ -22,12 +22,14 @@ import { Loader2 } from 'lucide-react';
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 const ACCEPTED_MIME_TYPES = ["audio/mpeg", "audio/wav", "audio/ogg", "audio/aac", "audio/flac"];
 
+// Define the schema for form validation
 const uploadMixFormSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
   artist: z.string().nullable().optional(),
   audioFile: z
-    .union([z.instanceof(File), z.literal(undefined)]) // Explicitly allow File or undefined
-    .refine((file): file is File => file !== undefined, { message: 'Audio file is required.' }) // Refine to ensure it's present and a File
+    .instanceof(File)
+    .optional() // Make it optional in the schema to match defaultValues
+    .refine((file) => file !== undefined, { message: 'Audio file is required.' }) // Then refine to ensure it's present for submission
     .refine((file) => file && file.size <= MAX_FILE_SIZE, `Max file size is 50MB.`)
     .refine(
       (file) => file && ACCEPTED_MIME_TYPES.includes(file.type),
@@ -40,7 +42,14 @@ const uploadMixFormSchema = z.object({
   is_dj_mix: z.boolean().default(true),
 });
 
-type UploadMixFormValues = z.infer<typeof uploadMixFormSchema>;
+// Explicitly define the type for form values to ensure consistency with defaultValues
+type UploadMixFormValues = {
+  title: string;
+  artist?: string | null;
+  audioFile?: File; // This matches the optional() in the schema and defaultValues
+  duration_seconds?: number | null;
+  is_dj_mix: boolean;
+};
 
 const AdminUploadMixForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +59,7 @@ const AdminUploadMixForm: React.FC = () => {
     defaultValues: {
       title: '',
       artist: null,
-      audioFile: undefined, // This now correctly matches `File | undefined` from the schema
+      audioFile: undefined, // This correctly matches `File | undefined` from the schema
       duration_seconds: null,
       is_dj_mix: true,
     },
