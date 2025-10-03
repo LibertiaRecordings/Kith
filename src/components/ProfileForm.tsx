@@ -30,9 +30,10 @@ interface ProfileFormProps {
     last_name: string | null;
     avatar_url: string | null;
   };
+  userId: string; // Add userId to props
 }
 
-export function ProfileForm({ initialData }: ProfileFormProps) {
+export function ProfileForm({ initialData, userId }: ProfileFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof profileFormSchema>>({
     resolver: zodResolver(profileFormSchema),
@@ -44,12 +45,16 @@ export function ProfileForm({ initialData }: ProfileFormProps) {
   });
 
   async function onSubmit(values: z.infer<typeof profileFormSchema>) {
-    const result = await updateProfile(values);
+    const result = await updateProfile({ ...values, userId }); // Pass userId to updateProfile
     if (result.success) {
       toast.success('Profile updated successfully!');
       router.refresh(); // Refresh the page to show updated data
     } else {
-      toast.error(result.message || 'Failed to update profile.');
+      // Safely access error message
+      const errorMessage = typeof result.error === 'string'
+        ? result.error
+        : (result.error as { message?: string })?.message || 'Failed to update profile.';
+      toast.error(errorMessage);
     }
   }
 
