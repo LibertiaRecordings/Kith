@@ -43,6 +43,12 @@ const CHANNELS: RadioChannel[] = [
     youtubePlaylistId: 'RDLcN8QINjvWM',
     embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDLcN8QINjvWM&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
+  {
+    id: 'classic-hip-hop-channel',
+    name: 'Classic Hip-Hop',
+    youtubePlaylistId: 'RDK6_FNO0aTso',
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDK6_FNO0aTso&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
+  },
 ];
 
 export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
@@ -51,13 +57,34 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [isLoadingChannel, setIsLoadingChannel] = useState(true);
 
+  // Effect to load state from localStorage on mount
   useEffect(() => {
-    // Initialize with the first channel
-    if (CHANNELS.length > 0) {
-      setCurrentChannel(CHANNELS[0]);
+    const savedIsPlaying = localStorage.getItem('radioIsPlaying') === 'true';
+    const savedChannelId = localStorage.getItem('radioCurrentChannelId');
+
+    let initialChannel = CHANNELS[0];
+    if (savedChannelId) {
+      const foundChannel = CHANNELS.find(c => c.id === savedChannelId);
+      if (foundChannel) {
+        initialChannel = foundChannel;
+      }
     }
+    setCurrentChannel(initialChannel);
+    setIsPlaying(savedIsPlaying); // Set initial playing state from localStorage
     setIsLoadingChannel(false);
   }, []);
+
+  // Effect to save isPlaying to localStorage
+  useEffect(() => {
+    localStorage.setItem('radioIsPlaying', String(isPlaying));
+  }, [isPlaying]);
+
+  // Effect to save currentChannel.id to localStorage
+  useEffect(() => {
+    if (currentChannel) {
+      localStorage.setItem('radioCurrentChannelId', currentChannel.id);
+    }
+  }, [currentChannel]);
 
   const play = () => {
     if (!currentChannel) {
@@ -90,9 +117,9 @@ export const RadioPlayerProvider = ({ children }: { children: ReactNode }) => {
   const toggleSheet = () => {
     setIsSheetOpen(prev => {
       if (prev) {
-        setIsPlaying(false);
+        setIsPlaying(false); // Pause when sheet is closed
       } else {
-        setIsPlaying(true);
+        setIsPlaying(true); // Play when sheet is opened
       }
       return !prev;
     });
