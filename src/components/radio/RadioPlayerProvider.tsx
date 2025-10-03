@@ -28,14 +28,20 @@ const CHANNELS: RadioChannel[] = [
   {
     id: 'dance-channel',
     name: 'Electronic / Dance',
-    youtubePlaylistId: 'RD0FkLT4fd_d0', // Updated playlist ID
-    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RD0FkLT4fd_d0&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0', // Updated embed URL
+    youtubePlaylistId: 'RD0FkLT4fd_d0',
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RD0FkLT4fd_d0&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
   {
     id: 'soul-channel',
     name: '60\'s 70\'s Soul',
     youtubePlaylistId: 'RD3C01eaL5_Xw',
     embedUrl: 'https://www.youtube.com/embed/videoseries?list=RD3C01eaL5_Xw&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
+  },
+  {
+    id: 'soundcloud-gems-channel',
+    name: 'Soundcloud Gems',
+    youtubePlaylistId: 'RDLcN8QINjvWM',
+    embedUrl: 'https://www.youtube.com/embed/videoseries?list=RDLcN8QINjvWM&autoplay=1&loop=1&controls=0&modestbranding=1&rel=0&disablekb=1&iv_load_policy=3&autohide=1&fs=0',
   },
 ];
 
