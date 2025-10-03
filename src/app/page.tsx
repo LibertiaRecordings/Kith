@@ -47,7 +47,7 @@ export default function Home() {
               Where precision meets kinship. Calgary's premium barbershop experience.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full text-xl font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+              <Link href="/book" className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground rounded-full text-xl font-medium can-animate hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-visible:ring-primary">
                 Book Now <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link href="/services" className="inline-flex items-center justify-center px-8 py-4 border border-paper/30 text-paper rounded-full text-xl font-medium can-animate hover:border-primary hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -108,7 +108,7 @@ export default function Home() {
         <section className="mt-16 w-full max-w-5xl mx-auto text-center bg-card rounded-2xl p-8 shadow-ultra-soft border border-muted-foreground/20 flex flex-col items-center">
           <h2 className="text-4xl font-hero text-foreground mb-4">Kith & Kin Radio</h2>
           <p className="text-muted-foreground text-lg font-body max-w-2xl mb-8">
-            Tune into the curated sounds of Kith & Kin. From classic hip-hop to electronic beats,
+            Tune into the curated sounds of Kith & Kin. From soundcloud gems to electronic beats,
             our barbershop radio sets the perfect vibe for your visit.
           </p>
           <RadioAccessButton />
