@@ -72,11 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          id="json-ld-organization"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
-        />
+        {/* The JSON-LD script will now be handled by next/script in the body */}
       </head>
       <body
         className={`${montserrat.variable} ${inter.variable} ${ibmPlexMono.variable} ${archivoBlack.variable} antialiased font-body bg-background text-foreground`}
@@ -90,6 +86,13 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <GoogleTagManager gtmId={gtmId} />
+        {/* Use Next.js Script component for JSON-LD to prevent hydration issues */}
+        <Script
+          id="json-ld-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: organizationSchemaString }}
+          strategy="beforeInteractive"
+        />
           <SessionContextProvider>
             <RadioPlayerProvider>
               <Navbar />
